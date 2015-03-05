@@ -1,0 +1,162 @@
+<!--Titulo-->
+                    <div class="page-header position-relative">
+                        <h1>
+                            Registro de Cita
+                        </h1>
+                    </div><!--/.page-header-->
+					<div class="row-fluid">
+						<div class="span12 widget-container-span">
+							<div class="widget-box ">
+								<div class="widget-header header-color-blue">
+									<h5>DATOS DEL SOLICITANTE</h5>
+
+									<div class="widget-toolbar">									
+										<a href="#" data-action="collapse">
+											<i class="icon-chevron-up"></i>
+										</a>										
+									</div>
+									
+								</div>
+
+								<div class="widget-body">
+									<div class="widget-main">
+										<table class="table table-condensed">
+											<tbody>
+												<tr>
+													<td><strong>Nombres</strong></td>
+													<td>
+														<input type="text" id="nombres" name="nombres" placeholder="Rellene el campo" />
+													</td>
+													<td><strong>Apellidos</strong></td>
+													<td>
+														<input class="span12" type="text" id="apellidos" name="apellidos" placeholder="Rellene el campo" />
+													</td>
+													<td><strong>Cédula</strong></td>
+													<td>
+														<div class="form-inline">
+															<label>
+																<input class="span12" name="cedula" value="V" type="radio" />
+																<span class="lbl"> V</span>
+															</label>
+																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+															<label>
+																<input class="span12"name="cedula" value="E" type="radio" />
+																<span class="lbl"> E</span>
+															</label>
+														</div>
+														<input type="text" id="cedula2" name="cedula2" placeholder="Rellene el campo" />
+													</td>
+												</tr>
+												<tr>
+													<td><strong>Teléfono</strong></td>
+													<td><input type="text" class="span12" id="telefono" name="telefono"placeholder="Rellene el campo" /></td>
+													<td><strong>Estado</strong></td>
+													<td>
+														<select  class="chzn-select" id="estado" name="estado" placeholder="Seleccione">
+															
+															<option value="AL" >uno</option>
+															<option value="AK" >dos</option>
+															<option value="AZ" >tres mmmmmmmmmmmmm mmmmmmmmmmmmmmm mb</option>
+															<option value="AZ" >cuatro</option>
+														</select>													
+													</td>
+													<td><strong>Municipio</strong></td>
+													<td>
+														<select  class="chzn-select" id="municipio" name="municipio" placeholder="Seleccione">
+															
+															<option value="AL" >uno</option>
+															<option value="AK" >dos</option>
+															<option value="AZ" >tres</option>
+															<option value="AZ" >cuatro</option>
+														</select>													
+													</td>													
+												</tr>
+												<tr>
+													<td><strong>Ciudad</strong></td>
+													<td>
+														<select  class="chzn-select" id="ciudad" name="ciudad" placeholder="Seleccione">
+															
+															<option value="AL" >uno</option>
+															<option value="AK" >dos</option>
+															<option value="AZ" >tres</option>
+															<option value="AZ" >cuatro</option>
+														</select>													
+													</td>	
+													<td><strong>Parroquia</strong></td>
+													<td>
+														<select  class="chzn-select" id="parroquia" name="parroquia" placeholder="Seleccione">
+															
+															<option value="AL" >uno</option>
+															<option value="AK" >dos</option>
+															<option value="AZ" >tres</option>
+															<option value="AZ" >cuatro</option>
+														</select>													
+													</td>		
+													<td><strong>Aldea</strong></td>
+													<td>
+														<select  class="chzn-select" id="aldea" name="aldea" placeholder="Seleccione">
+															
+															<option value="AL" >uno</option>
+															<option value="AK" >dos</option>
+															<option value="AZ" >tres</option>
+															<option value="AZ" >cuatro</option>
+														</select>													
+													</td>																						
+												<tr>
+													<td><strong>Dirección</strong></td>
+													<td colspan="5"><textarea  class="span12" id="direccion" name="direccion"></textarea></td>			
+												</tr>
+												</tr>
+												<tr>
+													<td><strong>Fecha de Inspección</strong></td>
+													<td><div class="control-group">
+															<div class="row-fluid input-append">
+																<input class="span10 date-picker" id="id-date-picker-1" name="id-date-picker-1" type="text" data-date-format="dd-mm-yyyy" />
+																<span class="add-on">
+																	<i class="icon-calendar"></i>
+																</span>
+															</div>
+														</div></td>
+													<td><strong>Tipo de Inspección</strong></td>
+													<td>
+														<select  class="chzn-select" id="tipo_inspeccion" name="tipo_inspeccion" placeholder="Seleccione">
+															
+															<option value="AL" >uno</option>
+															<option value="AK" >dos</option>
+															<option value="AZ" >tres</option>
+															<option value="AZ" >cuatro</option>
+														</select>
+													</td>
+													<td><strong>Funcionario Receptor</strong></td>
+													<td>
+														<select  class="chzn-select" id="funcionario_receptor" name="funcionario_receptor" placeholder="Seleccione">
+															
+															<option value="AL" >uno</option>
+															<option value="AK" >dos</option>
+															<option value="AZ" >tres</option>
+															<option value="AZ" >cuatro</option>
+														</select>
+													</td>
+												</tr>
+												<tr>
+													<td><strong>Observaciones</strong></td>
+													<td colspan="5"><textarea  class="span12" ></textarea></td>
+												</tr>
+											</tbody>
+										</table>
+										<div align="center">
+											<button type="submit" class="btn btn-primary" >Registrar</button>
+											<button type="submit" class="btn btn-danger" >Cancelar</button>
+										</div>												
+									</div>									
+								</div>							
+							</div>
+						</div>
+					</div>
+
+<script type="text/javascript">
+    $(".chzn-select").chosen({ 'width': '95%'});
+    $('.date-picker').datepicker().next().on(ace.click_event, function(){
+        $(this).prev().focus();
+    });
+</script>

@@ -1,0 +1,1033 @@
+-- phpMyAdmin SQL Dump
+-- version 3.5.2.2
+-- http://www.phpmyadmin.net
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 01-04-2014 a las 16:13:51
+-- Versión del servidor: 5.5.27
+-- Versión de PHP: 5.4.7
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Base de datos: `operaciones`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `aldea`
+--
+
+CREATE TABLE IF NOT EXISTS `aldea` (
+  `Id_Aldea` int(11) NOT NULL AUTO_INCREMENT,
+  `Existe` int(11) NOT NULL DEFAULT '1',
+  `Nombre` char(255) NOT NULL,
+  `Id_Parroquia` int(11) NOT NULL,
+  PRIMARY KEY (`Id_Aldea`),
+  KEY `RefParroquia551` (`Id_Parroquia`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Volcado de datos para la tabla `aldea`
+--
+
+INSERT INTO `aldea` (`Id_Aldea`, `Existe`, `Nombre`, `Id_Parroquia`) VALUES
+(1, 1, 'asdfg', 5),
+(2, 1, 'la laguna 55', 5);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `bitacora`
+--
+
+CREATE TABLE IF NOT EXISTS `bitacora` (
+  `Id_Bitacora` int(11) NOT NULL AUTO_INCREMENT,
+  `FechaHora` datetime NOT NULL,
+  `Observacion` char(250) DEFAULT NULL,
+  `Url` char(250) DEFAULT NULL,
+  `Ip` char(255) DEFAULT NULL,
+  `Id_Usuario` int(11) NOT NULL,
+  PRIMARY KEY (`Id_Bitacora`),
+  KEY `RefUsuario881` (`Id_Usuario`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `categoria`
+--
+
+CREATE TABLE IF NOT EXISTS `categoria` (
+  `Id_Categoria` int(11) NOT NULL AUTO_INCREMENT,
+  `Existe` int(11) NOT NULL DEFAULT '1',
+  `Nombre` char(255) NOT NULL,
+  `Descripcion` char(255) DEFAULT NULL,
+  PRIMARY KEY (`Id_Categoria`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `ciudad`
+--
+
+CREATE TABLE IF NOT EXISTS `ciudad` (
+  `Id_Ciudad` int(11) NOT NULL AUTO_INCREMENT,
+  `Existe` int(11) DEFAULT '1',
+  `Nombre` char(255) DEFAULT NULL,
+  `Id_Municipio` int(11) NOT NULL,
+  PRIMARY KEY (`Id_Ciudad`),
+  KEY `RefMunicipio371` (`Id_Municipio`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+
+--
+-- Volcado de datos para la tabla `ciudad`
+--
+
+INSERT INTO `ciudad` (`Id_Ciudad`, `Existe`, `Nombre`, `Id_Municipio`) VALUES
+(3, 1, 'Velez', 6),
+(4, 1, 'san pedro', 3),
+(5, 1, 'maria', 3),
+(6, 1, 'san cristobal', 3),
+(7, 1, 'la grita', 2),
+(8, 1, 'asdasd asd', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cs_afectado`
+--
+
+CREATE TABLE IF NOT EXISTS `cs_afectado` (
+  `Id_Afectado` int(11) NOT NULL AUTO_INCREMENT,
+  `Cedula` char(15) NOT NULL,
+  `Nombre` char(200) NOT NULL,
+  `Apellido` char(200) NOT NULL,
+  `Direccion` char(250) NOT NULL,
+  `Sexo` char(50) NOT NULL,
+  `Nacionalidad` char(20) DEFAULT NULL,
+  `Fecha_Nacimiento` date NOT NULL,
+  `Estado_Civil` char(50) DEFAULT NULL,
+  `Situacion_Conyugal` char(50) DEFAULT NULL,
+  `Telefono` char(50) DEFAULT NULL,
+  `Residencia_Estado` int(11) DEFAULT NULL,
+  `Residencia_Comunidad` int(11) DEFAULT NULL,
+  `Nivel_instruccion` char(50) DEFAULT NULL,
+  `Situacion_Laboral` char(50) DEFAULT NULL,
+  `LPH` char(50) DEFAULT NULL,
+  `uso_LPH` char(50) DEFAULT NULL,
+  `Id_OtraPropiedad` int(11) NOT NULL,
+  PRIMARY KEY (`Id_Afectado`),
+  KEY `RefCS_Otra_Propiedad211` (`Id_OtraPropiedad`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cs_censo`
+--
+
+CREATE TABLE IF NOT EXISTS `cs_censo` (
+  `Id_Censo` int(11) NOT NULL AUTO_INCREMENT,
+  `Fecha_Censo` datetime NOT NULL,
+  `Observacion` char(250) DEFAULT NULL,
+  `Id_Aldea` int(11) NOT NULL,
+  `Id_Motivo` int(11) NOT NULL,
+  `Id_Entrevistado` int(11) NOT NULL,
+  `Id_Afectado` int(11) NOT NULL,
+  `Id_CondicionFamiliar` int(11) NOT NULL,
+  `Id_Funcionario` int(11) NOT NULL,
+  `Id_Vivienda` int(11) NOT NULL,
+  `Id_Evento` int(11) NOT NULL,
+  PRIMARY KEY (`Id_Censo`),
+  KEY `RefCS_Evento981` (`Id_Evento`),
+  KEY `RefAldea581` (`Id_Aldea`),
+  KEY `RefCS_Motivo601` (`Id_Motivo`),
+  KEY `RefEntrevistado611` (`Id_Entrevistado`),
+  KEY `RefCS_Afectado621` (`Id_Afectado`),
+  KEY `RefCS_Condicion_Familiar631` (`Id_CondicionFamiliar`),
+  KEY `RefFuncionario641` (`Id_Funcionario`),
+  KEY `RefCS_Vivienda651` (`Id_Vivienda`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cs_condicion`
+--
+
+CREATE TABLE IF NOT EXISTS `cs_condicion` (
+  `Id_Condicion` int(11) NOT NULL AUTO_INCREMENT,
+  `Existe` int(11) NOT NULL DEFAULT '1',
+  `Nombre` char(200) NOT NULL,
+  `Descripcion` char(200) DEFAULT NULL,
+  PRIMARY KEY (`Id_Condicion`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cs_condicion_familiar`
+--
+
+CREATE TABLE IF NOT EXISTS `cs_condicion_familiar` (
+  `Id_CondicionFamiliar` int(11) NOT NULL AUTO_INCREMENT,
+  `Existe` int(11) NOT NULL DEFAULT '1',
+  `Nombre` char(200) NOT NULL,
+  `Descripcion` char(200) DEFAULT NULL,
+  PRIMARY KEY (`Id_CondicionFamiliar`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cs_danho`
+--
+
+CREATE TABLE IF NOT EXISTS `cs_danho` (
+  `Id_Danho` int(11) NOT NULL AUTO_INCREMENT,
+  `Existe` int(11) NOT NULL DEFAULT '1',
+  `Nombre` char(150) NOT NULL,
+  `Descripcion` char(200) DEFAULT NULL,
+  PRIMARY KEY (`Id_Danho`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cs_enser`
+--
+
+CREATE TABLE IF NOT EXISTS `cs_enser` (
+  `Id_Enser` int(11) NOT NULL AUTO_INCREMENT,
+  `Existe` int(11) NOT NULL DEFAULT '1',
+  `Nombre` char(150) NOT NULL,
+  `Descripcion` char(255) DEFAULT NULL,
+  PRIMARY KEY (`Id_Enser`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cs_evento`
+--
+
+CREATE TABLE IF NOT EXISTS `cs_evento` (
+  `Id_Evento` int(11) NOT NULL AUTO_INCREMENT,
+  `Existe` int(11) NOT NULL DEFAULT '1',
+  `Nombre` char(200) NOT NULL,
+  `Tipo` char(200) NOT NULL,
+  PRIMARY KEY (`Id_Evento`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cs_familiar`
+--
+
+CREATE TABLE IF NOT EXISTS `cs_familiar` (
+  `Id_Familiar` int(11) NOT NULL AUTO_INCREMENT,
+  `Cedula` char(255) NOT NULL,
+  `Nombre` char(255) NOT NULL,
+  `Apellido` char(255) NOT NULL,
+  `Fecha_Nacimiento` datetime NOT NULL,
+  `Parentesco` char(255) NOT NULL,
+  `Nivel_Instruccion` char(255) DEFAULT NULL,
+  `Ocupacion` char(255) DEFAULT NULL,
+  `Ingreso_Mensual` float DEFAULT NULL,
+  `Id_Afectado` int(11) NOT NULL,
+  PRIMARY KEY (`Id_Familiar`),
+  KEY `RefCS_Afectado141` (`Id_Afectado`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cs_material_elaboracion`
+--
+
+CREATE TABLE IF NOT EXISTS `cs_material_elaboracion` (
+  `Id_MaterialElaboracion` int(11) NOT NULL AUTO_INCREMENT,
+  `Existe` int(11) NOT NULL DEFAULT '1',
+  `Nombre` char(255) NOT NULL,
+  `Descripcion` char(255) DEFAULT NULL,
+  PRIMARY KEY (`Id_MaterialElaboracion`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cs_motivo`
+--
+
+CREATE TABLE IF NOT EXISTS `cs_motivo` (
+  `Id_Motivo` int(11) NOT NULL AUTO_INCREMENT,
+  `Existe` int(11) NOT NULL DEFAULT '1',
+  `Nombre` char(255) NOT NULL,
+  `Descripcion` char(255) DEFAULT NULL,
+  PRIMARY KEY (`Id_Motivo`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cs_necesidad`
+--
+
+CREATE TABLE IF NOT EXISTS `cs_necesidad` (
+  `Id_Necesidad` int(11) NOT NULL AUTO_INCREMENT,
+  `Existe` int(2) NOT NULL DEFAULT '1',
+  `Nombre` char(255) NOT NULL,
+  `Descripcion` char(255) DEFAULT NULL,
+  PRIMARY KEY (`Id_Necesidad`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cs_necesidad_afectado`
+--
+
+CREATE TABLE IF NOT EXISTS `cs_necesidad_afectado` (
+  `Id_Necesidad` int(11) NOT NULL,
+  `Id_Afectado` int(11) NOT NULL,
+  `Prioridad` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`Id_Necesidad`,`Id_Afectado`),
+  KEY `RefCS_Afectado181` (`Id_Afectado`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cs_otra_propiedad`
+--
+
+CREATE TABLE IF NOT EXISTS `cs_otra_propiedad` (
+  `Id_OtraPropiedad` int(11) NOT NULL AUTO_INCREMENT,
+  `Existe` int(11) NOT NULL DEFAULT '1',
+  `Nombre` char(255) NOT NULL,
+  `Descripcion` char(255) DEFAULT NULL,
+  PRIMARY KEY (`Id_OtraPropiedad`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cs_parte`
+--
+
+CREATE TABLE IF NOT EXISTS `cs_parte` (
+  `Id_Parte` int(11) NOT NULL AUTO_INCREMENT,
+  `Existe` int(11) NOT NULL DEFAULT '1',
+  `Nombre` char(255) NOT NULL,
+  `Descripcion` char(255) DEFAULT NULL,
+  `Id_Danho` int(11) NOT NULL,
+  PRIMARY KEY (`Id_Parte`),
+  KEY `RefCS_Danho51` (`Id_Danho`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cs_refugio`
+--
+
+CREATE TABLE IF NOT EXISTS `cs_refugio` (
+  `Id_Refugio` int(11) NOT NULL AUTO_INCREMENT,
+  `Existe` int(11) NOT NULL DEFAULT '1',
+  `Nombre` char(255) NOT NULL,
+  `Direccion` char(255) NOT NULL,
+  `Telefono` char(15) DEFAULT NULL,
+  `Capacidad` int(11) DEFAULT NULL,
+  `Descripcion` char(255) DEFAULT NULL,
+  `Id_Aldea` int(11) NOT NULL,
+  PRIMARY KEY (`Id_Refugio`),
+  KEY `RefAldea571` (`Id_Aldea`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+
+--
+-- Volcado de datos para la tabla `cs_refugio`
+--
+
+INSERT INTO `cs_refugio` (`Id_Refugio`, `Existe`, `Nombre`, `Direccion`, `Telefono`, `Capacidad`, `Descripcion`, `Id_Aldea`) VALUES
+(2, 0, 'refugio centro este', 'asd asd asdas d', '342343', 3434, 'sdfas dfsdf', 2),
+(6, 1, 'asas', 'sssssss', 'sssss', 212, 'ssssssssssssssssssss', 2),
+(7, 1, 'sdsd', 'wqwqwqwqwq', '121212', 2, 'qqqqqqqqqqqqqqqqqqqa', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cs_refugio_afectado`
+--
+
+CREATE TABLE IF NOT EXISTS `cs_refugio_afectado` (
+  `Id_Afectado` int(11) NOT NULL,
+  `Id_Refugio` int(11) NOT NULL,
+  `Existe` int(11) NOT NULL DEFAULT '1',
+  `Fecha_Ingreso` datetime NOT NULL,
+  PRIMARY KEY (`Id_Afectado`,`Id_Refugio`),
+  KEY `RefCS_Refugio401` (`Id_Refugio`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cs_tenencia`
+--
+
+CREATE TABLE IF NOT EXISTS `cs_tenencia` (
+  `Id_Tenencia` int(11) NOT NULL AUTO_INCREMENT,
+  `Existe` int(11) NOT NULL DEFAULT '1',
+  `Nombre` char(255) NOT NULL,
+  `Descripcion` char(255) DEFAULT NULL,
+  PRIMARY KEY (`Id_Tenencia`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cs_tipo`
+--
+
+CREATE TABLE IF NOT EXISTS `cs_tipo` (
+  `Id_Tipo` int(11) NOT NULL AUTO_INCREMENT,
+  `Existe` int(11) NOT NULL DEFAULT '1',
+  `Nombre` char(255) NOT NULL,
+  `Descripcion` char(255) DEFAULT NULL,
+  PRIMARY KEY (`Id_Tipo`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cs_vivienda`
+--
+
+CREATE TABLE IF NOT EXISTS `cs_vivienda` (
+  `Id_Vivienda` int(11) NOT NULL AUTO_INCREMENT,
+  `Numero_Familias` int(11) DEFAULT NULL,
+  `Numero_Habitaciones` int(11) DEFAULT NULL,
+  `Id_Condicion` int(11) NOT NULL,
+  `Id_MaterialElaboracion` int(11) NOT NULL,
+  `Id_Tenencia` int(11) NOT NULL,
+  `Id_Tipo` int(11) NOT NULL,
+  `Id_Danho` int(11) NOT NULL,
+  PRIMARY KEY (`Id_Vivienda`),
+  KEY `RefCS_Condicion311` (`Id_Condicion`),
+  KEY `RefCS_Material_Elaboracion331` (`Id_MaterialElaboracion`),
+  KEY `RefCS_Tenencia341` (`Id_Tenencia`),
+  KEY `RefCS_Tipo351` (`Id_Tipo`),
+  KEY `RefCS_Danho411` (`Id_Danho`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cs_vivienda_enser`
+--
+
+CREATE TABLE IF NOT EXISTS `cs_vivienda_enser` (
+  `Id_Enser` int(11) NOT NULL,
+  `Id_Vivienda` int(11) NOT NULL,
+  `Cantidad` int(11) DEFAULT NULL,
+  PRIMARY KEY (`Id_Enser`,`Id_Vivienda`),
+  KEY `RefCS_Vivienda151` (`Id_Vivienda`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `entrevistado`
+--
+
+CREATE TABLE IF NOT EXISTS `entrevistado` (
+  `Id_Entrevistado` int(11) NOT NULL AUTO_INCREMENT,
+  `Existe` int(11) NOT NULL DEFAULT '1',
+  `Cedula` char(255) NOT NULL,
+  `Nombre` char(255) NOT NULL,
+  `Apellido` char(255) NOT NULL,
+  `Telefono` char(15) DEFAULT NULL,
+  `Propietario` char(10) DEFAULT NULL,
+  PRIMARY KEY (`Id_Entrevistado`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `estado`
+--
+
+CREATE TABLE IF NOT EXISTS `estado` (
+  `Id_estado` int(11) NOT NULL AUTO_INCREMENT,
+  `Existe` int(11) NOT NULL DEFAULT '1',
+  `Nombre` char(255) DEFAULT NULL,
+  PRIMARY KEY (`Id_estado`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+
+--
+-- Volcado de datos para la tabla `estado`
+--
+
+INSERT INTO `estado` (`Id_estado`, `Existe`, `Nombre`) VALUES
+(1, 1, 'Aragua'),
+(8, 1, 'Zulia'),
+(11, 1, 'Distrito Capital'),
+(12, 1, 'Carabobo'),
+(14, 1, 'Bolivar');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `ev_cita`
+--
+
+CREATE TABLE IF NOT EXISTS `ev_cita` (
+  `Id_Cita` char(10) NOT NULL,
+  `Fecha_Solicitud` datetime NOT NULL,
+  `Fecha_Cita` datetime NOT NULL,
+  `Direccion` char(255) DEFAULT NULL,
+  `Estado` char(255) DEFAULT NULL,
+  `Observacion` char(255) DEFAULT NULL,
+  `Id_Tipo` int(11) NOT NULL,
+  `Id_Aldea` int(11) NOT NULL,
+  `Id_Entrevistado` int(11) NOT NULL,
+  `Id_Funcionario` int(11) NOT NULL,
+  PRIMARY KEY (`Id_Cita`),
+  KEY `RefEV_Tipo771` (`Id_Tipo`),
+  KEY `RefAldea791` (`Id_Aldea`),
+  KEY `RefEntrevistado801` (`Id_Entrevistado`),
+  KEY `RefFuncionario931` (`Id_Funcionario`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `ev_evaluacion`
+--
+
+CREATE TABLE IF NOT EXISTS `ev_evaluacion` (
+  `Id_Evaluacion` int(11) NOT NULL AUTO_INCREMENT,
+  `Id_Entrevistado` int(11) NOT NULL,
+  `Fecha` datetime NOT NULL,
+  `Direccion` char(255) DEFAULT NULL,
+  `Informe_Actividad` text NOT NULL,
+  `Observacion` text,
+  `Recomendacion` text,
+  `Id_Funcionario` int(11) NOT NULL,
+  `Id_Aldea` int(11) NOT NULL,
+  `Id_Cita` char(10) NOT NULL,
+  `Id_Tipo` int(11) DEFAULT NULL,
+  `Nov_id` int(11) NOT NULL,
+  PRIMARY KEY (`Id_Evaluacion`,`Id_Entrevistado`),
+  KEY `RefEntrevistado731` (`Id_Entrevistado`),
+  KEY `RefEV_Cita741` (`Id_Cita`),
+  KEY `RefEV_Tipo971` (`Id_Tipo`),
+  KEY `RefFuncionario701` (`Id_Funcionario`),
+  KEY `RefAldea711` (`Id_Aldea`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `ev_tipo`
+--
+
+CREATE TABLE IF NOT EXISTS `ev_tipo` (
+  `Id_Tipo` int(11) NOT NULL AUTO_INCREMENT,
+  `Existe` int(11) NOT NULL DEFAULT '1',
+  `Nombre` char(255) NOT NULL,
+  `Descripcion` char(255) DEFAULT NULL,
+  PRIMARY KEY (`Id_Tipo`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+
+--
+-- Volcado de datos para la tabla `ev_tipo`
+--
+
+INSERT INTO `ev_tipo` (`Id_Tipo`, `Existe`, `Nombre`, `Descripcion`) VALUES
+(9, 1, 'Inspeccion a Terreno', 'aaasasasas asasas asas'),
+(10, 1, 'Inspeccion a Vivienda', 'asasssasasasaserererr');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `foto`
+--
+
+CREATE TABLE IF NOT EXISTS `foto` (
+  `Id_Foto` int(11) NOT NULL AUTO_INCREMENT,
+  `Existe` int(11) NOT NULL DEFAULT '1',
+  `Nombre` char(255) DEFAULT NULL,
+  `Url` char(255) NOT NULL,
+  `Id_Censo` int(11) NOT NULL,
+  `Id_Categoria` int(11) NOT NULL,
+  `Id_Actividad` int(11) NOT NULL,
+  PRIMARY KEY (`Id_Foto`),
+  KEY `RefCS_Censo431` (`Id_Censo`),
+  KEY `RefCategoria441` (`Id_Categoria`),
+  KEY `RefRA_Actividad591` (`Id_Actividad`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `funcionario`
+--
+
+CREATE TABLE IF NOT EXISTS `funcionario` (
+  `Id_Funcionario` int(11) NOT NULL AUTO_INCREMENT,
+  `Existe` int(11) NOT NULL DEFAULT '1',
+  `Cedula` char(255) NOT NULL,
+  `Nombre` char(255) NOT NULL,
+  `Apellido` char(255) NOT NULL,
+  `Organismo` char(255) DEFAULT NULL,
+  `Cargo` char(255) DEFAULT NULL,
+  `Id_Usuario` int(11) DEFAULT NULL,
+  PRIMARY KEY (`Id_Funcionario`),
+  KEY `RefUsuario941` (`Id_Usuario`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `funcionario_actividad`
+--
+
+CREATE TABLE IF NOT EXISTS `funcionario_actividad` (
+  `Id_Funcionario` int(11) NOT NULL,
+  `Id_Actividad` int(11) NOT NULL,
+  `Fecha` date NOT NULL,
+  `Id_Puesto` int(11) NOT NULL,
+  PRIMARY KEY (`Id_Funcionario`,`Id_Actividad`),
+  KEY `RefRA_Actividad841` (`Id_Actividad`),
+  KEY `RefRA_Puesto871` (`Id_Puesto`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `municipio`
+--
+
+CREATE TABLE IF NOT EXISTS `municipio` (
+  `Id_Municipio` int(11) NOT NULL AUTO_INCREMENT,
+  `Existe` int(11) NOT NULL DEFAULT '1',
+  `Nombre` char(255) NOT NULL,
+  `Id_estado` int(11) NOT NULL,
+  PRIMARY KEY (`Id_Municipio`),
+  KEY `RefEstado361` (`Id_estado`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+
+--
+-- Volcado de datos para la tabla `municipio`
+--
+
+INSERT INTO `municipio` (`Id_Municipio`, `Existe`, `Nombre`, `Id_estado`) VALUES
+(2, 1, 'hola', 1),
+(3, 1, 'bom', 8),
+(4, 1, 'otro mas', 14),
+(6, 1, 'jejeje', 14),
+(7, 1, 'asd', 14);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `parroquia`
+--
+
+CREATE TABLE IF NOT EXISTS `parroquia` (
+  `Id_Parroquia` int(11) NOT NULL AUTO_INCREMENT,
+  `Existe` int(11) NOT NULL DEFAULT '1',
+  `Nombre` char(255) NOT NULL,
+  `Id_Ciudad` int(11) NOT NULL,
+  PRIMARY KEY (`Id_Parroquia`),
+  KEY `RefCiudad381` (`Id_Ciudad`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+--
+-- Volcado de datos para la tabla `parroquia`
+--
+
+INSERT INTO `parroquia` (`Id_Parroquia`, `Existe`, `Nombre`, `Id_Ciudad`) VALUES
+(5, 1, 'parroquia 2', 3),
+(6, 1, 'asddssdsa', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `privilegios`
+--
+
+CREATE TABLE IF NOT EXISTS `privilegios` (
+  `Id_Privilegios` int(11) NOT NULL AUTO_INCREMENT,
+  `Existe` int(11) NOT NULL DEFAULT '1',
+  `Nombre` char(255) NOT NULL,
+  `Descripcion` char(255) DEFAULT NULL,
+  `Menu` char(255) NOT NULL,
+  PRIMARY KEY (`Id_Privilegios`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `ra_accion_actividad`
+--
+
+CREATE TABLE IF NOT EXISTS `ra_accion_actividad` (
+  `Id_Actividad` int(11) NOT NULL,
+  `Id_AccionTomada` int(11) NOT NULL,
+  `Observacion` char(255) DEFAULT NULL,
+  PRIMARY KEY (`Id_Actividad`,`Id_AccionTomada`),
+  KEY `RefRA_Accion_Tomada501` (`Id_AccionTomada`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `ra_accion_tomada`
+--
+
+CREATE TABLE IF NOT EXISTS `ra_accion_tomada` (
+  `Id_AccionTomada` int(11) NOT NULL AUTO_INCREMENT,
+  `Existe` int(11) NOT NULL DEFAULT '1',
+  `Nombre` char(255) NOT NULL,
+  `Descripcion` char(255) DEFAULT NULL,
+  PRIMARY KEY (`Id_AccionTomada`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `ra_actividad`
+--
+
+CREATE TABLE IF NOT EXISTS `ra_actividad` (
+  `Id_Actividad` int(11) NOT NULL AUTO_INCREMENT,
+  `Id_Unidad` int(11) DEFAULT NULL,
+  `Existe` int(11) NOT NULL DEFAULT '1',
+  `Direccion` char(255) NOT NULL,
+  `Hora_LLamada` time DEFAULT NULL,
+  `Hora_Activacion` time DEFAULT NULL,
+  `Hora_Sitio` time DEFAULT NULL,
+  `Hora_Fin` time DEFAULT NULL,
+  `Fecha` datetime NOT NULL,
+  `Numero_Folio` char(255) NOT NULL,
+  `Situacion` text,
+  `Observacion` text,
+  `Recomendacion` text,
+  `Id_Tipo` int(11) NOT NULL,
+  `Id_Condicion` int(11) NOT NULL,
+  `Id_Aldea` int(11) NOT NULL,
+  `Nov_id` int(11) NOT NULL,
+  PRIMARY KEY (`Id_Actividad`),
+  KEY `RefRA_Tipo471` (`Id_Tipo`),
+  KEY `RefRA_Condicion481` (`Id_Condicion`),
+  KEY `RefAldea561` (`Id_Aldea`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `ra_actividad_danho`
+--
+
+CREATE TABLE IF NOT EXISTS `ra_actividad_danho` (
+  `Id_Actividad` int(11) NOT NULL,
+  `Id_Danho` int(11) NOT NULL,
+  `Observacion` char(255) DEFAULT NULL,
+  PRIMARY KEY (`Id_Actividad`,`Id_Danho`),
+  KEY `RefRA_Danho671` (`Id_Danho`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `ra_condicion`
+--
+
+CREATE TABLE IF NOT EXISTS `ra_condicion` (
+  `Id_Condicion` int(11) NOT NULL AUTO_INCREMENT,
+  `Existe` int(11) NOT NULL DEFAULT '1',
+  `Nombre` char(255) NOT NULL,
+  `Descripcion` char(255) DEFAULT NULL,
+  PRIMARY KEY (`Id_Condicion`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `ra_danho`
+--
+
+CREATE TABLE IF NOT EXISTS `ra_danho` (
+  `Id_Danho` int(11) NOT NULL AUTO_INCREMENT,
+  `Existe` int(11) NOT NULL DEFAULT '1',
+  `Nombre` char(255) NOT NULL,
+  `Descripcion` char(255) DEFAULT NULL,
+  PRIMARY KEY (`Id_Danho`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `ra_organismo_actividad`
+--
+
+CREATE TABLE IF NOT EXISTS `ra_organismo_actividad` (
+  `Id_OtrosOrganismo` int(11) NOT NULL,
+  `Id_Actividad` int(11) NOT NULL,
+  `Unidad` char(255) NOT NULL,
+  `Jefe_Comision` char(255) NOT NULL,
+  PRIMARY KEY (`Id_OtrosOrganismo`,`Id_Actividad`),
+  KEY `RefRA_Actividad821` (`Id_Actividad`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `ra_otros_organismo`
+--
+
+CREATE TABLE IF NOT EXISTS `ra_otros_organismo` (
+  `Id_OtrosOrganismo` int(11) NOT NULL AUTO_INCREMENT,
+  `Existe` int(11) NOT NULL DEFAULT '1',
+  `Unidad` char(255) NOT NULL,
+  `Descripcion` char(255) DEFAULT NULL,
+  PRIMARY KEY (`Id_OtrosOrganismo`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `ra_puesto`
+--
+
+CREATE TABLE IF NOT EXISTS `ra_puesto` (
+  `Id_Puesto` int(11) NOT NULL AUTO_INCREMENT,
+  `Existe` int(11) NOT NULL DEFAULT '1',
+  `Nombre` char(255) NOT NULL,
+  `Descripcion` char(255) DEFAULT NULL,
+  PRIMARY KEY (`Id_Puesto`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `ra_tipo`
+--
+
+CREATE TABLE IF NOT EXISTS `ra_tipo` (
+  `Id_Tipo` int(11) NOT NULL AUTO_INCREMENT,
+  `Existe` int(11) NOT NULL DEFAULT '1',
+  `Nombre` char(255) NOT NULL,
+  `Descripcion` char(255) DEFAULT NULL,
+  PRIMARY KEY (`Id_Tipo`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuario`
+--
+
+CREATE TABLE IF NOT EXISTS `usuario` (
+  `Id_Usuario` int(11) NOT NULL AUTO_INCREMENT,
+  `Existe` int(11) NOT NULL DEFAULT '1',
+  `Nombre` char(255) NOT NULL,
+  `Usuario` char(255) NOT NULL,
+  `Id_Privilegios` int(11) NOT NULL,
+  PRIMARY KEY (`Id_Usuario`),
+  KEY `RefPrivilegios851` (`Id_Privilegios`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `aldea`
+--
+ALTER TABLE `aldea`
+  ADD CONSTRAINT `RefParroquia551` FOREIGN KEY (`Id_Parroquia`) REFERENCES `parroquia` (`Id_Parroquia`);
+
+--
+-- Filtros para la tabla `bitacora`
+--
+ALTER TABLE `bitacora`
+  ADD CONSTRAINT `RefUsuario881` FOREIGN KEY (`Id_Usuario`) REFERENCES `usuario` (`Id_Usuario`);
+
+--
+-- Filtros para la tabla `ciudad`
+--
+ALTER TABLE `ciudad`
+  ADD CONSTRAINT `RefMunicipio371` FOREIGN KEY (`Id_Municipio`) REFERENCES `municipio` (`Id_Municipio`);
+
+--
+-- Filtros para la tabla `cs_afectado`
+--
+ALTER TABLE `cs_afectado`
+  ADD CONSTRAINT `RefCS_Otra_Propiedad211` FOREIGN KEY (`Id_OtraPropiedad`) REFERENCES `cs_otra_propiedad` (`Id_OtraPropiedad`);
+
+--
+-- Filtros para la tabla `cs_censo`
+--
+ALTER TABLE `cs_censo`
+  ADD CONSTRAINT `RefAldea581` FOREIGN KEY (`Id_Aldea`) REFERENCES `aldea` (`Id_Aldea`),
+  ADD CONSTRAINT `RefCS_Afectado621` FOREIGN KEY (`Id_Afectado`) REFERENCES `cs_afectado` (`Id_Afectado`),
+  ADD CONSTRAINT `RefCS_Condicion_Familiar631` FOREIGN KEY (`Id_CondicionFamiliar`) REFERENCES `cs_condicion_familiar` (`Id_CondicionFamiliar`),
+  ADD CONSTRAINT `RefCS_Evento981` FOREIGN KEY (`Id_Evento`) REFERENCES `cs_evento` (`Id_Evento`),
+  ADD CONSTRAINT `RefCS_Motivo601` FOREIGN KEY (`Id_Motivo`) REFERENCES `cs_motivo` (`Id_Motivo`),
+  ADD CONSTRAINT `RefCS_Vivienda651` FOREIGN KEY (`Id_Vivienda`) REFERENCES `cs_vivienda` (`Id_Vivienda`),
+  ADD CONSTRAINT `RefEntrevistado611` FOREIGN KEY (`Id_Entrevistado`) REFERENCES `entrevistado` (`Id_Entrevistado`),
+  ADD CONSTRAINT `RefFuncionario641` FOREIGN KEY (`Id_Funcionario`) REFERENCES `funcionario` (`Id_Funcionario`);
+
+--
+-- Filtros para la tabla `cs_familiar`
+--
+ALTER TABLE `cs_familiar`
+  ADD CONSTRAINT `RefCS_Afectado141` FOREIGN KEY (`Id_Afectado`) REFERENCES `cs_afectado` (`Id_Afectado`);
+
+--
+-- Filtros para la tabla `cs_necesidad_afectado`
+--
+ALTER TABLE `cs_necesidad_afectado`
+  ADD CONSTRAINT `RefCS_Afectado181` FOREIGN KEY (`Id_Afectado`) REFERENCES `cs_afectado` (`Id_Afectado`),
+  ADD CONSTRAINT `RefCS_Necesidad171` FOREIGN KEY (`Id_Necesidad`) REFERENCES `cs_necesidad` (`Id_Necesidad`);
+
+--
+-- Filtros para la tabla `cs_parte`
+--
+ALTER TABLE `cs_parte`
+  ADD CONSTRAINT `RefCS_Danho51` FOREIGN KEY (`Id_Danho`) REFERENCES `cs_danho` (`Id_Danho`);
+
+--
+-- Filtros para la tabla `cs_refugio`
+--
+ALTER TABLE `cs_refugio`
+  ADD CONSTRAINT `RefAldea571` FOREIGN KEY (`Id_Aldea`) REFERENCES `aldea` (`Id_Aldea`);
+
+--
+-- Filtros para la tabla `cs_refugio_afectado`
+--
+ALTER TABLE `cs_refugio_afectado`
+  ADD CONSTRAINT `RefCS_Afectado231` FOREIGN KEY (`Id_Afectado`) REFERENCES `cs_afectado` (`Id_Afectado`),
+  ADD CONSTRAINT `RefCS_Refugio401` FOREIGN KEY (`Id_Refugio`) REFERENCES `cs_refugio` (`Id_Refugio`);
+
+--
+-- Filtros para la tabla `cs_vivienda`
+--
+ALTER TABLE `cs_vivienda`
+  ADD CONSTRAINT `RefCS_Condicion311` FOREIGN KEY (`Id_Condicion`) REFERENCES `cs_condicion` (`Id_Condicion`),
+  ADD CONSTRAINT `RefCS_Danho411` FOREIGN KEY (`Id_Danho`) REFERENCES `cs_danho` (`Id_Danho`),
+  ADD CONSTRAINT `RefCS_Material_Elaboracion331` FOREIGN KEY (`Id_MaterialElaboracion`) REFERENCES `cs_material_elaboracion` (`Id_MaterialElaboracion`),
+  ADD CONSTRAINT `RefCS_Tenencia341` FOREIGN KEY (`Id_Tenencia`) REFERENCES `cs_tenencia` (`Id_Tenencia`),
+  ADD CONSTRAINT `RefCS_Tipo351` FOREIGN KEY (`Id_Tipo`) REFERENCES `cs_tipo` (`Id_Tipo`);
+
+--
+-- Filtros para la tabla `cs_vivienda_enser`
+--
+ALTER TABLE `cs_vivienda_enser`
+  ADD CONSTRAINT `RefCS_Enser161` FOREIGN KEY (`Id_Enser`) REFERENCES `cs_enser` (`Id_Enser`),
+  ADD CONSTRAINT `RefCS_Vivienda151` FOREIGN KEY (`Id_Vivienda`) REFERENCES `cs_vivienda` (`Id_Vivienda`);
+
+--
+-- Filtros para la tabla `ev_cita`
+--
+ALTER TABLE `ev_cita`
+  ADD CONSTRAINT `RefAldea791` FOREIGN KEY (`Id_Aldea`) REFERENCES `aldea` (`Id_Aldea`),
+  ADD CONSTRAINT `RefEntrevistado801` FOREIGN KEY (`Id_Entrevistado`) REFERENCES `entrevistado` (`Id_Entrevistado`),
+  ADD CONSTRAINT `RefEV_Tipo771` FOREIGN KEY (`Id_Tipo`) REFERENCES `ev_tipo` (`Id_Tipo`),
+  ADD CONSTRAINT `RefFuncionario931` FOREIGN KEY (`Id_Funcionario`) REFERENCES `funcionario` (`Id_Funcionario`);
+
+--
+-- Filtros para la tabla `ev_evaluacion`
+--
+ALTER TABLE `ev_evaluacion`
+  ADD CONSTRAINT `RefAldea711` FOREIGN KEY (`Id_Aldea`) REFERENCES `aldea` (`Id_Aldea`),
+  ADD CONSTRAINT `RefEntrevistado731` FOREIGN KEY (`Id_Entrevistado`) REFERENCES `entrevistado` (`Id_Entrevistado`),
+  ADD CONSTRAINT `RefEV_Cita741` FOREIGN KEY (`Id_Cita`) REFERENCES `ev_cita` (`Id_Cita`),
+  ADD CONSTRAINT `RefEV_Tipo971` FOREIGN KEY (`Id_Tipo`) REFERENCES `ev_tipo` (`Id_Tipo`),
+  ADD CONSTRAINT `RefFuncionario701` FOREIGN KEY (`Id_Funcionario`) REFERENCES `funcionario` (`Id_Funcionario`);
+
+--
+-- Filtros para la tabla `foto`
+--
+ALTER TABLE `foto`
+  ADD CONSTRAINT `RefCategoria441` FOREIGN KEY (`Id_Categoria`) REFERENCES `categoria` (`Id_Categoria`),
+  ADD CONSTRAINT `RefCS_Censo431` FOREIGN KEY (`Id_Censo`) REFERENCES `cs_censo` (`Id_Censo`),
+  ADD CONSTRAINT `RefRA_Actividad591` FOREIGN KEY (`Id_Actividad`) REFERENCES `ra_actividad` (`Id_Actividad`);
+
+--
+-- Filtros para la tabla `funcionario`
+--
+ALTER TABLE `funcionario`
+  ADD CONSTRAINT `RefUsuario941` FOREIGN KEY (`Id_Usuario`) REFERENCES `usuario` (`Id_Usuario`);
+
+--
+-- Filtros para la tabla `funcionario_actividad`
+--
+ALTER TABLE `funcionario_actividad`
+  ADD CONSTRAINT `RefFuncionario831` FOREIGN KEY (`Id_Funcionario`) REFERENCES `funcionario` (`Id_Funcionario`),
+  ADD CONSTRAINT `RefRA_Actividad841` FOREIGN KEY (`Id_Actividad`) REFERENCES `ra_actividad` (`Id_Actividad`),
+  ADD CONSTRAINT `RefRA_Puesto871` FOREIGN KEY (`Id_Puesto`) REFERENCES `ra_puesto` (`Id_Puesto`);
+
+--
+-- Filtros para la tabla `municipio`
+--
+ALTER TABLE `municipio`
+  ADD CONSTRAINT `RefEstado361` FOREIGN KEY (`Id_estado`) REFERENCES `estado` (`Id_estado`);
+
+--
+-- Filtros para la tabla `parroquia`
+--
+ALTER TABLE `parroquia`
+  ADD CONSTRAINT `RefCiudad381` FOREIGN KEY (`Id_Ciudad`) REFERENCES `ciudad` (`Id_Ciudad`);
+
+--
+-- Filtros para la tabla `ra_accion_actividad`
+--
+ALTER TABLE `ra_accion_actividad`
+  ADD CONSTRAINT `RefRA_Accion_Tomada501` FOREIGN KEY (`Id_AccionTomada`) REFERENCES `ra_accion_tomada` (`Id_AccionTomada`),
+  ADD CONSTRAINT `RefRA_Actividad491` FOREIGN KEY (`Id_Actividad`) REFERENCES `ra_actividad` (`Id_Actividad`);
+
+--
+-- Filtros para la tabla `ra_actividad`
+--
+ALTER TABLE `ra_actividad`
+  ADD CONSTRAINT `RefAldea561` FOREIGN KEY (`Id_Aldea`) REFERENCES `aldea` (`Id_Aldea`),
+  ADD CONSTRAINT `RefRA_Condicion481` FOREIGN KEY (`Id_Condicion`) REFERENCES `ra_condicion` (`Id_Condicion`),
+  ADD CONSTRAINT `RefRA_Tipo471` FOREIGN KEY (`Id_Tipo`) REFERENCES `ra_tipo` (`Id_Tipo`);
+
+--
+-- Filtros para la tabla `ra_actividad_danho`
+--
+ALTER TABLE `ra_actividad_danho`
+  ADD CONSTRAINT `RefRA_Actividad661` FOREIGN KEY (`Id_Actividad`) REFERENCES `ra_actividad` (`Id_Actividad`),
+  ADD CONSTRAINT `RefRA_Danho671` FOREIGN KEY (`Id_Danho`) REFERENCES `ra_danho` (`Id_Danho`);
+
+--
+-- Filtros para la tabla `ra_organismo_actividad`
+--
+ALTER TABLE `ra_organismo_actividad`
+  ADD CONSTRAINT `RefRA_Actividad821` FOREIGN KEY (`Id_Actividad`) REFERENCES `ra_actividad` (`Id_Actividad`),
+  ADD CONSTRAINT `RefRA_Otros_Organismo811` FOREIGN KEY (`Id_OtrosOrganismo`) REFERENCES `ra_otros_organismo` (`Id_OtrosOrganismo`);
+
+--
+-- Filtros para la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD CONSTRAINT `RefPrivilegios851` FOREIGN KEY (`Id_Privilegios`) REFERENCES `privilegios` (`Id_Privilegios`);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -1,0 +1,108 @@
+<!--Titulo-->
+ <div class="page-header position-relative">
+   <h1>
+     REFUGIOS
+   </h1>
+ </div><!--/.page-header-->
+
+<div class="row-fluid">
+			<div class="span12">				
+					 <div class="widget-header widget-header-small header-color-purple">
+						 <h5><b>Detalle de refugios</b></h5>
+					 </div>
+
+		
+					<form action="" class="form-horizontal" name="formulario" id="formu" method="post"> 
+
+							<table class="table  table-condensed " style=" font-weight: bold;" >
+										<tr>
+											<td style="padding: 8px 5px;">Nombre:</td>
+											<td style="padding: 8px 0px;">
+												<input  style="width:180px;" type="text" id="nombre" name="nombre" onfocus='blanco(this)' title="Ingrese los Datos" />
+											</td>
+											<td style="padding: 8px 5px;">Direccion:</td>
+											<td style="padding: 8px 0px;">
+												<input  style="width:180px;" type="text" id="direccion" name="direccion" onfocus='blanco(this)' title="Ingrese los Datos" />
+											</td>
+											<td style="padding: 8px 5px;">Telefono:</td>
+											<td style="padding: 8px 0px;">
+												<input  style="width:180px;" type="text" id="telefono" name="telefono" onfocus='blanco(this)' title="Ingrese los Datos" />
+											</td>
+										</tr>
+										<tr>
+											<td style="padding: 8px 5px;">Capacidad:</td>
+											<td style="padding: 8px 0px;">
+												<input  style="width:180px;" type="text" id="capacidad" name="capacidad" onfocus='blanco(this)' title="Ingrese los Datos" />
+											</td>
+											<td style="padding: 8px 5px;">Descripcion:</td>
+											<td style="padding: 8px 0px;">
+												<textarea id="descripcion" name="descripcion" onfocus='blanco(this)' title="Ingrese los Datos" ></textarea>
+											</td>
+											<td style="padding: 8px 5px;">Aldea:</td>
+											<td style="padding: 8px 0px;">
+												<select data-placeholder="Seleccione" id="aldea" name="aldea"  class="chzn-select" >
+															<option value="AL" ></option>
+															
+
+															<?php
+															include("conexion.php");	
+															$sql=mysql_query("SELECT * FROM aldea order by Nombre asc",$conexion);  
+															if($row=mysql_fetch_array($sql)){
+																$sql=mysql_query("SELECT * FROM aldea order by Nombre asc",$conexion);  
+																while($row=mysql_fetch_array($sql)){
+																	echo '<option value="AL" >'.$row['Nombre'].'</option>';
+																}
+															}
+															mysql_close();
+															?>
+
+
+
+														</select>
+											</td>
+										</tr>
+
+
+										
+										<tr><td colspan="2"><div id="error"></div></td></tr>
+									</table>
+									<div align="center">
+										<div class="btn-group">
+											
+											<button type="button" class="btn btn-success" value="Modificar" onClick="guardarRefugio(document.formulario)">Modificar</button>
+											<button type="button" class="btn btn-danger" href="javascript:menu('inicio');">Eliminar</button>
+										</div>		
+									</div>	
+								
+
+
+				</form>	
+			
+</div>
+		
+									
+				
+
+
+
+
+<script type="text/javascript">
+    $(".chzn-select").chosen({ 'width': '130px'});
+    $('.date-picker').datepicker().next().on(ace.click_event, function(){
+        $(this).prev().focus();
+    });
+	$().ready(function(){
+		$("input").tooltip({
+			placement: "bottom",
+		});
+		$("textarea").tooltip({
+			placement: "bottom",
+		});
+		
+
+
+		
+	});
+
+</script>
+
