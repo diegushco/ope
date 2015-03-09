@@ -1781,7 +1781,9 @@ function guardarMunicipio(formu){
 		objeto_ajax.send(ArmaCampos(formu));		
 	}	
 }
-
+function mensaje_elimina(){
+	alert("Este item no se puede eliminar");
+}
 function elimina_estado(activo,estado,viejo){
 	
 	if(document.getElementById(activo).checked==true){
