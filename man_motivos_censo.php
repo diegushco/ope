@@ -92,7 +92,7 @@
 		$("textarea").tooltip({
 			placement: "bottom",
 		});
-		traeListado();
+		
 
 
 
@@ -114,5 +114,7 @@ function traeListado(){
 		
 		
 		}
+		traeListado();
+		
 </script>
 

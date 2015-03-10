@@ -893,19 +893,12 @@ function eliminaEventoCenso(activo,nuevo,viejo,descripcion){
 		}
 		objeto_ajax.send(null);
 }
-function modificaEventoCenso(activo,nuevo,viejo,descripcion){
+function modificaEventoCenso(nuevo,viejo){
 
-	if(document.getElementById(activo).checked==true){
-		habilitado="1";
-	}else{
-		habilitado="0";
-	}
-	//alert(document.getElementById(viejo).value);
-	
-	
+		
 	var hora= new Date().getTime();
 		objeto_ajax=objetoAjax(); 
-		objeto_ajax.open("GET", "man_modifcaEventoCenso.php?hora="+hora+"&evento="+document.getElementById(nuevo).value+"&activo1="+habilitado+"&viejo="+document.getElementById(viejo).value+"&descripcion="+document.getElementById(descripcion).value,true);
+		objeto_ajax.open("GET", "man_modifcaEventoCenso.php?hora="+hora+"&evento="+document.getElementById(nuevo).value+"&viejo="+document.getElementById(viejo).value,true);
 		objeto_ajax.onreadystatechange=function() {	
 			if (objeto_ajax.readyState==4) {
 					

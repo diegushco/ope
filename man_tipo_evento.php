@@ -18,10 +18,10 @@
 										<tr>
 											<td style="padding: 8px 5px;">Nombre del tipo de Evento</td>
 											<td style="padding: 8px 100px; ">
-											<input  style="width:180px;" type="text" id="tipo" name="tipo" onfocus='blanco(this)' title="Ingrese los Datos" />
+											<input  style="width:180px;" type="text" id="evento" name="evento" onfocus='blanco(this)' title="Ingrese los Datos" />
 											</td>										
 										</tr>
-
+										
 										
 										<tr><td colspan="2"><div id="error"></div></td></tr>
 									</table>
@@ -48,16 +48,11 @@
 					<table id="sample-table-2" class="table table-striped table-bordered table-hover">
 								<thead>
 									<tr>
-										<th class="center">
-											<label>
-												Habilitado
-											</label>
-										</th>
+										
 										
 										<th>Nombre</th>
 															
-																				
-										<th>Descripcion</th>
+										
 									</tr>
 								</thead>
 								

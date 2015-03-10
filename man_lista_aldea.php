@@ -48,9 +48,9 @@
 												<i class="icon-pencil bigger-130"></i>
 												</a>
 												
-												<a href="javascript: elimina_aldea('<?php echo "activo".$fila; ?>','<?php echo "parroquia".$fila; ?>','<?php echo "viejo".$fila; ?>','<?php echo "aldea".$fila; ?>')" class="tooltip-success red" data-rel="tooltip" title="Eliminar">
+												<a href="javascript: mensaje_elimina()" class="tooltip-success red" data-rel="tooltip" title="Eliminar">
 												<i class="icon-trash bigger-130"></i>
-												</a>
+												</a> <!-- mensaje_elimina() -->
 											</div>
 											
 											

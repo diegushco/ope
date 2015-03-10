@@ -1,7 +1,7 @@
 <?php    
 				include("conexion.php"); //hago la conexion a la bd	
 				
-				$consulta="INSERT INTO cs_evento(Nombre,Descripcion) VALUES ('".$_REQUEST["evento"]."','".$_REQUEST["descripcion"]."')";
+				$consulta="INSERT INTO cs_tipo_evento(Nombre) VALUES ('".$_REQUEST["evento"]."')";
 				$sql=mysql_query ($consulta,$conexion);		
 				
 				//echo $consulta;

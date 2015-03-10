@@ -48,7 +48,7 @@
 												<i class="icon-pencil bigger-130"></i>
 												</a>
 												
-												<a href="javascript: eliminaPuesto('<?php echo "activo".$fila; ?>','<?php echo "motivo".$fila; ?>','<?php echo "viejo".$fila; ?>','<?php echo "descripcion".$fila; ?>')" class="tooltip-success red" data-rel="tooltip" title="Eliminar">
+												<a href="javascript: mensaje_elimina()" class="tooltip-success red" data-rel="tooltip" title="Eliminar">
 												<i class="icon-trash bigger-130"></i>
 												</a>
 											</div>
