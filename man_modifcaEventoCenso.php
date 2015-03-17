@@ -1,7 +1,7 @@
 <?php 
 		
 			include("conexion.php");	
-			$consulta= "UPDATE cs_evento SET Nombre='".$_REQUEST["evento"]."' WHERE Nombre='".$_REQUEST["viejo"]."' ";
+			$consulta= "UPDATE cs_tipo_evento SET Nombre='".$_REQUEST["evento"]."' WHERE Nombre='".$_REQUEST["viejo"]."' ";
 			//echo $consulta;
 			$sql=mysql_query($consulta,$conexion);  
 			if($sql){ //cuentaVieja CuentaNueva centroV centroN

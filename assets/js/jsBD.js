@@ -908,14 +908,14 @@ function modificaEventoCenso(nuevo,viejo){
 		objeto_ajax.send(null);
 }
 
-function guardarEventoCenso(formu){
+function guardarEventoCenso1(formu){
 	//alert(ArmaCampos(formu));
 	
 	if(valida(formu)==false){	
 		//alert(ArmaCampos(formu));
 	
 		objeto_ajax=objetoAjax(); 
-		objeto_ajax.open("POST", "guardarEventoCenso.php",true);
+		objeto_ajax.open("POST", "guardarEventoCenso1.php",true);
 		objeto_ajax.onreadystatechange=function() {	
 			if (objeto_ajax.readyState==4) {
 					//document.getElementById("capa").innerHTML=objeto_ajax.responseText;
@@ -1017,7 +1017,7 @@ function modificaPuesto(activo,nuevo,viejo,descripcion){
 	
 	var hora= new Date().getTime();
 		objeto_ajax=objetoAjax(); 
-		objeto_ajax.open("GET", "man_modifcaPuesto.php?hora="+hora+"&puesto="+document.getElementById(nuevo).value+"&activo1="+habilitado+"&viejo="+document.getElementById(viejo).value+"&descripcion="+document.getElementById(descripcion).value,true);
+		objeto_ajax.open("GET", "man_modifcaPuesto.php?hora="+hora+"&motivo="+document.getElementById(nuevo).value+"&activo1="+habilitado+"&viejo="+document.getElementById(viejo).value+"&descripcion="+document.getElementById(descripcion).value,true);
 		objeto_ajax.onreadystatechange=function() {	
 			if (objeto_ajax.readyState==4) {
 					
@@ -1610,6 +1610,28 @@ function elimina_parroquia(activo,municipio,viejo,nuevo){
 					
 					alert(objeto_ajax.responseText);	
 					traeListado();				
+			}
+		}
+		objeto_ajax.send(null);
+}
+
+function modifica_evento1(activo,tipo,viejo,nuevo){
+
+	if(document.getElementById(activo).checked==true){
+		habilitado="1";
+	}else{
+		habilitado="0";
+	}
+	//alert(document.getElementById(viejo).value);
+	
+	
+	var hora= new Date().getTime();
+		objeto_ajax=objetoAjax(); 
+		objeto_ajax.open("GET", "man_modifcaEvento1.php?hora="+hora+"&tipo="+document.getElementById(tipo).value+"&activo="+habilitado+"&viejo="+document.getElementById(viejo).value+"&nuevo="+document.getElementById(nuevo).value,true);
+		objeto_ajax.onreadystatechange=function() {	
+			if (objeto_ajax.readyState==4) {
+					
+					alert(objeto_ajax.responseText);					
 			}
 		}
 		objeto_ajax.send(null);

@@ -22,18 +22,38 @@
 											</td>										
 										</tr>
 										<tr>
-											<td style="padding: 8px 5px;">Descripcion:</td>
-											<td style="padding: 8px 100px;">
-												<textarea style="width:360px;" id="descripcion"  name="descripcion" onfocus='blanco(this)' title="Ingrese los Datos" ></textarea>
+											<td style="padding: 8px 5px;">Seleccione el Tipo</td>
+											<td style="padding: 8px 100px; ">
+												<select data-placeholder="Seleccione" id="tipo" name="tipo"  class="chzn-select" >
+															<option value="AL" ></option>
+															
+
+															<?php
+															include("conexion.php");	
+															$sql=mysql_query("SELECT * FROM cs_tipo_evento order by Nombre asc",$conexion);  
+															if($row=mysql_fetch_array($sql)){
+																$sql=mysql_query("SELECT * FROM cs_tipo_evento order by Nombre asc",$conexion);  
+																while($row=mysql_fetch_array($sql)){
+																	echo '<option value="AL" >'.$row['Nombre'].'</option>';
+																}
+															}
+															mysql_close();
+															?>
+
+
+
+														</select>
 											</td>
-										</tr>	
+											
+		
+										</tr>
 										
 										<tr><td colspan="2"><div id="error"></div></td></tr>
 									</table>
 									<div align="center">
 										<div class="btn-group">
 											
-											<button type="button" class="btn btn-info" value="Guardar" onClick="guardarEventoCenso(document.formulario)">Registrar</button>
+											<button type="button" class="btn btn-info" value="Guardar" onClick="guardarEventoCenso1(document.formulario)">Registrar</button>
 											<button type="button" class="btn btn-inverse" href="javascript:menu('inicio');">Cancelar</button>
 										</div>		
 									</div>	
@@ -103,7 +123,7 @@ function traeListado(){
 			
 			var hora= new Date().getTime();
 			objeto_ajax=objetoAjax(); 
-			objeto_ajax.open("GET", "man_lista_evento.php?hora="+hora,true);
+			objeto_ajax.open("GET", "man_lista_evento1.php?hora="+hora,true);
 			objeto_ajax.onreadystatechange=function() {	
 				if (objeto_ajax.readyState==4) {
 						document.getElementById("actualiza").innerHTML=objeto_ajax.responseText;

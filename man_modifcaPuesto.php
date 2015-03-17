@@ -1,7 +1,7 @@
 <?php 
 		
 			include("conexion.php");	
-			$consulta= "UPDATE ra_puesto SET Existe='".$_REQUEST["activo1"]."',Nombre='".$_REQUEST["puesto"]."',Descripcion='".$_REQUEST["descripcion"]."' WHERE Nombre='".$_REQUEST["viejo"]."' ";
+			$consulta= "UPDATE cs_motivo SET Existe='".$_REQUEST["activo1"]."',Nombre='".$_REQUEST["motivo"]."',Descripcion='".$_REQUEST["descripcion"]."' WHERE Nombre='".$_REQUEST["viejo"]."' ";
 			//echo $consulta;
 			$sql=mysql_query($consulta,$conexion);  
 			if($sql){ //cuentaVieja CuentaNueva centroV centroN
