@@ -2,8 +2,8 @@
 
 		include("conexion.php");
 
-				$fecha_soli=date('Y-m-d',time()-(24*60*60));
-
+				$fecha_soli=$_REQUEST["fecha_solicitud"];
+				echo $fecha_soli;
 
 
 				if ($_REQUEST["propietario"]=="true"){
@@ -14,12 +14,12 @@
 				}
 				$consulta="INSERT INTO entrevistado (Cedula,Nombre,Apellido,Telefono,Propietario)
 				VALUES ('".$_REQUEST["cedula"].'-'.$_REQUEST["cedula2"]."','".$_REQUEST["nombres"]."','".$_REQUEST["apellidos"]."','".$_REQUEST["telefono"]."','".$ESPropietario."')";
-				//echo $consulta;
+				echo $consulta;
 				$sql=mysql_query ($consulta,$conexion);	
 
 				$consulta="INSERT INTO entrevistado (Cedula,Nombre,Apellido,Telefono,Propietario)
 				VALUES ('".$_REQUEST["cedula2pro"]."','".$_REQUEST["nombrespro"]."','".$_REQUEST["apellidospro"]."','','1')";
-				//echo $consulta;
+				echo $consulta;
 				$sql1=mysql_query ($consulta,$conexion);	
 				
 

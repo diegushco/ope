@@ -18,12 +18,12 @@
 				<td style="padding: 10px 25px;">Fecha de Solicitud</td>
 				<td style="padding: 10px 0px;">
 				<?php date_default_timezone_set('America/Caracas'); ?>
-				<input type="text" class="span11" value="<?php echo date("d m Y"); ?>" disabled="" placeholder="1" />
+				<input type="text" class="span11" name="fecha_solicitud" id="fecha_solicitud" value="<?php echo date("Y/m/d"); ?>" disabled="" placeholder="1" />
 				</td>	
 
 				<td style="padding: 10px 25px;">Nº Folio</td>
 				<td style="padding: 10px 0px;">
-					<input  onfocus="blanco(this)" style="width:120px;" disabled="" type="text" id="numero_folio" name="numero_folio" title="Rellene el campo" placeholder="3409/2013" />
+					<input  onfocus="blanco(this)" style="width:120px;" type="text" id="numero_folio" name="numero_folio" title="Rellene el campo" placeholder="3409/2013" />
 				</td>
 
 				
@@ -92,16 +92,16 @@
 			<tr id="fila-oculta">
 				<td style="padding: 10px 25px;">Nombres Pro.</td>
 				<td style="padding: 10px 0px;">
-					<input  style="width:155px;" type="text" id="nombrespro" name="nombrespro" onfocus='blanco(this)' title="Ingrese los Datos" />
+					<input  style="width:155px;" type="text" lang="noObligatorio" id="nombrespro" name="nombrespro" onfocus='blanco(this)' title="Ingrese los Datos" />
 				</td>
 				<td style="padding: 10px 25px;">Apellidos Pro.</td>
 				<td style="padding: 10px 0px;">
-					<input  style="width:150px;" type="text" id="apellidospro" name="apellidospro"  onfocus='blanco(this)' title="Ingrese los Datos" />
+					<input  style="width:150px;" type="text" lang="noObligatorio"  id="apellidospro" name="apellidospro"  onfocus='blanco(this)' title="Ingrese los Datos" />
 				</td>
 				<td style="padding: 10px 25px;">Cédula Pro.</td>
 				<td style="padding: 10px 0px;">
 					<div class="form-inline">
-						<input class="input-medium"	 type="text" id="cedula2pro" name="cedula2pro" onfocus='blanco(this)' placeholder="Numero de Cédula" />
+						<input class="input-medium"	 type="text"  lang="noObligatorio" id="cedula2pro" name="cedula2pro" onfocus='blanco(this)' placeholder="Numero de Cédula" />
 					</div>														
 				</td>
 
