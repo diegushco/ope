@@ -8,7 +8,7 @@
 <div class="row-fluid">
 			<div class="span12">				
 					 <div class="widget-header widget-header-small header-color-blue">
-						 <h5><b>Gestión de Tipos</b></h5>
+						 <h5><b>Gestión de Condicion Familiar</b></h5>
 					 </div>
 
 		

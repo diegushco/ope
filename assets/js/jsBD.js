@@ -907,7 +907,21 @@ function modificaEventoCenso(nuevo,viejo){
 		}
 		objeto_ajax.send(null);
 }
+function elimina_TipoEvento(nuevo,viejo){
 
+		
+	var hora= new Date().getTime();
+		objeto_ajax=objetoAjax(); 
+		objeto_ajax.open("GET", "man_eliminaTiEvento.php?hora="+hora+"&evento="+document.getElementById(nuevo).value+"&viejo="+document.getElementById(viejo).value,true);
+		objeto_ajax.onreadystatechange=function() {	
+			if (objeto_ajax.readyState==4) {
+					
+					alert(objeto_ajax.responseText);	
+					traeListado();				
+			}
+		}
+		objeto_ajax.send(null);
+}
 function guardarEventoCenso1(formu){
 	//alert(ArmaCampos(formu));
 	
@@ -929,6 +943,26 @@ function guardarEventoCenso1(formu){
 		objeto_ajax.send(ArmaCampos(formu));		
 	}	
 }
+
+
+function elimina_motivoCenso(activo,nuevo,viejo,descripcion){
+
+	
+	
+	var hora= new Date().getTime();
+		objeto_ajax=objetoAjax(); 
+		objeto_ajax.open("GET", "man_eliminaMotivoCenso1.php?hora="+hora+"&puesto="+document.getElementById(nuevo).value+"&viejo="+document.getElementById(viejo).value+"&descripcion="+document.getElementById(descripcion).value,true);
+		objeto_ajax.onreadystatechange=function() {	
+			if (objeto_ajax.readyState==4) {
+					
+					alert(objeto_ajax.responseText);	
+					traeListado();				
+			}
+		}
+		objeto_ajax.send(null);
+}
+
+
 //------------------------------ copiar de aca para arriba ------------------------------
 function eliminaMotivoCenso(activo,nuevo,viejo,descripcion){
 
