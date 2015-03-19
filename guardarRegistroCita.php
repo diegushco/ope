@@ -1,9 +1,9 @@
 <?php 
 
 		include("conexion.php");
-
+				$SOY_ID = "";  $SOY_IDP = "";
 				$fecha_soli=$_REQUEST["fecha_solicitud"];
-				echo $fecha_soli;
+				//echo $fecha_soli;
 
 
 				if ($_REQUEST["propietario"]=="true"){
@@ -12,52 +12,64 @@
 				else{
 					$ESPropietario=0;
 				}
-				$consulta="INSERT INTO entrevistado (Cedula,Nombre,Apellido,Telefono,Propietario)
-				VALUES ('".$_REQUEST["cedula"].'-'.$_REQUEST["cedula2"]."','".$_REQUEST["nombres"]."','".$_REQUEST["apellidos"]."','".$_REQUEST["telefono"]."','".$ESPropietario."')";
-				echo $consulta;
+				$consulta="INSERT INTO entrevistado (Cedula,Nombre,Apellido,Telefono,Propietario) VALUES ('".$_REQUEST["cedula"].'-'.$_REQUEST["cedula2"]."','".$_REQUEST["nombres"]."','".$_REQUEST["apellidos"]."','".$_REQUEST["telefono"]."','".$ESPropietario."')";
+				
 				$sql=mysql_query ($consulta,$conexion);	
 
-				$consulta="INSERT INTO entrevistado (Cedula,Nombre,Apellido,Telefono,Propietario)
-				VALUES ('".$_REQUEST["cedula2pro"]."','".$_REQUEST["nombrespro"]."','".$_REQUEST["apellidospro"]."','','1')";
-				echo $consulta;
-				$sql1=mysql_query ($consulta,$conexion);	
+
+				//echo ">>>>".mysql_insert_id()."<<<<<";
+				//echo $consulta;
+				$consulta="SELECT Id_Entrevistado AS SOY_ID FROM entrevistado WHERE Cedula='".$_REQUEST["cedula"].'-'.$_REQUEST["cedula2"]."' ";
+
+				$sql=mysql_query ($consulta,$conexion);	
+
+					if($row=mysql_fetch_array($sql)){
+						$SOY_ID=$row["SOY_ID"];
+					//echo $SOY_ID;
+					}
+
+					//echo "otraaa...".$consulta;
+
+
+				//echo "----".$SOY_ID."-----";
+				if($_REQUEST["cedula2pro"]!=""){
+					$consulta="INSERT INTO entrevistado (Cedula,Nombre,Apellido,Telefono,Propietario)
+					VALUES ('".$_REQUEST["cedula2pro"]."','".$_REQUEST["nombrespro"]."','".$_REQUEST["apellidospro"]."','','1')";
+					//echo $consulta;
+					$sql1=mysql_query ($consulta,$conexion);	
+
+
+					$consulta="SELECT Id_Entrevistado AS SOY_IDP FROM entrevistado WHERE Cedula='".$_REQUEST["cedula2pro"]."' ";
+
+					$sql=mysql_query ($consulta,$conexion);	
+
+						if($row=mysql_fetch_array($sql)){
+							$SOY_IDP=$row["SOY_IDP"];
+						//echo $SOY_ID;
+						}
+						//echo "----".$SOY_IDP."-----";
+
+				}
+				
 				
 
 				//echo $consulta;
-				if($sql && $sql1)
+				if($sql)
 				{
-					$SOY_ID = ""; $SOY_IDP = "";
-
-					$consulta="SELECT Id_Entrevistado AS SOY_ID FROM entrevistado WHERE Cedula='".$_REQUEST["cedula"].'-'.$_REQUEST["cedula2"]."' ";
-
-						$sql=mysql_query ($consulta,$conexion);	
-
-						if($row=mysql_fetch_array($sql)){
-							$SOY_ID=$row["SOY_ID"];
-							//echo $SOY_ID;
-						}
-
-						$consulta="SELECT Id_Entrevistado AS SOY_ID FROM entrevistado WHERE Cedula='".$_REQUEST["cedula2pro"]."' ";
-
-						$sql=mysql_query ($consulta,$conexion);	
-
-						if($row=mysql_fetch_array($sql)){
-							$SOY_IDP=$row["SOY_ID"];
-							//echo $SOY_ID;
-						}	
-						
+					
+					
 						if ($_REQUEST["propietario"]=="true")
-							$consulta2="INSERT INTO ev_cita (No_Folio,Fecha_Solicitud,Fecha_Cita,Direccion,Observacion,Id_Tipo,Id_Aldea,Id_Entrevistado,Id_Propietario)
-					 VALUES ('".$_REQUEST["numero_folio"]."','".$fecha_soli."','".$_REQUEST["fecha"]."','".$_REQUEST["direccion"]."','".$_REQUEST["observacion"]."',(select Id_Tipo from ev_tipo where Nombre='".$_REQUEST["inspeccion"]."'),(select Id_Aldea from aldea where Nombre='".$_REQUEST["aldea"]."'),'".$SOY_ID."','".$SOY_ID."')";	
+							$consulta2="INSERT INTO ev_cita (No_Folio,Fecha_Solicitud,Fecha_Cita,Direccion,Observacion,Id_Tipo,Id_Aldea,Id_Entrevistado,Id_Propietario,Id_Funcionario)
+					 VALUES ('".$_REQUEST["numero_folio"]."','".$fecha_soli."','".$_REQUEST["fecha"]."','".$_REQUEST["direccion"]."','".$_REQUEST["observacion"]."',(select Id_Tipo from ev_tipo where Nombre='".$_REQUEST["inspeccion"]."'),(select Id_Aldea from aldea where Nombre='".$_REQUEST["aldea"]."'),'".$SOY_ID."','".$SOY_ID."',(select Id_Funcionario from funcionario where Nombre='".$_REQUEST["receptor"]."'))";	
 						else
-							$consulta2="INSERT INTO ev_cita (No_Folio,Fecha_Solicitud,Fecha_Cita,Direccion,Observacion,Id_Tipo,Id_Aldea,Id_Entrevistado,Id_Propietario)
-					 VALUES ('".$_REQUEST["numero_folio"]."','".$fecha_soli."','".$_REQUEST["fecha"]."','".$_REQUEST["direccion"]."','".$_REQUEST["observacion"]."',(select Id_Tipo from ev_tipo where Nombre='".$_REQUEST["inspeccion"]."'),(select Id_Aldea from aldea where Nombre='".$_REQUEST["aldea"]."'),'".$SOY_ID."','".$SOY_IDP."')";	
+							$consulta2="INSERT INTO ev_cita (No_Folio,Fecha_Solicitud,Fecha_Cita,Direccion,Observacion,Id_Tipo,Id_Aldea,Id_Entrevistado,Id_Propietario,Id_Funcionario)
+					 VALUES ('".$_REQUEST["numero_folio"]."','".$fecha_soli."','".$_REQUEST["fecha"]."','".$_REQUEST["direccion"]."','".$_REQUEST["observacion"]."',(select Id_Tipo from ev_tipo where Nombre='".$_REQUEST["inspeccion"]."'),(select Id_Aldea from aldea where Nombre='".$_REQUEST["aldea"]."'),'".$SOY_ID."','".$SOY_IDP."',(select Id_Funcionario from funcionario where Nombre='".$_REQUEST["receptor"]."'))";	
 
 						$sql2=mysql_query ($consulta2,$conexion);	
-
+							//echo $consulta2;
 							if($sql2)
 							{
-									echo mysql_insert_id();
+									echo "2";
 							}
 							else
 							{

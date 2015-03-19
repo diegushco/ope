@@ -94,7 +94,7 @@ function registraInspeccion(formu){
 	}
 }
 function registraCita(formu){
-	alert(ArmaCampos(formu));
+	//alert(ArmaCampos(formu));
 	//alert(ArmaCampos(formu));
 	temp=document.getElementById("fecha_solicitud").value;
 	if(valida(formu)==false){	
@@ -105,7 +105,7 @@ function registraCita(formu){
 		objeto_ajax.onreadystatechange=function() {	
 			if (objeto_ajax.readyState==4) {
 					//document.getElementById("capa").innerHTML=objeto_ajax.responseText;
-					alert(objeto_ajax.responseText);
+					//alert(objeto_ajax.responseText);
 					if(objeto_ajax.responseText>0){
 						imprimirCita(objeto_ajax.responseText);
 					}else{

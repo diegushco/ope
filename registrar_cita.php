@@ -181,10 +181,18 @@
 						<td colspan="3"  style="padding: 10px 0px;">
 							<select data-placeholder="Seleccione" id="receptor" name="receptor"  class="chzn-select1" >
 								<option value="AL" ></option>
-								<option value="AL" >un	sdasdasd asd asdo</option>
-								<option value="AK" >dos</option>
-								<option value="AZ" >tres</option>
-								<option value="AZ" >cuatro</option>
+							<?php
+								include("conexion.php");	
+								$sql=mysql_query("SELECT * FROM funcionario order by Nombre asc",$conexion);  
+								if($row=mysql_fetch_array($sql)){
+									$sql=mysql_query("SELECT * FROM funcionario order by Nombre asc",$conexion);  
+									while($row=mysql_fetch_array($sql)){
+										echo '<option value="AL" >'.$row['Nombre'].'</option>';
+									}
+								}
+								mysql_close();
+								?>
+
 							</select>
 						</td>
 			</tr>
