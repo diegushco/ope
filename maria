@@ -1,0 +1,32 @@
+guardas en la evaluacion el id del funcionario, no debe ser asi porque para eso guardas el funcionario en la cita..
+guardas en la evalacion la fecha con now() pero le das chance al usuario de elegir una fecha..
+
+
+
+<tr class="header-color-green">
+				<th colspan="6">INFORMACION DE INSPECCION</th>
+			</tr>
+			<tr>
+				<th>Informe: </th>
+				<td colspan="3"  style="font-weight:bold; font-style:italic; font-size:11px;"><?php echo strtoupper($row['informe']); ?></td>
+			</tr>
+			<tr>
+				<th>Recomendacion: </th>
+				<td colspan="3"  style="font-weight:bold; font-style:italic; font-size:11px;"><?php echo strtoupper($row['recomendacion']); ?></td>
+			</tr>
+			<tr>
+				<th>Observacion: </th>
+				<td colspan="3"  style="font-weight:bold; font-style:italic; font-size:11px;"><?php echo strtoupper($row['observacion']); ?></td>
+			</tr>
+
+
+
+
+
+$sql = "SELECT eve.Fecha as fechae, eve.Informe_Actividad as informe,
+		eve.Recomendacion as recomendacion, eve.Observacion as observacion,
+		ic.id_cita, ic.no_folio, ic.fecha_solicitud, ic.fecha_cita, ic.direccion, 
+		ic.observacion, ic.aldea, ic.ciudad, ic.est_cita, ic.parroquia, ic.municipio, ic.estado, 
+		ic.propietario, ic.nombre, ic.apellido, ic.cedula, ic.telefono, ic.tipo, ic.propietarioced
+		 FROM ins_citas ic, ev_evaluacion eve
+		 WHERE ic.id_cita=".$_REQUEST['cita']." AND eve.Id_Cita=ic.id_cita";

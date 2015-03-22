@@ -1,0 +1,2 @@
+guardas en la evaluacion el id del funcionario, no debe ser asi porque para eso guardas el funcionario en la cita..
+guardas en la evalacion la fecha con now() pero le das chance al usuario de elegir una fecha..

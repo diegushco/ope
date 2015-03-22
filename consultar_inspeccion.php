@@ -23,14 +23,14 @@
 											<br>
 											<br>
 											<div class="span1"></div>											
-											<span class="lbl"><strong>Numero de Folio:</strong></span>										
+											<span class="lbl"><strong>N# Folio:</strong></span>										
 											<input class="input-medium"	 type="text" id="num_folio" name="num_folio" onfocus='blanco(this)' placeholder="000" />
 											<span class="lbl" ><strong>Cedula:</strong></span>																
 											<input class="input-medium"	 type="text" id="cedula2" name="cedula2" onfocus='blanco(this)' placeholder="V-0000000" />
 											
 											<span class="lbl"><strong>Actividad:</strong></span> 
 											<label colspan="" >
-													<select data-placeholder="Seleccione" id="inspeccion" name="inspeccion"  class="chzn-select"  >
+													<select data-placeholder="Seleccione" id="inspeccion" name="inspeccion"  class="chzn-select" style="padding: 8px 10px;"  >
 															<option value="AL" ></option>
 														<?php
 															include("conexion.php");	
@@ -56,16 +56,16 @@
 																					
 
 											<span class="lbl">Municipio</span>
-											<select data-placeholder="Seleccione" id="aldea" name="aldea" onchange="aldeasel(this)"  class="chzn-select" style="padding: 8px 10px;" >
+											<select data-placeholder="Seleccione" id="municipio" name="municipio" onchange="aldeasel(this)"  class="chzn-select" style="padding: 8px 10px;" >
 													<option value="AL" ></option>
 													
 													<?php
 													include("conexion.php");	
-													$sql=mysql_query("SELECT * FROM aldea order by Nombre asc",$conexion);  
+													$sql=mysql_query("SELECT * FROM municipio order by Nombre asc",$conexion);  
 													if($row=mysql_fetch_array($sql)){
-														$sql=mysql_query("SELECT * FROM aldea order by Nombre asc",$conexion);  
+														$sql=mysql_query("SELECT * FROM municipio order by Nombre asc",$conexion);  
 														while($row=mysql_fetch_array($sql)){
-															echo '<option value="'.$row['Id_Aldea'].'" >'.$row['Nombre'].'</option>';
+															echo '<option value="'.$row['Id_Municipio'].'" >'.$row['Nombre'].'</option>';
 														}
 													}
 													mysql_close();

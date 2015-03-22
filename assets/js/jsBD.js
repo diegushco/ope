@@ -23,8 +23,9 @@ function guardaCenso(){
 }
 
 function buscaInspeccion(){
+		alert(ArmaCampos(formu));
 		objeto_ajax=objetoAjax(); 
-		objeto_ajax.open("POST", "buscaCita.php",true);
+		objeto_ajax.open("POST", "buscaInspeccion1.php",true);
 		objeto_ajax.onreadystatechange=function() {	
 			if (objeto_ajax.readyState==4) {
 					document.getElementById("actualiza").innerHTML=objeto_ajax.responseText;
@@ -39,6 +40,7 @@ function buscaInspeccion(){
 }
 
 function buscaCita(){
+	//alert(ArmaCampos(formu));
 		objeto_ajax=objetoAjax(); 
 		objeto_ajax.open("POST", "buscaCita.php",true);
 		objeto_ajax.onreadystatechange=function() {	
@@ -2176,6 +2178,9 @@ function blanco(campo){
 
 function imprimirCita(cita){
 	window.open("generador_pdf?p=1&cita="+cita, this.target,'width=500,height=500'); return false;	
+}
+function imprimirInspeccion(cita){
+	window.open("generador_pdf?p=2&cita="+cita, this.target,'width=500,height=500'); return false;	
 }
 
 

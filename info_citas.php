@@ -19,7 +19,7 @@ if($row=mysql_fetch_array($sql)){
 		</td>
 		<td style="padding: 8px 5px;">Nº Folio</td>
 		<td style="padding: 8px 0px;">
-			<input  onfocus="blanco(this)" style="width:120px;" type="text" id="numero" name="numero" title="Rellene el campo" placeholder="3409/2013" />
+			<input  onfocus="blanco(this)" style="width:120px;" type="text" id="numero" name="numero" title="Rellene el campo" disabled="" value="<?php echo $row['no_folio'];?>" placeholder="3409/2013" />
 		</td>		
 	</tr>
 	<tr>

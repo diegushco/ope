@@ -15,6 +15,9 @@
         case 1:
             $pagina = "comp_cita";
             break;
+        case 2:
+            $pagina = "comp_cita_inspeccion";
+            break;
     }
 
     // get the HTML
