@@ -23,7 +23,7 @@ function guardaCenso(){
 }
 
 function buscaInspeccion(){
-		alert(ArmaCampos(formu));
+		//alert(ArmaCampos(formu));
 		objeto_ajax=objetoAjax(); 
 		objeto_ajax.open("POST", "buscaInspeccion1.php",true);
 		objeto_ajax.onreadystatechange=function() {	
@@ -135,7 +135,7 @@ function registraRA(formu){
 			if (objeto_ajax.readyState==4) {
 					//document.getElementById("capa").innerHTML=objeto_ajax.responseText;
 					alert(objeto_ajax.responseText);
-					limpia(formu);			
+					//limpia(formu);			
 					
 			}
 		}
