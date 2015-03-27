@@ -1,4 +1,3 @@
-
 <?php 
 		$fila=0;
 			include("conexion.php");	
@@ -20,6 +19,3 @@
 
 			mysql_close();			
 ?>
-
-
-									

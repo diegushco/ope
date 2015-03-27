@@ -358,7 +358,7 @@
 
 <script type="text/javascript">
 var cont=1,cont2=1;
-	var unidad,unidad2;
+	var unidad,unidad2,funcionarios;
 
 function agregaOrganismos(){
 	miTabla = document.createElement("table");
@@ -393,8 +393,15 @@ function agregaOrganismos(){
 }
 
 
-
+function funci(funcio){
+	//alert(funcio.value);
+	//alert(funcio.parentElement.name);
+	document.getElementById("h"+funcio.parentElement.name).value=funcio.value;
+	//alert(document.getElementById(funcio.parentElement.name).value);
+	//alert(funcio.parentElement.name);
+}
 function agregaPuesto(){
+	
 	miTabla = document.createElement("table");
 	tbBody = document.createElement("tbody");
 	tr = document.createElement("tr");
@@ -410,8 +417,8 @@ function agregaPuesto(){
 
 	
 	td1.innerHTML = "<select onfocus='blanco(this)' data-placeholder='Seleccione' id='puesto"+cont+"' name='puesto"+cont+"' >"+unidad+"</select>";
-	td2.innerHTML = '<input  onfocus="blanco(this)" class="span12" type="text" id="nombre'+cont+'" name="nombre'+cont2+'"  title="Ingrese Datos" />';
-	td3.innerHTML = '<input  onfocus="blanco(this)" class="span12" type="text" id="orga'+cont+'" name="orga'+cont2+'" title="Ingrese Datos" />';	
+	td2.innerHTML = "<select onfocus='blanco(this)' data-placeholder='Seleccione' id='funcionario"+cont+"' name='funcionario"+cont+"' >"+funcionarios+"</select>";
+	td3.innerHTML = '<input type="hidden" id="hfuncionario'+cont+'" name="hfuncionario'+cont+'" value="asd" >';	
 	td4.innerHTML = "<img width='30' src='assets/img/delete.png' title='Eliminar' class='aumentaTamanoIcon' onClick='eliminarFila(this)' />";	
 	tr.appendChild(td1);
 	tr.appendChild(td2);
@@ -439,6 +446,21 @@ function cargaPuestos(){
 		}
 		objeto_ajax2.send(null);
 }
+function cargaFuncionarios(){
+	//alert(aldea.options[aldea.selectedIndex].value);
+	
+	var hora33= new Date().getTime();
+		objeto_ajax33=objetoAjax(); 
+		objeto_ajax33.open("GET", "lista_Funcionario.php?hora="+hora33,true);
+		objeto_ajax33.onreadystatechange=function() {	
+			if (objeto_ajax33.readyState==4) {
+					funcionarios=objeto_ajax33.responseText;
+					
+
+			}
+		}
+		objeto_ajax33.send(null);
+}
 function cargaOrganismos(){
 	//alert(aldea.options[aldea.selectedIndex].value);
 	
@@ -454,8 +476,10 @@ function cargaOrganismos(){
 		}
 		objeto_ajax.send(null);
 }
+cargaFuncionarios();
 cargaPuestos();
 cargaOrganismos();
+
 	
 
 function eliminarFila(obj){

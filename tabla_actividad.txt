@@ -1,0 +1,7 @@
+ra_actividad_danho
+tiene Id_Actividad, Id_Danho, Observacion
+
+esta con la tabla ra_danho que su id es Id_Danho y Nombre
+
+
+esta la tabla ra_organismo_actividad con atributos Id_OtrosOrganismo, Id_Actividad, Unidad, Jefe_Comision ..a su vez esta con la tabla ra_otros_organismo con campos Id_OtrosOrganismo y Nombre

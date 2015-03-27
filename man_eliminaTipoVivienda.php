@@ -8,7 +8,7 @@
 				echo "Se elimino correctamente";				
 			}
 			else
-				echo "Ha ocurrido un error inesperado, intente de nuevo";
+				echo "Este Item no se puede eliminar, contacte con el administrador";
 
 			mysql_close();				
 ?>

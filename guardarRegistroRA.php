@@ -43,10 +43,15 @@
 
 				for($i=1;$i<(int)$_REQUEST["cantidad_comision"];$i++ ){
 					//hace los insert dentro de este for
+					//guardo en funcionario_actividad..pero eso va con funcionario y eso complica la cosa =/
+					
 					echo "\n \n Hacer inserts de comisiones para: ".$_REQUEST["puesto".$i]."-".$_REQUEST["nombre".$i]."-".$_REQUEST["orga".$i];
 				}
 				for($i=1;$i<(int)$_REQUEST["cantidad_organismos"];$i++ ){
 					//hace los insert dentro de este for
+					//guardo en tabla ra_organismo_actividad
+					$consu="INSERT INTO ra_organismo_actividad(Id_OtrosOrganismo, Id_Actividad, Unidad, Jefe_Comision) VALUES ((select Id_OtrosOrganismo from ra_otros_organismo where Nombre='".$_REQUEST["organismo".$i]."'),'".$id_actividad."','".$_REQUEST["unidad".$i]."','".$_REQUEST["jefe".$i]."')"
+					$sql=mysql_query ($consu,$conexion);
 					echo "\n \n Hacer inserts de organismos en sitio para: ".$_REQUEST["organismo".$i]."-".$_REQUEST["unidad".$i]."-".$_REQUEST["jefe".$i];
 				}
 
