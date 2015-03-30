@@ -5,6 +5,8 @@
 	$sql=mysql_query ($consulta,$conexion);		
 
 	//echo $consulta;
+	include("guardaBitacora.php");
+				bitacora("Guardo parte de vivienda ".$_REQUEST["parte"],"Guardar",$conexion);
 	if($sql){
 			echo "Se guardo correctamente.";
 	}else{

@@ -5,6 +5,8 @@
 	$sql=mysql_query ($consulta,$conexion);		
 	
 	//echo $consulta;
+	include("guardaBitacora.php");
+				bitacora("Guardo daño de censo ".$_REQUEST["danho"],"Guardar",$conexion);
 	if($sql){
 			echo "Se guardo correctamente.";
 	}else{

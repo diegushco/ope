@@ -39,7 +39,8 @@ if(isset($_FILES['file_image']['tmp_name'])){
 						$sql=mysql_query ($consulta,$conexion);						
 						
 						//echo $consulta;
-						
+						include("guardaBitacora.php");
+				bitacora("Guardo foto de actividad","Guardar",$conexion);
 					mysql_close();
 
 

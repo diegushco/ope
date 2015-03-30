@@ -16,7 +16,8 @@
 				
 				$sql=mysql_query ($consulta,$conexion);	
 
-
+				include("guardaBitacora.php");
+				bitacora("Guardo entrevistado ".$_REQUEST["cedula2"],"Guardar",$conexion);
 				//echo ">>>>".mysql_insert_id()."<<<<<";
 				//echo $consulta;
 				$consulta="SELECT Id_Entrevistado AS SOY_ID FROM entrevistado WHERE Cedula='".$_REQUEST["cedula"].'-'.$_REQUEST["cedula2"]."' ";
@@ -37,7 +38,8 @@
 					VALUES ('".$_REQUEST["cedula2pro"]."','".$_REQUEST["nombrespro"]."','".$_REQUEST["apellidospro"]."','','1')";
 					//echo $consulta;
 					$sql1=mysql_query ($consulta,$conexion);	
-
+include("guardaBitacora.php");
+				bitacora("Guardo entrevistado ".$_REQUEST["cedula2pro"],"Guardar",$conexion);
 
 					$consulta="SELECT Id_Entrevistado AS SOY_IDP FROM entrevistado WHERE Cedula='".$_REQUEST["cedula2pro"]."' ";
 
@@ -66,6 +68,8 @@
 					 VALUES ('".$_REQUEST["numero_folio"]."','".$fecha_soli."','".$_REQUEST["fecha"]."','".$_REQUEST["direccion"]."','".$_REQUEST["observacion"]."',(select Id_Tipo from ev_tipo where Nombre='".$_REQUEST["inspeccion"]."'),(select Id_Aldea from aldea where Nombre='".$_REQUEST["aldea"]."'),'".$SOY_ID."','".$SOY_IDP."',(select Id_Funcionario from funcionario where Nombre='".$_REQUEST["receptor"]."'))";	
 
 						$sql2=mysql_query ($consulta2,$conexion);	
+						include("guardaBitacora.php");
+				bitacora("Guardo cita ".$_REQUEST["numero_folio"],"Guardar",$conexion);
 							//echo $consulta2;
 							if($sql2)
 							{

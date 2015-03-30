@@ -135,13 +135,13 @@ function registraRA(formu){
 			if (objeto_ajax.readyState==4) {
 					//document.getElementById("capa").innerHTML=objeto_ajax.responseText;
 					alert(objeto_ajax.responseText);
-					//limpia(formu);			
+					limpia(formu);			
 					
 			}
 		}
 		objeto_ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 		objeto_ajax.send(ArmaCampos(formu));
-		alert(ArmaCampos(formu));	
+		//alert(ArmaCampos(formu));	
 	}	
 }
 function validaActividad(algo){

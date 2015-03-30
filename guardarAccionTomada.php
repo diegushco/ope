@@ -5,6 +5,8 @@
 				$sql=mysql_query ($consulta,$conexion);		
 				
 				//echo $consulta;
+				include("guardaBitacora.php");
+				bitacora("Guardo acciones tomadas de RA","Guardar",$conexion);
 				if($sql){
 						echo "Se guardo correctamente.";
 				}else{

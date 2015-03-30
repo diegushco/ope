@@ -396,7 +396,11 @@ function agregaOrganismos(){
 function funci(funcio){
 	//alert(funcio.value);
 	//alert(funcio.parentElement.name);
+	//alert("h"+funcio.parentElement.name);
+	
 	document.getElementById("h"+funcio.parentElement.name).value=funcio.value;
+	//alert(document.getElementById("h"+funcio.parentElement.name).value);
+	//document.getElementById("h"+funcio.parentElement.name).value=funcio.value;
 	//alert(document.getElementById(funcio.parentElement.name).value);
 	//alert(funcio.parentElement.name);
 }
@@ -418,11 +422,11 @@ function agregaPuesto(){
 	
 	td1.innerHTML = "<select onfocus='blanco(this)' data-placeholder='Seleccione' id='puesto"+cont+"' name='puesto"+cont+"' >"+unidad+"</select>";
 	td2.innerHTML = "<select onfocus='blanco(this)' data-placeholder='Seleccione' id='funcionario"+cont+"' name='funcionario"+cont+"' >"+funcionarios+"</select>";
-	td3.innerHTML = '<input type="hidden" id="hfuncionario'+cont+'" name="hfuncionario'+cont+'" value="asd" >';	
+	td2.innerHTML = td2.innerHTML + "<input type='hidden' id='hfuncionario"+cont+"' name='hfuncionario"+cont+"' value='asd' >";
 	td4.innerHTML = "<img width='30' src='assets/img/delete.png' title='Eliminar' class='aumentaTamanoIcon' onClick='eliminarFila(this)' />";	
 	tr.appendChild(td1);
 	tr.appendChild(td2);
-	tr.appendChild(td3);
+	//tr.appendChild(td3);
 	tr.appendChild(td4);	
 	tbBody.appendChild(tr);
 	miTabla.appendChild(tbBody);
@@ -455,7 +459,7 @@ function cargaFuncionarios(){
 		objeto_ajax33.onreadystatechange=function() {	
 			if (objeto_ajax33.readyState==4) {
 					funcionarios=objeto_ajax33.responseText;
-					
+					cargaPuestos();
 
 			}
 		}
@@ -477,7 +481,7 @@ function cargaOrganismos(){
 		objeto_ajax.send(null);
 }
 cargaFuncionarios();
-cargaPuestos();
+
 cargaOrganismos();
 
 	

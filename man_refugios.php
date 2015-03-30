@@ -9,7 +9,7 @@
 			<div class="span12">				
 
 
-<!--Modal para iniciar sesion-->
+				<!--Modal para iniciar sesion-->
 				<div id="myModal" class="modal hide fade">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
