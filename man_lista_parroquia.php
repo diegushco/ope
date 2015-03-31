@@ -60,6 +60,8 @@
 <?php
 
 				} //CIERA WHILEEEEEEEEEEEEE
+				include("guardaBitacora.php");
+					bitacora("Busca lista parroquias ","Buscar",$conexion);
 			}
 				
 			

@@ -128,7 +128,10 @@
 											</td>
 										</tr>
 
-<?php } //cierro if ?>
+<?php } 
+include("guardaBitacora.php");
+bitacora("Busca lista de RA ","Buscar",$conexion);
+//cierro if ?>
 
 
 

@@ -211,7 +211,11 @@
 											</td>
 										</tr>
 
-<?php } //cierro if ?>
+<?php
+include("guardaBitacora.php");
+					bitacora("Busca listado RA ".$row["folio"],"Buscar",$conexion);
+
+ } //cierro if ?>
 
 
 

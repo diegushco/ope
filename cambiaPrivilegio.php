@@ -10,6 +10,8 @@
 				else
 					$consulta="UPDATE privilegios SET Existe='1' WHERE Id_Privilegios='".$row["id_pri"]."' ";			
 				$sql=mysql_query($consulta,$conexion);  
+				include("guardaBitacora.php");
+				bitacora("Actualiza privilegios  ".$_REQUEST['usuario'],"Buscar",$conexion);
 			}else{//sino consigo lo agrego
 				$consulta="INSERT INTO privilegios (Id_Usuario,Id_Menu) 
 				VALUES ((select Id_Usuario from usuario where Usuario='".$_REQUEST['usuario']."'),'".$_REQUEST['id_menu']."')";				

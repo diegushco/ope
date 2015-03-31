@@ -60,6 +60,8 @@
 <?php
 
 				} //CIERA WHILEEEEEEEEEEEEE
+				include("guardaBitacora.php");
+					bitacora("Busca ciudad ","Buscar",$conexion);
 			}
 				
 			

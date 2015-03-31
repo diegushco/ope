@@ -141,5 +141,7 @@ rac.Id_Actividad='".$_REQUEST["valor"]."'
 				</form>
 			<?php
 }
+include("guardaBitacora.php");
+					bitacora("Busca detalle de RA ".$_REQUEST["valor"],"Buscar",$conexion);
 mysql_close();
 			?>

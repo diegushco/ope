@@ -62,6 +62,8 @@
 							</tr>
 						<?php
 							}
+							include("guardaBitacora.php");
+					bitacora("Busca datos inspeccion para registrar","Buscar",$conexion);
 						?>
 						</tbody>						
 					</table>

@@ -7,7 +7,9 @@
 			
 
 			//echo $consulta;
-			$sql=mysql_query($consulta,$conexion);  
+			$sql=mysql_query($consulta,$conexion); 
+			include("guardaBitacora.php");
+				bitacora("Actualiza parroquia ".$_REQUEST['viejo'],"Actualizar",$conexion); 
 			if($sql){ //cuentaVieja CuentaNueva centroV centroN
 				echo "Se modifico correctamente";				
 			}

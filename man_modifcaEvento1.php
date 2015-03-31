@@ -6,8 +6,10 @@
 			and Id_TipoEvento=(select Id_TipoEvento from cs_tipo_evento where Nombre='".$_REQUEST["tipo"]."') ";
 			
 
-			echo $consulta;
+			//echo $consulta;
 			$sql=mysql_query($consulta,$conexion);  
+			include("guardaBitacora.php");
+				bitacora("Actualiza evento de censo ".$_REQUEST['usuario'],"Actualizar",$conexion);
 			if($sql){ //cuentaVieja CuentaNueva centroV centroN
 				echo "Se modifico correctamente";				
 			}

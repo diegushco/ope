@@ -62,6 +62,8 @@
 <?php
 
 				} //CIERA WHILEEEEEEEEEEEEE
+				include("guardaBitacora.php");
+					bitacora("Busca lista aldea ","Buscar",$conexion);
 			}
 				
 			

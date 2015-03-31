@@ -8,6 +8,8 @@
 			$consulta="UPDATE cs_refugio SET Existe='".$activ."',Nombre='".$_REQUEST["mnombre"]."',Direccion='".$_REQUEST["mdireccion"]."',Telefono='".$_REQUEST["mtelefono"]."',Capacidad='".$_REQUEST["mcapacidad"]."',Descripcion='".$_REQUEST["mdescripcion"]."' WHERE Id_Refugio='".$_REQUEST["id_re"]."'  ";
 			//echo $consulta;
 			$sql=mysql_query($consulta,$conexion);  
+			include("guardaBitacora.php");
+				bitacora("Actualiza refugio de censo  ".$_REQUEST['id_re'],"Actualizar",$conexion);
 			if($sql){ //cuentaVieja CuentaNueva centroV centroN
 				echo "Se modifico correctamente";				
 			}

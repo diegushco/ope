@@ -26,6 +26,8 @@
 
 					if($row=mysql_fetch_array($sql)){
 						$SOY_ID=$row["SOY_ID"];
+						include("guardaBitacora.php");
+					bitacora("Busca entrevistado ".$_REQUEST["cedula2"],"Buscar",$conexion);
 					//echo $SOY_ID;
 					}
 

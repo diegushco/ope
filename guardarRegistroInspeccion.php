@@ -10,7 +10,9 @@ hora=1416171726558&numero_cita=8&fecha=2014-11-17&numero=1231/1231&estado11=Tach
 				bitacora("Guardo inspeccion ".$_REQUEST["numero_cita"],"Guardar",$conexion);
 	if($sql){
 		$actualizacion = "UPDATE ev_cita SET estado='Procesada' WHERE id_cita=".$_REQUEST['numero_cita'];
-		$sql2=mysql_query ($actualizacion,$conexion);		
+		$sql2=mysql_query ($actualizacion,$conexion);	
+		include("guardaBitacora.php");
+				bitacora("Actualiza inspeccion  ".$_REQUEST['numero_cita'],"Buscar",$conexion);	
 		if($sql2){
 			echo "Se guardo correctamente.";
 		}else{

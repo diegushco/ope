@@ -48,6 +48,8 @@
 <?php
 
 				} //CIERA WHILEEEEEEEEEEEEE
+				include("guardaBitacora.php");
+					bitacora("Busca lista de refugios ","Buscar",$conexion);
 			}
 				
 			

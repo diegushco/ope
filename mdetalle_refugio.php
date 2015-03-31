@@ -79,5 +79,7 @@ include("conexion.php");
 				</form>
 			<?php
 }
+include("guardaBitacora.php");
+					bitacora("Busca detalle de refugio ".$_REQUEST["valor"],"Buscar",$conexion);
 mysql_close();
 			?>

@@ -197,6 +197,8 @@ if ($_REQUEST["cedula2"]==""&&$_REQUEST["aldea"]!=""&&$_REQUEST["fechaI"]!=""&&$
 
 
 				} //CIERRA WHILEEEEEEEEEEEEE
+				include("guardaBitacora.php");
+					bitacora("Busca inspeccion de ".$row["cedula"],"Buscar",$conexion);
 			}
 				
 			

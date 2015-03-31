@@ -68,6 +68,8 @@
 						echo "<tr align='center'><td colspan='10'><a class='btn btn-mini btn-primary' onclick='imprimirCita(".$row['cita'].")'><i class='icon-print'></i> Imprimir comprobante de cita</a> <a class='btn btn-mini btn-danger' onclick='eliminaCita(".$row['cita'].")'><i class='icon-remove'></i> Anular cita</a></td></tr>";
 						$aco=$aco+1;
 					} //CIERRA WHILE
+					include("guardaBitacora.php");
+					bitacora("Busca cita ".$row["cita"],"Buscar",$conexion);
 				}else{
 					echo "No hay registros";
 				}

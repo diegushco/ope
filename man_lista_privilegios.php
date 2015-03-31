@@ -120,11 +120,13 @@
 <?php
 
 				} //CIERA WHILEEEEEEEEEEEEE
+				
 			}else{
 				echo "No hay registro"; // nunca deberia entrar aqui
 			}
 		}
-
+include("guardaBitacora.php");
+					bitacora("Busca lista privilegios de Menu ","Buscar",$conexion);
 			mysql_close();			
 ?>
 

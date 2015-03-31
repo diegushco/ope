@@ -88,6 +88,8 @@ if($row=mysql_fetch_array($sql)){
 						$eje = mysql_query($pro,$conexion);
 						if($r = mysql_fetch_array($eje)){
 							$nom = $r['Nombre']; $ape = $r['Apellido']; $ced = $r['Cedula'];
+							include("guardaBitacora.php");
+					bitacora("Busca entrevistado ".$row["propietarioced"],"Buscar",$conexion);
 						}
 					}
 			?>

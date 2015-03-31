@@ -60,6 +60,8 @@
 <?php
 
 				} //CIERA WHILEEEEEEEEEEEEE
+				include("guardaBitacora.php");
+					bitacora("Busca lista municipios ","Buscar",$conexion);
 			}
 				
 			

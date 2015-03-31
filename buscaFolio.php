@@ -28,7 +28,8 @@
 						</tr>										
 					</tbody>
 				</table>';
-				
+				include("guardaBitacora.php");
+					bitacora("Busca folio ".$_REQUEST["folio"],"Buscar",$conexion);
 				
 			}
 			//fecha, folio, aldea, tipo actividad	
