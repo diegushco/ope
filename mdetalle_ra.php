@@ -128,13 +128,7 @@ rac.Id_Actividad='".$_REQUEST["valor"]."'
 										
 										<tr><td colspan="2"><div id="error"></div></td></tr>
 									</table>
-									<div align="center">
-										<div class="btn-group">
-											
-											<button type="button" class="btn btn-info" value="agregar" onClick="modificarRefugio(document.formulario1)">Modificar</button>
-											<button type="button" class="btn btn-inverse" value="eliminar" onClick="eliminarRefugio(document.formulario1)">Eliminar</button>
-										</div>		
-									</div>	
+									
 								
 
 

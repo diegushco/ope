@@ -296,6 +296,20 @@ function abreModal(id_valor){
 	
 
 }
+function abreModalM(id_valor){
+	var hora= new Date().getTime();
+			objeto_ajax=objetoAjax(); 
+			objeto_ajax.open("GET", "mdetalle_ra.php?hora="+hora+"&valor="+id_valor,true);
+			objeto_ajax.onreadystatechange=function() {	
+				if (objeto_ajax.readyState==4) {
+						document.getElementById("cuerpomodal").innerHTML=objeto_ajax.responseText;
+						$("#myModal").modal("show");
+				}
+			}
+			objeto_ajax.send(null);
+	
+
+}
 		</script>
 	
 
