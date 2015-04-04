@@ -82,19 +82,6 @@
 
 
 <script type="text/javascript">
-    $(".chzn-select").chosen({ 'width': '130px'});
-    $('.date-picker').datepicker().next().on(ace.click_event, function(){
-        $(this).prev().focus();
-    });
-	$().ready(function(){
-		$("input").tooltip({
-			placement: "bottom",
-		});
-		$("textarea").tooltip({
-			placement: "bottom",
-		});
-		traeListado();
-	});
 function traeListado(){
 		
 			
@@ -109,5 +96,20 @@ function traeListado(){
 			}
 			objeto_ajax.send(null);
 		}
+		
+    $(".chzn-select").chosen({ 'width': '130px'});
+    $('.date-picker').datepicker().next().on(ace.click_event, function(){
+        $(this).prev().focus();
+    });
+	$().ready(function(){
+		$("input").tooltip({
+			placement: "bottom",
+		});
+		$("textarea").tooltip({
+			placement: "bottom",
+		});
+		traeListado();
+	});
+
 </script>
 

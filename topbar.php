@@ -11,11 +11,11 @@
 					<ul class="nav ace-nav pull-right">
 						
 						<li class="light-blue">
-							<a data-toggle="dropdown" href="#" class="dropdown-toggle">
+							<a title="Cerrar Sesion" href="javascript: salir()" class="dropdown-toggle">
 								<img class="nav-user-photo" src="assets/avatars/user2.png" alt="Jason's Photo" />
 								<span class="user-info">
-									<small>Bienvenido,</small>
-									Usuario
+									<small>Bienvenido,</small><i class="icon-off"></i>
+									<?php echo $_SESSION["usuario"]; ?>
 								</span>
 
 								<!--<i class="icon-caret-down"></i>-->

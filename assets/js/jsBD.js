@@ -1,6 +1,31 @@
 function prueba(){
 	alert("hola");
 }
+function salir(){
+	
+	document.location.href="index.php";
+
+}
+function entra(formu){
+	if(valida(formu)==false){	
+		objeto_ajax=objetoAjax(); 
+		objeto_ajax.open("POST", "compruebaUser.php",true);
+		objeto_ajax.onreadystatechange=function() {	
+			if (objeto_ajax.readyState==4) {
+					//document.getElementById("capa").innerHTML=objeto_ajax.responseText;
+					//alert(objeto_ajax.responseText);
+					if(objeto_ajax.responseText=="1"){
+						location.href="page.php";	
+					}else{
+						alert(objeto_ajax.responseText);	
+					}
+			}
+		}
+		objeto_ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		objeto_ajax.send(ArmaCampos(formu));
+		//alert(ArmaCampos(formu));
+	}
+}
 function guardaCenso(){
 	if(valida(formu)==false){	
 		alert(ArmaCampos(formu));
@@ -122,14 +147,30 @@ function registraCita(formu){
 		//alert(ArmaCampos(formu));	
 	}
 }
+function modificarRA(){
+	recomendacion=document.getElementById("recomendacion").value;
+	situacion=document.getElementById("situacion").value;
+	observacion=document.getElementById("observacion").value;
+	id=document.getElementById("oculto").value;
+	//alert(recomendacion+situacion+observacion+id);
 
+	var hora= new Date().getTime();
+			objeto_ajax=objetoAjax(); 
+			objeto_ajax.open("GET", "mod_ra.php?hora="+hora+"&recomendacion="+recomendacion+"&situacion="+situacion+"&observacion="+observacion+"&id="+id,true);
+			objeto_ajax.onreadystatechange=function() {	
+				if (objeto_ajax.readyState==4) {				
+					alert(objeto_ajax.responseText);						
+				}
+			}
+			objeto_ajax.send(null);
+}
 function registraRA(formu){
 	
 	
 	if(valida(formu)==false){	
 		//alert(ArmaCampos(formu));
 	
-			objeto_ajax=objetoAjax(); 
+		objeto_ajax=objetoAjax(); 
 		objeto_ajax.open("POST", "guardarRegistroRA.php",true);
 		objeto_ajax.onreadystatechange=function() {	
 			if (objeto_ajax.readyState==4) {

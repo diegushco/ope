@@ -4,7 +4,9 @@
 			$consulta="delete from cs_danho WHERE Nombre='".$_REQUEST["viejo"]."'";
 		//echo $consulta;
 			$sql=mysql_query($consulta,$conexion);  
-			if($sql){ //cuentaVieja CuentaNueva centroV centroN
+			include("guardaBitacora.php");
+			bitacora("Elimina censo dano ".$_REQUEST["viejo"],"Eliminar",$conexion);
+			if($sql){ //censo dano CuentaNueva centroV centroN
 				echo "Se elimino correctamente";				
 			}
 			else

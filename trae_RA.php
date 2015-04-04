@@ -52,7 +52,12 @@
 				rac.Id_AccionTomada=rct.Id_AccionTomada and
 				rco.Id_Condicion=raa.Id_Condicion and
 				rdh.Id_Actividad=raa.Id_Actividad and
-				rdn.Id_Danho=rdh.Id_Danho";
+				rdn.Id_Danho=rdh.Id_Danho and
+				raa.fecha >= '".$_REQUEST["fecha1"]."' and
+				raa.fecha <= '".$_REQUEST["fecha2"]."' and
+				raa.Id_Aldea='".$_REQUEST["aldea"]."' 
+				";
+				//echo $consulta;
 				$sql=mysql_query ($consulta,$conexion);	
 				while($row=mysql_fetch_array($sql)){
 					//$id_actividad=$row["Id_Actividad"];
@@ -85,11 +90,11 @@
 
 											<td class="td-actions">
 												<div class="hidden-phone visible-desktop action-buttons">
-													<a class="blue" href="#">
+													<a class="blue" href="javascript: abreModal('<?php echo $row["actividad"]; ?>')">
 														<i class="icon-zoom-in bigger-130"></i>
 													</a>
 
-													<a class="green" href="#">
+													<a class="green" href="javascript: abreModalM('<?php echo $row["actividad"]; ?>')">
 														<i class="icon-pencil bigger-130"></i>
 													</a>
 
@@ -114,14 +119,20 @@
 															</li>
 
 															<li>
-																<a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
+																<a href="javascript: abreModalM('<?php echo $row["actividad"]; ?>')" class="tooltip-success" data-rel="tooltip" title="Edit">
 																	<span class="green">
 																		<i class="icon-edit bigger-120"></i>
 																	</span>
 																</a>
 															</li>
 
-															
+															<li>
+																<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
+																	<span class="red">
+																		<i class="icon-trash bigger-120"></i>
+																	</span>
+																</a>
+															</li>
 														</ul>
 													</div>
 												</div>

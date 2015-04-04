@@ -4,6 +4,8 @@
 			$consulta="delete from ra_danho WHERE Nombre='".$_REQUEST["viejo"]."'";
 		//echo $consulta;
 			$sql=mysql_query($consulta,$conexion);  
+			include("guardaBitacora.php");
+			bitacora("Elimina dano de ra ".$_REQUEST["viejo"],"Eliminar",$conexion);
 			if($sql){ //cuentaVieja CuentaNueva centroV centroN
 				echo "Se elimino correctamente";				
 			}

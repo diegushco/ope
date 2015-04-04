@@ -1,3 +1,4 @@
+	<link rel="stylesheet" href="assets/css/estilo.css">
 	<div class="page-header position-relative">
 		<h1>
 			Listado de RA
@@ -34,14 +35,14 @@
 				<span class="add-on">
 					<i class="icon-calendar"></i>
 				</span>
-				<input type="text" id="rango-fecha" />
+				<input type="text" id="rango-fecha" name="rango-fecha" />
 			</div>
 			
 			<label>
 				
 				<span class="lbl">ALDEA</span>
 			</label>
-			<select data-placeholder="Seleccione" id="aldea" name="aldea" onchange="aldeasel(this)"  class="chzn-select" >
+			<select data-placeholder="Seleccione" id="aldea" name="aldea" onchange="aldeasel1(this)"  class="chzn-select" >
 											<option value="AL" ></option>
 											
 
@@ -66,9 +67,12 @@
 			
 			
 			
-			<button type="submit" class="btn btn-small btn-info">
+			<a href="javascript: traeListado()" class="btn btn-small btn-info">
 				<i class="icon-search"></i>
-			</button>
+			</a>
+			<a href="javascript: menu('listado_RA')" class="btn btn-small btn-info">
+				<i class="icon-refresh"></i>
+			</a>
 			</div>
 		</form>
 		</div>	
@@ -166,7 +170,7 @@
 														<i class="icon-zoom-in bigger-130"></i>
 													</a>
 
-													<a class="green" href="#">
+													<a class="green" href="javascript: abreModalM('<?php echo $row["actividad"]; ?>')">
 														<i class="icon-pencil bigger-130"></i>
 													</a>
 
@@ -191,7 +195,7 @@
 															</li>
 
 															<li>
-																<a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
+																<a href="javascript: abreModalM('<?php echo $row["actividad"]; ?>')" class="tooltip-success" data-rel="tooltip" title="Edit">
 																	<span class="green">
 																		<i class="icon-edit bigger-120"></i>
 																	</span>
@@ -212,10 +216,13 @@
 										</tr>
 
 <?php
+
+
+ } //cierro while 
 include("guardaBitacora.php");
 					bitacora("Busca listado RA ".$row["folio"],"Buscar",$conexion);
 
- } //cierro if ?>
+ ?>
 
 
 
@@ -227,8 +234,9 @@ include("guardaBitacora.php");
 	</div>	
 							
 		<script type="text/javascript">
+		var aldea1="";
 		$('.chzn-select').chosen();
-		$('#rango-fecha').daterangepicker();
+		$('#rango-fecha').daterangepicker({format: 'YYYY/MM/DD'});
 			$(function() {
 				var oTable1 = $('#sample-table-2').dataTable( {
 				"aoColumns": [
@@ -266,11 +274,16 @@ include("guardaBitacora.php");
 			})
 
 function traeListado(){
-		
+			rango=document.getElementById("rango-fecha").value;
+			rango=rango.split("-");
+			fecha1=rango[0];
+			fecha2=rango[1];
 			
+
+
 			var hora= new Date().getTime();
 			objeto_ajax=objetoAjax(); 
-			objeto_ajax.open("GET", "trae_RA.php?hora="+hora,true);
+			objeto_ajax.open("GET", "trae_RA.php?hora="+hora+"&fecha1="+fecha1+"&fecha2="+fecha2+"&aldea="+aldea1,true);
 			objeto_ajax.onreadystatechange=function() {	
 				if (objeto_ajax.readyState==4) {
 						document.getElementById("contenido").innerHTML=objeto_ajax.responseText;
@@ -299,7 +312,7 @@ function abreModal(id_valor){
 function abreModalM(id_valor){
 	var hora= new Date().getTime();
 			objeto_ajax=objetoAjax(); 
-			objeto_ajax.open("GET", "mdetalle_ra.php?hora="+hora+"&valor="+id_valor,true);
+			objeto_ajax.open("GET", "mdetalle_raM.php?hora="+hora+"&valor="+id_valor,true);
 			objeto_ajax.onreadystatechange=function() {	
 				if (objeto_ajax.readyState==4) {
 						document.getElementById("cuerpomodal").innerHTML=objeto_ajax.responseText;
@@ -310,7 +323,9 @@ function abreModalM(id_valor){
 	
 
 }
-		</script>
+function aldeasel1(aldea){
 	
+aldea1=aldea.options[aldea.selectedIndex].value;
 
-	
+}
+		</script>

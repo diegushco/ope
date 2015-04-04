@@ -98,31 +98,83 @@ rac.Id_Actividad='".$_REQUEST["valor"]."'
 												<?php echo $row["fecha"]; ?>
 											</td>
 										</tr>
+										
 										<tr>										
+													<td style="padding: 8px 5px;">Comision:</td>
+													
+													
+										</tr>
+										<tr class="table-header">										
+													<td style="padding: 8px 5px;">Nombre:</td>
+													<td style="padding: 8px 5px;">Apellido:</td>
+													<td style="padding: 8px 5px;">Organismo:</td>													
+													
+										</tr>
+										<?php $consulta="select fun.Nombre as nombre, fun.Apellido as apellido, fun.Organismo as organismo
+											from funcionario_actividad fac, funcionario fun
+											where
+											fun.Id_Funcionario=fac.Id_Funcionario and
+											Id_Actividad='".$_REQUEST["valor"]."'"; 
+											$sql=mysql_query($consulta,$conexion);  
+											while($rowd=mysql_fetch_array($sql)){ ?>
+												<tr>										
+													<td style="padding: 8px 5px;"><?php echo $rowd["nombre"]; ?></td>
+													<td style="padding: 8px 5px;"><?php echo $rowd["apellido"]; ?></td>
+													<td style="padding: 8px 5px;"><?php echo $rowd["organismo"]; ?></td>													
+													
+												</tr>
+											<?php
+											}
+											?>
+										<tr>										
+													<td style="padding: 8px 5px;">Organismos en el sitio:</td>
+													
+													
+										</tr>
+										<tr class="table-header">										
+													<td style="padding: 8px 5px;">Organismo:</td>
+													<td style="padding: 8px 5px;">Unidad:</td>
+													<td style="padding: 8px 5px;">Jefe de Comision:</td>													
+													
+										</tr>
+										<?php $consulta="select roa.Unidad as unidad, roa.Jefe_Comision as jefe, roo.Nombre as organismo
+											from ra_organismo_actividad roa, ra_otros_organismo roo
+											where
+											roa.Id_OtrosOrganismo=roo.Id_OtrosOrganismo and
+											Id_Actividad='".$_REQUEST["valor"]."'"; 
+											$sql=mysql_query($consulta,$conexion);  
+											while($rowd=mysql_fetch_array($sql)){ ?>
+												<tr>										
+													<td style="padding: 8px 5px;"><?php echo $rowd["organismo"]; ?></td>
+													<td style="padding: 8px 5px;"><?php echo $rowd["unidad"]; ?></td>
+													<td style="padding: 8px 5px;"><?php echo $rowd["jefe"]; ?></td>													
+													
+												</tr>
+											<?php
+											}
+											?>
+
+											<tr>										
 											<td style="padding: 8px 5px;">Situacion:</td>
 											<td style="padding: 8px 0px;">
 												<?php echo $row["situacion"]; ?>
 											</td>
 											
-										</tr>
-										<tr>										
-											<td style="padding: 8px 5px;">Recomendacion:</td>
-											<td style="padding: 8px 0px;">
-												<?php echo $row["recomendacion"]; ?>
-											</td>
-											
-										</tr>
-										<tr>										
-											<td style="padding: 8px 5px;">Observacion:</td>
-											<td style="padding: 8px 0px;">
-												<?php echo $row["observacion"]; ?>
-											</td>
-											
-										</tr>
-
-
-
-
+											</tr>
+											<tr>										
+												<td style="padding: 8px 5px;">Recomendacion:</td>
+												<td style="padding: 8px 0px;">
+													<?php echo $row["recomendacion"]; ?>
+												</td>
+												
+											</tr>
+											<tr>										
+												<td style="padding: 8px 5px;">Observacion:</td>
+												<td style="padding: 8px 0px;">
+													<?php echo $row["observacion"]; ?>
+												</td>
+												
+											</tr>
 									
 										
 										
