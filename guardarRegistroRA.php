@@ -79,7 +79,7 @@
 				$sql=mysql_query ($consu,$conexion);
 
 				if($sql){
-						echo "\n \n Se guardo correctamente.";
+						echo $id_actividad;
 				}else{
 						echo "Ha ocurrido un error inesperado, intente de nuevo.";
 				}

@@ -174,8 +174,8 @@
 														<i class="icon-pencil bigger-130"></i>
 													</a>
 
-													<a class="red" href="#">
-														<i class="icon-trash bigger-130"></i>
+													<a class="red" onclick="javascript: imprimirRA('<?php echo $row["actividad"]; ?>')">
+														<i class="icon-book bigger-130"></i>
 													</a>
 												</div>
 
@@ -203,9 +203,9 @@
 															</li>
 
 															<li>
-																<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
+																<a href="javascript: onclick('<?php echo $row["actividad"]; ?>')" class="tooltip-error" data-rel="tooltip" title="Delete">
 																	<span class="red">
-																		<i class="icon-trash bigger-120"></i>
+																		<i class="icon-book bigger-120"></i>
 																	</span>
 																</a>
 															</li>

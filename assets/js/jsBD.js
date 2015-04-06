@@ -175,8 +175,9 @@ function registraRA(formu){
 		objeto_ajax.onreadystatechange=function() {	
 			if (objeto_ajax.readyState==4) {
 					//document.getElementById("capa").innerHTML=objeto_ajax.responseText;
-					alert(objeto_ajax.responseText);
-					limpia(formu);			
+					
+					limpia(formu);
+					imprimirRA(objeto_ajax.responseText);
 					
 			}
 		}
@@ -2222,6 +2223,9 @@ function imprimirCita(cita){
 }
 function imprimirInspeccion(cita){
 	window.open("generador_pdf?p=2&cita="+cita, this.target,'width=500,height=500'); return false;	
+}
+function imprimirRA(id){
+	window.open("generador_pdf?p=3&ra_id="+id, this.target,'width=500,height=500'); return false;	
 }
 
 
