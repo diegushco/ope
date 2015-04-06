@@ -15,7 +15,7 @@
 				echo "1";		
 				
 				include("guardaBitacora.php");
-				bitacora("Inicio sesion ".$_REQUEST["user"],"Sesion",$conexion);
+				bitacora("Inicio sesion ".$_REQUEST["user"],"Buscar",$conexion);
 											
 			}
 			else{

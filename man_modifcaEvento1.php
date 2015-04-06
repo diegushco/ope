@@ -9,7 +9,7 @@
 			//echo $consulta;
 			$sql=mysql_query($consulta,$conexion);  
 			include("guardaBitacora.php");
-				bitacora("Actualiza evento de censo ".$_REQUEST['usuario'],"Actualizar",$conexion);
+				bitacora("Actualiza evento de censo ".$_REQUEST['viejo'],"Actualizar",$conexion);
 			if($sql){ //cuentaVieja CuentaNueva centroV centroN
 				echo "Se modifico correctamente";				
 			}

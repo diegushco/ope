@@ -13,10 +13,7 @@
 							</div>
 						</div>
 				</td>
-				<td><strong>Id</strong></td>
-				<td>
-					<input   class="span8" type="text" id="form-field-1" title="Ingrese Datos" />
-				</td>	
+				
 			</tr>
 		</table>					
 	</div>
@@ -62,11 +59,11 @@
 								 <table class="table table-condensed table-hover">
 									<tr>
 										<td><strong>Nombres</strong></td>
-										<td><input   type="text" id="form-field-1" title="Ingrese Datos" /></td>
+										<td><input   type="text" id="nombre" name="nombre" title="Ingrese Datos" /></td>
 										<td><strong>Apellidos</strong></td>
-										<td><input   type="text" id="form-field-1" title="Ingrese Datos" /></td>
+										<td><input   type="text" id="apellido" name="apellido" title="Ingrese Datos" /></td>
 										<td><strong>Cedula</strong></td>
-										<td><input   type="text" id="form-field-1" title="Ingrese Datos" /></td>
+										<td><input   type="text" id="cedula" name="cedula" title="Ingrese Datos" /></td>
 								 	</tr>
 
 									<tr>
