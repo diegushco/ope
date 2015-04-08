@@ -186,6 +186,13 @@ function registraRA(formu){
 		//alert(ArmaCampos(formu));	
 	}	
 }
+
+
+function sexo(obj){
+	document.getElementById("femenino").checked=false;
+	document.getElementById("masculino").checked=false;
+	obj.checked=true;
+}
 function validaActividad(algo){
 	for(i=1;i<=parseInt(document.getElementById("canActividad").value);i++){
 		document.getElementById("actividad"+i).checked=false;	
