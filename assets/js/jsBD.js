@@ -229,6 +229,7 @@ function validaGrieta(algo){
 	}
 	algo.checked=true;
 }
+
 function refugiosel(aldea){
 	//alert(aldea.options[aldea.selectedIndex].value);
 	

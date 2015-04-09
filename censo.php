@@ -1,3 +1,58 @@
+<script>
+var cont2=1;
+
+function agregaCargaFamiliar1(){
+	//alert("cooooooooooooooooooooooooooooo");
+
+miTabla = document.createElement("table");
+	tbBody = document.createElement("tbody");
+	tr = document.createElement("tr");
+	td1 = document.createElement("td");
+	td2 = document.createElement("td");
+	td3 = document.createElement("td");
+	td4 = document.createElement("td");
+	td5 = document.createElement("td");
+	td6 = document.createElement("td");	
+	td7 = document.createElement("td");		
+	td8 = document.createElement("td");
+	td9 = document.createElement("td");
+	td10 = document.createElement("td");
+	//miTabla.setAttribute("width", "300px");
+	miTabla.setAttribute("border", "0");
+
+	td1.innerHTML='<select id="nacionalidad'+cont2+'" name="nacionalidad'+cont2+'" style="width:50px" class="span12 " ><option value="V">V</option><option value="E">E</option></select>';
+	td2.innerHTML='<input id="cedula'+cont2+'" name="cedula'+cont2+'" type="text" class="input input-small" />';
+	td3.innerHTML='<select id="sexo'+cont2+'" name="sexo'+cont2+'" style="width:50px" class="span12"><option value="M">M</option><option value="F">F</option></select>';
+	td4.innerHTML='<input id="apellido'+cont2+'" name="apellido'+cont2+'" type="text" class="input input-small"  />';
+	td5.innerHTML='<input id="nombre'+cont2+'" name="nombre'+cont2+'" type="text" class="input input-small"  />';
+	td6.innerHTML='<input placeholder="1995/02/28" id="fecha'+cont2+'" name="fecha'+cont2+'" type="text" class="input input-small"  />';
+	td7.innerHTML='<select class="input-small" id="parentesco'+cont2+'" name="parentesco'+cont2+'" ><option value="AL" >Seleccione</option><option value="AL" >Hijo(a)</option><option value="AZ" >Concubino(a)</option><option value="AZ" >Padre</option><option value="AZ" >Madre</option><option value="AZ" >Hermano(a)</option><option value="AZ" >Tio(a)</option><option value="AZ" >Cuñado(a)</option><option value="AZ" >Abuelo(a)</option><option value="AK" >Nieto(a)</option><option value="AZ" >Sobrino(a)</option><option value="AZ" >Primo(a)</option></select>';
+	td8.innerHTML='<select id="nivel'+cont2+'" name="nivel'+cont2+'" class="span12" data-placeholder="Seleccione" ><option value="AL" >Seleccione</option><option value="AL" >Analfabeta</option><option value="AK" >Primaria</option><option value="AZ" >Secundaria</option><option value="AZ" >Tecnica</option><option value="AZ" >Universitaria</option></select>';
+	td9.innerHTML='<input id="nombre'+cont2+'" name="nombre'+cont2+'" type="text" class="input input-small"  />';
+	td10.innerHTML='<input id="nombre'+cont2+'" name="nombre'+cont2+'" type="text" class="input input-small"  />';
+
+	tr.appendChild(td1);
+	tr.appendChild(td2);
+	tr.appendChild(td3);
+	tr.appendChild(td4);
+	tr.appendChild(td5);
+	tr.appendChild(td6);
+	tr.appendChild(td7);
+	tr.appendChild(td8);
+	tr.appendChild(td9);
+	tr.appendChild(td10);
+
+	tbBody.appendChild(tr);
+	miTabla.appendChild(tbBody);
+	miCapa = document.getElementById('tabla-clonar1');
+	miCapa.appendChild(miTabla);
+	//document.getElementById("organismo"+cont2).setAttribute("class", "chzn-select");
+	cont2+=1;
+	document.getElementById("cantidad_familiar").value=cont2;
+	
+}
+
+</script>
 <div  class="row-fluid">
 	<div align="right" class="span12">
 		<table  class="table-condensed ">
@@ -475,26 +530,15 @@
 				<div id="carga" class="tab-pane" style="min-height:400px;">
 					
 						<table class="table table-responsive" >
-							<thead>
-								<tr>
-									<th>Nac.</th>
-									<th>Cédula</th>
-									<th>Sexo</th>
-									<th>Apellido</th>
-									<th>Nombre</th>
-									<th>Fecha Nac</th>
-									<th>Parentesco</th>
-									<th>Nivel Ins.</th>
-									<th>Ocupación</th>
-									<th>Ingreso</th>
-								</tr>
+							<thead id="tabla-clonar2">
+								
 							</thead>
-							<tbody id="tabla-clonar">
+							<tbody id="tabla-clonar1">
 								
 							</tbody>
 						</table>
 						<div align="right">
-						<a href="javascript:agregaCargaFamiliar()" class="btn btn-small btn-primary" id="aagregar" ><i class="icon-plus"></i>Agregar Fila</a>	
+						<a href="javascript:agregaCargaFamiliar1()" class="btn btn-small btn-primary" ><i class="icon-plus"></i>Agregar Fila</a>	
 						</div>	
 				</div>	
 
@@ -662,13 +706,14 @@
 <input type="hidden" name="cantidad_familiar" id="cantidad_familiar" >
 </form>
  <script type="text/javascript">
- var cont2=1;
-
-function headerTable(){
+ 
+ 
+function headerTable1(){
 						
 	miTabla = document.createElement("table");
 	tbBody = document.createElement("tbody");
 	tr = document.createElement("tr");
+	tr.setAttribute("font-weight","bold");
 	td1 = document.createElement("td");
 	td2 = document.createElement("td");
 	td3 = document.createElement("td");
@@ -681,17 +726,28 @@ function headerTable(){
 	td10 = document.createElement("td");
 	//miTabla.setAttribute("width", "300px");
 	miTabla.setAttribute("border", "0");
+	td1.setAttribute('width', '54px');
+	td2.setAttribute('width', '98px');
+	td3.setAttribute('width', '54px');
+	td4.setAttribute('width', '98px');
+	td5.setAttribute('width', '98px');
+	td6.setAttribute('width', '98px');
+	td7.setAttribute('width', '86px');
+	td8.setAttribute('width', '26px');
+	td9.setAttribute('width', '98px');
+	td10.setAttribute('width', '98px');
+	
 
-	td1.innerHTML=.innerHTML='Nac.';
+	td1.innerHTML='Nac.';
 	td2.innerHTML='Cédula';
-	td3.innerHTML=.innerHTML='Sexo';
-	td4.innerHTML=.innerHTML='Apellido';
-	td5.innerHTML=.innerHTML='Nombre';
-	td6.innerHTML=.innerHTML='Fecha Nac';
-	td7.innerHTML=.innerHTML='Parentesco';
-	td8.innerHTML=.innerHTML='Nivel Ins.';
-	td9.innerHTML=.innerHTML='Ocupación';
-	td10.innerHTML=.innerHTML='Ingreso';
+	td3.innerHTML='Sexo';
+	td4.innerHTML='Apellido';
+	td5.innerHTML='Nombre';
+	td6.innerHTML='Fecha Nac';
+	td7.innerHTML='Parentesco';
+	td8.innerHTML='Nivel Ins.';
+	td9.innerHTML='Ocupación';
+	td10.innerHTML='Ingreso';
 	
 
 	tr.appendChild(td1);
@@ -707,134 +763,16 @@ function headerTable(){
 
 	tbBody.appendChild(tr);
 	miTabla.appendChild(tbBody);
-	miCapa = document.getElementById('tabla-clonar');
+	miCapa = document.getElementById('tabla-clonar2');
 	miCapa.appendChild(miTabla);
 }
-headerTable();
-function agregaCargaFamiliar(){
-	
-	miTabla = document.createElement("table");
-	tbBody = document.createElement("tbody");
-	tr = document.createElement("tr");
-	td1 = document.createElement("td");
-	td2 = document.createElement("td");
-	td3 = document.createElement("td");
-	td4 = document.createElement("td");
-	td5 = document.createElement("td");
-	td6 = document.createElement("td");	
-	td7 = document.createElement("td");		
-	td8 = document.createElement("td");
-	td9 = document.createElement("td");
-	td10 = document.createElement("td");
-	//miTabla.setAttribute("width", "300px");
-	miTabla.setAttribute("border", "0");
 
-	td1.innerHTML='<select id="nacionalidad'+cont2+'" name="nacionalidad'+cont2+'" style="width:50px" class="span12 " ><option value="V">V</option><option value="E">E</option></select>';
-	td2.innerHTML='<input id="cedula'+cont2+'" name="cedula'+cont2+'" type="text" class="input input-small" />';
-	td3.innerHTML='<select id="sexo'+cont2+'" name="sexo'+cont2+'" style="width:50px" class="span12"><option value="M">M</option><option value="F">F</option></select>';
-	td4.innerHTML='<input id="apellido'+cont2+'" name="apellido'+cont2+'" type="text" class="input input-small"  />';
-	td5.innerHTML='<input id="nombre'+cont2+'" name="nombre'+cont2+'" type="text" class="input input-small"  />';
-	td6.innerHTML='<input placeholder="1995/02/28" id="fecha'+cont2+'" name="fecha'+cont2+'" type="text" class="input input-small"  />';
-	td7.innerHTML='<select class="input-small" id="parentesco'+cont2+'" name="parentesco'+cont2+'" ><option value="AL" >Seleccione</option><option value="AL" >Hijo(a)</option><option value="AZ" >Concubino(a)</option><option value="AZ" >Padre</option><option value="AZ" >Madre</option><option value="AZ" >Hermano(a)</option><option value="AZ" >Tio(a)</option><option value="AZ" >Cuñado(a)</option><option value="AZ" >Abuelo(a)</option><option value="AK" >Nieto(a)</option><option value="AZ" >Sobrino(a)</option><option value="AZ" >Primo(a)</option></select>';
-	td8.innerHTML='<select id="nivel'+cont2+'" name="nivel'+cont2+'" class="span12" data-placeholder="Seleccione" ><option value="AL" >Seleccione</option><option value="AL" >Analfabeta</option><option value="AK" >Primaria</option><option value="AZ" >Secundaria</option><option value="AZ" >Tecnica</option><option value="AZ" >Universitaria</option></select>';
-	td9.innerHTML='<input id="nombre'+cont2+'" name="nombre'+cont2+'" type="text" class="input input-small"  />';
-	td10.innerHTML='<input id="nombre'+cont2+'" name="nombre'+cont2+'" type="text" class="input input-small"  />';
+headerTable1();
 
-	tr.appendChild(td1);
-	tr.appendChild(td2);
-	tr.appendChild(td3);
-	tr.appendChild(td4);
-	tr.appendChild(td5);
-	tr.appendChild(td6);
-	tr.appendChild(td7);
-	tr.appendChild(td8);
-	tr.appendChild(td9);
-	tr.appendChild(td10);
-
-	tbBody.appendChild(tr);
-	miTabla.appendChild(tbBody);
-	miCapa = document.getElementById('tabla-clonar');
-	miCapa.appendChild(miTabla);
-	//document.getElementById("organismo"+cont2).setAttribute("class", "chzn-select");
-	cont2+=1;
-	document.getElementById("cantidad_familiar").value=cont2;
-}
-
-
+//headerTable();
   $('.date-picker').datepicker().next().on(ace.click_event, function(){
 		 $(this).prev().focus();
 	 });
-
-
-
-$(document).ready(function($)
-		{
-$("#agregar").click(function(){
-	addTableRow($("tabla-clonar"));
-	return false;
-});
-function addTableRow(table)
-			{
-				
-    rowCount = 0;
-    $("#table tr td:first-child").each(function() {
-        rowCount++;
-        $(this).text(rowCount);   
-    });
-		
-				// clone the last row in the table
-				var $tr = $(table).find("tbody tr:last").clone();
-				
-				
-				// get the name attribute for the input and select fields
-				$tr.find("input,select").attr("name", function()
-				{
-					// break the field name and it's number into two parts
-					var parts = this.id.match(/(\D+)(\d+)$/);
-					// create a unique name for the new field by incrementing
-					// the number for the previous field by 1
-					return parts[1] + ++parts[2];
-					
-				// repeat for id attributes
-				}).attr("id", function(){
-					var parts = this.id.match(/(\D+)(\d+)$/);
-					return parts[1] + ++parts[2];
-				});
-				// append the new row to the table
-				$(table).find("tbody tr:last").after($tr);
-				
-	
-				
-
-			};
-	});	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*$("#agregar").click(function(){
-	var tabla = $('#tabla-clonar');
-    var tr = $('tbody tr:last', tabla);
-    tr.clone().appendTo(tabla).find(':text').val('');
-    $('.date-picker').datepicker().next().on(ace.click_event, function(){
-		 $(this).prev().focus();
-	 });
-});*/
 
 
  	function lph(lph){
