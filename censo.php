@@ -61,7 +61,7 @@ miTabla = document.createElement("table");
 				<td>
 						<div class="control-group" style="z-index:1000">
 							<div class="row-fluid input-append">
-								<input class="span10 date-picker" id="id-date-picker-1" type="text" data-date-format="dd-mm-yyyy" />
+								<input class="span10 date-picker" id="fecha" name="fecha" type="text" data-date-format="dd-mm-yyyy" />
 								<span class="add-on">
 									<i class="icon-calendar"></i>
 								</span>
@@ -166,7 +166,7 @@ miTabla = document.createElement("table");
 										<td ><strong>Fecha de Nacimiento</strong></td>
 										<td >
 											<div class="controls">
-												<input title="Seleccione una fecha" class="date-picker input-small" id="id-date-picker-1" type="text" data-date-format="dd-mm-yyyy" />
+												<input title="Seleccione una fecha" class="date-picker input-small" id="fechaNac" name="fechaNac" type="text" data-date-format="yyyy-mm-dd" />
 												<span class="add-on">
 													<i class="icon-calendar"></i>
 												</span>
@@ -174,7 +174,7 @@ miTabla = document.createElement("table");
 										</td>
 										 <td ><strong>Estado Civil</strong></td>
 										 <td style="padding: 8px 0px;">
-														<select  data-placeholder="Seleccione"   class="chzn-select" id="sel2">
+														<select  data-placeholder="Seleccione" class="chzn-select" id="estadoCivil" name="estadoCivil">
 															<option value="AL" ></option>
 															<option value="AL" >Soltero</option>
 															<option value="AK" >Casado</option>
@@ -184,7 +184,7 @@ miTabla = document.createElement("table");
 													</td>
 										 <td ><strong>Situación Conyugal</strong></td>
 										 <td>
-											 <select data-placeholder="Seleccione"  class="chzn-select" data-placeholder="Seleccione" >
+											 <select data-placeholder="Seleccione" id="conyugue" name="conyugue"  class="chzn-select" data-placeholder="Seleccione" >
 												 <option value="AL" ></option>
 												 <option value="AL" >Ninguna</option>
 												 <option value="AL" >Concubino</option>												 
@@ -195,17 +195,17 @@ miTabla = document.createElement("table");
 
 									<tr>
 										<td><strong>Telefonos</strong></td>
-										<td><input   class="span12" type="text" id="form-field-1" title="Ingrese Datos" /></td>			
+										<td><input   class="span12" type="text" id="telefonos" name="telefonos" title="Ingrese Datos" /></td>			
 										<td><strong>Tiempo en el Estado</strong></td>
-										<td><input   class="span12" type="text" id="form-field-1" title="Ingrese Datos" /></td>
+										<td><input   class="span12" type="text" id="tiempoEstado" name="tiempoEstado" title="Ingrese Datos" /></td>
 										<td><strong>Tiempo en la Comunidad</strong></td>
-										<td><input   class="span12" type="text" id="form-field-1" title="Ingrese Datos" /></td>
+										<td><input   class="span12" type="text" id="tiempoComunidad" name="tiempoComunidad" title="Ingrese Datos" /></td>
 									</tr>
 
 								 	<tr>
 										<td><strong>Nivel de Instrucción</strong></td>
 										<td>
-											<select data-placeholder="Seleccione"  class="chzn-select" data-placeholder="Seleccione" >
+											<select id="instruccion" name="instruccion" data-placeholder="Seleccione"  class="chzn-select" data-placeholder="Seleccione" >
 												<option value="AL" ></option>
 												<option value="AL" >Analfabeta</option>
 												<option value="AK" >Primaria</option>
@@ -216,7 +216,7 @@ miTabla = document.createElement("table");
 										</td>
 										<td><strong>Situación Laboral</strong></td>
 										<td>
-											<select data-placeholder="Seleccione"  class="chzn-select" data-placeholder="Seleccione" >
+											<select id="trabajo" name="trabajo" data-placeholder="Seleccione"  class="chzn-select" data-placeholder="Seleccione" >
 												<option value="AL" ></option>
 												<option value="AL" >Empresa Privada</option>
 												<option value="AK" >Organismo Publico</option>
@@ -226,7 +226,7 @@ miTabla = document.createElement("table");
 											</select>
 										</td>
 										<td colspan="1"><strong>Ingreso Mensual</strong></td>
-										<td><input  type="text" id="form-field-1" title="Ingrese Datos" /></td>
+										<td><input  type="text" id="ingresoMensual" name="ingresoMensual" title="Ingrese Datos" /></td>
 									</tr>
 
 									<tr>
@@ -248,7 +248,7 @@ miTabla = document.createElement("table");
 											</div>
 										</td>	
 										<td><strong>Procedencia</strong></td>
-										<td><input   class="span12" type="text" id="form-field-1" title="Ingrese Datos" /></td>
+										<td><input   class="span12" type="text" name="procedencia" id="procedencia" title="Ingrese Datos" /></td>
 										<td><strong>Aldea</strong></td>
 										<td>
 											<select data-placeholder="Seleccione" id="aldea" name="aldea" onchange="aldeasel(this)"  class="chzn-select" >
@@ -300,7 +300,7 @@ miTabla = document.createElement("table");
 									 <tr>
 										 <td><strong>Tipo</strong></td>
 										 <td>
-											 <select data-placeholder="Seleccione" id="aldea" name="aldea" class="chzn-select" >
+											 <select data-placeholder="Seleccione" id="tipoVivienda" name="tipoVivienda" class="chzn-select" >
 																	<option value="AL" ></option>
 																	
 
@@ -341,7 +341,7 @@ miTabla = document.createElement("table");
 										 </td>
 										 <td><strong>Motivo</strong></td>
 										 <td>
-											 <select data-placeholder="Seleccione" id="aldea" name="aldea" class="chzn-select" >
+											 <select data-placeholder="Seleccione" id="motivoCenso" name="motivoCenso" class="chzn-select" >
 																	<option value="AL" ></option>
 																	
 
@@ -364,7 +364,7 @@ miTabla = document.createElement("table");
 									 <tr>
 										 <td><strong>Daños</strong></td>
 										 <td >
-											 <select data-placeholder="Seleccione" id="aldea" name="aldea" class="chzn-select" >
+											 <select data-placeholder="Seleccione" id="danho" name="danho" class="chzn-select" >
 												<option value="AL" ></option>
 												<?php
 												include("conexion.php");	
@@ -456,15 +456,15 @@ miTabla = document.createElement("table");
 											</select>
 										 </td>
 										 <td><strong>Nº de Familias</strong></td>
-										 <td><input  class="span10" type="text" id="form-field-1" title="Ingrese Datos" /></td>
+										 <td><input  class="span10" type="text" id="nroFamilias" name="nroFamilias" title="Ingrese Datos" /></td>
 										 <td><strong>Nº de Habitaciones</strong></td>
-										 <td><input  class="span10" type="text" id="form-field-1" title="Ingrese Datos" /></td>
+										 <td><input  class="span10" type="text" id="nroHabitaciones" name="nroHabitaciones" title="Ingrese Datos" /></td>
 									 </tr>
 
 									 <tr>
 										 	<td><strong>Material Techos</strong></td>
 										 	<td>
-										 		<select data-placeholder="Seleccione" id="aldea" name="aldea" class="chzn-select" >
+										 		<select data-placeholder="Seleccione" id="materialTecho" name="materialTecho" class="chzn-select" >
 																		<option value="AL" ></option>
 																		
 
@@ -486,7 +486,7 @@ miTabla = document.createElement("table");
 											</td>
 											<td><strong>Material Paredes</strong></td>
 										 	<td>
-										 		<select data-placeholder="Seleccione" id="aldea" name="aldea" class="chzn-select" >
+										 		<select data-placeholder="Seleccione" id="materialParedes" name="materialParedes" class="chzn-select" >
 																		<option value="AL" ></option>
 																		
 
@@ -506,7 +506,7 @@ miTabla = document.createElement("table");
 											</td>
 											<td><strong>Material Pisos</strong></td>
 										 	<td>
-										 		<select data-placeholder="Seleccione" id="aldea" name="aldea" class="chzn-select" >
+										 		<select data-placeholder="Seleccione" id="materialPisos" name="materialPisos" class="chzn-select" >
 												<option value="AL" ></option>
 
 												<?php
@@ -567,7 +567,7 @@ miTabla = document.createElement("table");
 														echo '<td><label class="inline"><input type="hidden" name="ensero'.$i.'" id="ensero'.$i.'" value="'.$row["Id_Enser"].'" /><input onchange="validaGrieta(this)" name="enser'.$i.'" id="enser'.$i.'" type="checkbox" /><span style="padding: 10px 10px;" class="lbl"> '.$row['Nombre'].'</span></label></td>';
 														
 													}
-													echo "<input type='hidden' name='canGrieta' id='canGrieta' value='".$i."'></table>";
+													echo "<input type='hidden' name='canGrieta' id='canEnser' value='".$i."'></table>";
 												}
 												mysql_close();
 
@@ -621,7 +621,7 @@ miTabla = document.createElement("table");
 													$y=0;
 												}
 												$i++;$y++;
-												echo '<td><label class="inline"><input type="hidden" name="propiedado'.$i.'" id="propiedado'.$i.'" value="'.$row["Id_OtraPropiedad"].'" /><input  name="propiedad'.$i.'" id="propiedad'.$i.'" type="checkbox" /><span style="padding: 10px 10px;" class="lbl"> '.$row['Nombre'].'</span></label></td>';
+												echo '<td><label class="inline"><input type="hidden" name="propiedado'.$i.'" id="propiedado'.$i.'" value="'.$row["Id_OtraPropiedad"].'" /><input  onchange="validaPropiedad(this)"   name="propiedad'.$i.'" id="propiedad'.$i.'" type="checkbox" /><span style="padding: 10px 10px;" class="lbl"> '.$row['Nombre'].'</span></label></td>';
 												
 											}
 											echo "<input type='hidden' name='canPropiedad' id='canPropiedad' value='".$i."'></table>";
@@ -647,10 +647,10 @@ miTabla = document.createElement("table");
 													$y=0;
 												}
 												$i++;$y++;
-												echo '<td><label class="inline"><input type="hidden" name="condFamiliaro'.$i.'" id="condFamiliaro'.$i.'" value="'.$row["Id_CondicionFamiliar"].'" /><input  name="condFamiliar'.$i.'" id="condFamiliar'.$i.'" type="checkbox" /><span style="padding: 10px 10px;" class="lbl"> '.$row['Nombre'].'</span></label></td>';
+												echo '<td><label class="inline"><input type="hidden" name="condFamiliaro'.$i.'" id="condFamiliaro'.$i.'" value="'.$row["Id_CondicionFamiliar"].'" /><input onchange="validaConFami(this)"   name="condFamiliar'.$i.'" id="condFamiliar'.$i.'" type="checkbox" /><span style="padding: 10px 10px;" class="lbl"> '.$row['Nombre'].'</span></label></td>';
 												
 											}
-											echo "<input type='hidden' name='can' id='can' value='".$i."'></table>";
+											echo "<input type='hidden' name='canConFami' id='canConFami' value='".$i."'></table>";
 										}
 										mysql_close();
 							?>
@@ -688,7 +688,7 @@ miTabla = document.createElement("table");
 							<td>
 								<div class="control-group" style="z-index:1000">
 									<div class="row-fluid input-append">
-										<input class="span8 date-picker" id="id-date-picker-1" type="text" data-date-format="dd-mm-yyyy" />
+										<input class="span8 date-picker" id="fechaIngreso" name="fechaIngreso" type="text" data-date-format="dd-mm-yyyy" />
 										<span class="add-on">
 											<i class="icon-calendar"></i>
 										</span>

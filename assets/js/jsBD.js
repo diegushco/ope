@@ -27,6 +27,8 @@ function entra(formu){
 	}
 }
 function guardaCenso(){
+	alert("nooooo");
+	alert(ArmaCampos(formu));
 	if(valida(formu)==false){	
 		alert(ArmaCampos(formu));
 	
@@ -219,7 +221,19 @@ function validaDanhos(algo){
 }
 function validaColapso(algo){
 	for(i=1;i<=parseInt(document.getElementById("canColapso").value);i++){
-		document.getElementById("colapso"+i).checked=false;	
+		document.getElementById("colapso"+i).checked=false;	 
+	}
+	algo.checked=true;
+}
+function validaPropiedad(algo){
+	for(i=1;i<=parseInt(document.getElementById("canPropiedad").value);i++){
+		document.getElementById("propiedad"+i).checked=false;	
+	}
+	algo.checked=true;
+}
+function validaConFami(algo){
+	for(i=1;i<=parseInt(document.getElementById("canConFami").value);i++){
+		document.getElementById("condFamiliar"+i).checked=false;	
 	}
 	algo.checked=true;
 }
