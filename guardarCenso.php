@@ -23,6 +23,22 @@
 				}
 
 
+				if($_REQUEST["masculino"]=="true"){
+					$sexo="M";
+				}else if($_REQUEST["femenino"]=="true"){
+					$sexo="F";
+				}
+				if($_REQUEST["venezolano1"]=="true"){
+					$nacionalidad="V";
+				}else if($_REQUEST["extranjero1"]=="true"){
+					$nacionalidad="E";
+				}
+
+				$consulta="INSERT INTO cs_afectado (Cedula,Nombre,Apellido,Sexo,Nacionalidad,Fecha_Nacimiento	Estado_Civil,Situacion_Conyugal	Telefono,Residencia_Estado,Residencia_Comunidad	Nivel_instruccion,Situacion_Laboral,LPH	uso_LPH	Id_OtraPropiedad
+) VALUES (cedula,nombre,apellido,'".$sexo."','".$nacionalidad."')";
+
+
+				cs_afectado
 				$consulta="INSERT INTO ra_actividad 
 				(Id_Unidad,Direccion,Hora_LLamada,Hora_Activacion,Hora_Sitio,Hora_Fin,Fecha,
 				Numero_Folio,Situacion,Observacion,Recomendacion,Id_Tipo,Id_Condicion,Id_Aldea)
