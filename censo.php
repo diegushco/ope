@@ -24,12 +24,12 @@ miTabla = document.createElement("table");
 	td2.innerHTML='<input id="cedula'+cont2+'" name="cedula'+cont2+'" type="text" class="input input-small" />';
 	td3.innerHTML='<select id="sexo'+cont2+'" name="sexo'+cont2+'" style="width:50px" class="span12"><option value="M">M</option><option value="F">F</option></select>';
 	td4.innerHTML='<input id="apellido'+cont2+'" name="apellido'+cont2+'" type="text" class="input input-small"  />';
-	td5.innerHTML='<input id="nombre'+cont2+'" name="nombre'+cont2+'" type="text" class="input input-small"  />';
+	td5.innerHTML='<input id="nombre'+cont2+'" name="nombre'+cont2+'" type="text" class="input input-small date-picker"  />';
 	td6.innerHTML='<input placeholder="1995/02/28" id="fecha'+cont2+'" name="fecha'+cont2+'" type="text" class="input input-small"  />';
 	td7.innerHTML='<select class="input-small" id="parentesco'+cont2+'" name="parentesco'+cont2+'" ><option value="AL" >Seleccione</option><option value="AL" >Hijo(a)</option><option value="AZ" >Concubino(a)</option><option value="AZ" >Padre</option><option value="AZ" >Madre</option><option value="AZ" >Hermano(a)</option><option value="AZ" >Tio(a)</option><option value="AZ" >Cuñado(a)</option><option value="AZ" >Abuelo(a)</option><option value="AK" >Nieto(a)</option><option value="AZ" >Sobrino(a)</option><option value="AZ" >Primo(a)</option></select>';
 	td8.innerHTML='<select id="nivel'+cont2+'" name="nivel'+cont2+'" class="span12" data-placeholder="Seleccione" ><option value="AL" >Seleccione</option><option value="AL" >Analfabeta</option><option value="AK" >Primaria</option><option value="AZ" >Secundaria</option><option value="AZ" >Tecnica</option><option value="AZ" >Universitaria</option></select>';
-	td9.innerHTML='<input id="nombre'+cont2+'" name="nombre'+cont2+'" type="text" class="input input-small"  />';
-	td10.innerHTML='<input id="nombre'+cont2+'" name="nombre'+cont2+'" type="text" class="input input-small"  />';
+	td9.innerHTML='<input id="ocupacion'+cont2+'" name="ocupacion'+cont2+'" type="text" class="input input-small"  />';
+	td10.innerHTML='<input id="ingreso'+cont2+'" name="ingreso'+cont2+'" type="text" class="input input-small"  />';
 
 	tr.appendChild(td1);
 	tr.appendChild(td2);
@@ -438,7 +438,7 @@ miTabla = document.createElement("table");
 									 <tr>
 										 <td><strong>Condición</strong></td>
 										 <td>
-											 <select data-placeholder="Seleccione" id="aldea" name="aldea" class="chzn-select" >
+											 <select data-placeholder="Seleccione" id="cs_condicion" name="cs_condicion" class="chzn-select" >
 																	<option value="AL" ></option>
 																	
 
@@ -817,7 +817,7 @@ headerTable1();
  </script>
  <?php
 /*
-
+ejemplo
 hora=1429093358349
 &nombre=asd
 &apellido=sdf

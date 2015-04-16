@@ -27,24 +27,24 @@ function entra(formu){
 	}
 }
 function guardaCenso(){
-	alert("nooooo");
-	alert(ArmaCampos(formu));
+	//alert("nooooo");
+	//alert(ArmaCampos(formu));
 	if(valida(formu)==false){	
-		alert(ArmaCampos(formu));
+		//alert(ArmaCampos(formu));
 	
-		/*objeto_ajax=objetoAjax(); 
-		objeto_ajax.open("POST", "guardarRegistroInspeccion.php",true);
+		objeto_ajax=objetoAjax(); 
+		objeto_ajax.open("POST", "guardarCenso.php",true);
 		objeto_ajax.onreadystatechange=function() {	
 			if (objeto_ajax.readyState==4) {
 					//document.getElementById("capa").innerHTML=objeto_ajax.responseText;
 					alert(objeto_ajax.responseText);
-					limpia(formu);
+					//limpia(formu);
 					
 					
 			}
 		}
 		objeto_ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-		objeto_ajax.send(ArmaCampos(formu));*/
+		objeto_ajax.send(ArmaCampos(formu));
 		//alert(ArmaCampos(formu));	
 	}
 }
