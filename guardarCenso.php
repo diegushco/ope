@@ -44,10 +44,21 @@
 				}
 
 				$consulta="INSERT INTO cs_afectado (Cedula,Nombre,Apellido,Sexo,Nacionalidad,Fecha_Nacimiento,Estado_Civil,Situacion_Conyugal,Telefono,Residencia_Estado,Residencia_Comunidad,Nivel_instruccion,Situacion_Laboral,LPH,uso_LPH,Id_OtraPropiedad
-) VALUES (cedula,nombre,apellido,'".$sexo."','".$nacionalidad."',fechaNac,estadoCivil,conyugue,telefonos,tiempoEstado,tiempoComunidad,instruccion,trabajo,'".$lph."',procedencia,'".$propiedadGuardar."')";
+) VALUES ('".$_REQUEST["cedula"]."','".$_REQUEST["nombre"]."','".$_REQUEST["apellido"]."','".$sexo."','".$nacionalidad."','".$_REQUEST["fechaNac"]."','".$_REQUEST["estadoCivil"]."','".$_REQUEST["conyugue"]."','".$_REQUEST["telefonos"]."','".$_REQUEST["tiempoEstado"]."','".$_REQUEST["tiempoComunidad"]."','".$_REQUEST["instruccion"]."','".$_REQUEST["trabajo"]."','".$lph."','".$_REQUEST["procedencia"]."','".$propiedadGuardar."')";
+				$sql=mysql_query ($consulta,$conexion);
 
 
-				cs_afectado
+
+				$sql=mysql_query("SELECT Id_Afectado FROM cs_afectado where Cedula='".$_REQUEST["cedula"]."' and Apellido='".$_REQUEST["apellido"]."' and Residencia_Comunidad='".$_REQUEST["tiempoComunidad"]."' ",$conexion);  
+				if($row=mysql_fetch_array($sql)){
+					$id_afectado=$row["Id_Afectado"];					
+				}
+
+				$consulta="INSERT INTO cs_censo (Id_Censo,Fecha_Censo,Observacion,Id_Aldea,Id_Motivo,Id_Entrevistado,Id_Afectado,Id_CondicionFamiliar,Id_Funcionario,Id_Vivienda,Id_Evento) VALUES ('".$_REQUEST["cedula"]."','".$_REQUEST["nombre"]."','".$_REQUEST["apellido"]."','".$sexo."','".$nacionalidad."','".$_REQUEST["fechaNac"]."','".$_REQUEST["estadoCivil"]."','".$_REQUEST["conyugue"]."','".$_REQUEST["telefonos"]."','".$_REQUEST["tiempoEstado"]."','".$_REQUEST["tiempoComunidad"]."','".$_REQUEST["instruccion"]."','".$_REQUEST["trabajo"]."','".$lph."','".$_REQUEST["procedencia"]."','".$propiedadGuardar."')";
+				$sql=mysql_query ($consulta,$conexion);
+
+
+				cs_censo
 				$consulta="INSERT INTO ra_actividad 
 				(Id_Unidad,Direccion,Hora_LLamada,Hora_Activacion,Hora_Sitio,Hora_Fin,Fecha,
 				Numero_Folio,Situacion,Observacion,Recomendacion,Id_Tipo,Id_Condicion,Id_Aldea)
