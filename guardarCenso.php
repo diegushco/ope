@@ -16,9 +16,12 @@
 						$accionGuardar=$_REQUEST["acciono".$i]; //falta
 					}
 				}
-				for($i=1;$i<=(int)$_REQUEST["canDanhos"];$i++ ){
-					if($_REQUEST["danos".$i]=="true"){
-						$danhosGuardar=$_REQUEST["danoso".$i]; //falta
+				
+
+
+				for($i=1;$i<=(int)$_REQUEST["canPropiedad"];$i++ ){
+					if($_REQUEST["propiedad".$i]=="true"){
+						$propiedadGuardar=$_REQUEST["propiedado".$i]; //falta
 					}
 				}
 
@@ -34,8 +37,14 @@
 					$nacionalidad="E";
 				}
 
-				$consulta="INSERT INTO cs_afectado (Cedula,Nombre,Apellido,Sexo,Nacionalidad,Fecha_Nacimiento	Estado_Civil,Situacion_Conyugal	Telefono,Residencia_Estado,Residencia_Comunidad	Nivel_instruccion,Situacion_Laboral,LPH	uso_LPH	Id_OtraPropiedad
-) VALUES (cedula,nombre,apellido,'".$sexo."','".$nacionalidad."')";
+				if($_REQUEST["lphsi"]=="true"){
+					$lph="true";
+				}else if($_REQUEST["lphno"]=="true"){
+					$lph="false";
+				}
+
+				$consulta="INSERT INTO cs_afectado (Cedula,Nombre,Apellido,Sexo,Nacionalidad,Fecha_Nacimiento,Estado_Civil,Situacion_Conyugal,Telefono,Residencia_Estado,Residencia_Comunidad,Nivel_instruccion,Situacion_Laboral,LPH,uso_LPH,Id_OtraPropiedad
+) VALUES (cedula,nombre,apellido,'".$sexo."','".$nacionalidad."',fechaNac,estadoCivil,conyugue,telefonos,tiempoEstado,tiempoComunidad,instruccion,trabajo,'".$lph."',procedencia,'".$propiedadGuardar."')";
 
 
 				cs_afectado
