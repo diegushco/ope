@@ -37,7 +37,13 @@
 					if(isset($_REQUEST["image"])){
 						if($_REQUEST["image"]=="true"){
 							require_once("imagenes_ra.php");	
-						}	
+						}if($_REQUEST["imagec"]=="true"){
+							require_once("imagenes_censo.php");	
+						}
+					}else if(isset($_REQUEST["imagec"])){
+						if($_REQUEST["imagec"]=="true"){
+							require_once("imagenes_censo.php");	
+						}
 					}else{
 						require_once("inicio.php");
 					}

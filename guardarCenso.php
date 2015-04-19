@@ -1,27 +1,26 @@
 <?php    
 				include("conexion.php"); //hago la conexion a la bd	
 				
-				for($i=1;$i<=(int)$_REQUEST["canActividad"];$i++ ){
-					if($_REQUEST["actividad".$i]=="true"){
-						$actividadGuardar=$_REQUEST["actividado".$i];
-					}
-				}
-				for($i=1;$i<=(int)$_REQUEST["canCondicion"];$i++ ){
-					if($_REQUEST["condicion".$i]=="true"){
-						$condicionGuardar=$_REQUEST["codiciono".$i];
-					}
-				}
-				for($i=1;$i<=(int)$_REQUEST["canAccion"];$i++ ){
-					if($_REQUEST["accion".$i]=="true"){
-						$accionGuardar=$_REQUEST["acciono".$i]; //falta
-					}
-				}
 				
-
-
 				for($i=1;$i<=(int)$_REQUEST["canPropiedad"];$i++ ){
 					if($_REQUEST["propiedad".$i]=="true"){
-						$propiedadGuardar=$_REQUEST["propiedado".$i]; //falta
+						$propiedadGuardar=$_REQUEST["propiedado".$i]; 
+					}
+				}
+				for($i=1;$i<=(int)$_REQUEST["canConFami"];$i++ ){
+					if($_REQUEST["condFamiliar".$i]=="true"){
+						$condFamiliar=$_REQUEST["condFamiliaro".$i]; 
+					}
+				}
+				for($i=1;$i<=(int)$_REQUEST["canColapso"];$i++ ){
+					if($_REQUEST["colapso".$i]=="true"){
+						$colapso_parte=$_REQUEST["colapsoo".$i]; 
+					}
+				}
+
+				for($i=1;$i<=(int)$_REQUEST["canGrieta"];$i++ ){
+					if($_REQUEST["grieta".$i]=="true"){
+						$grieta=$_REQUEST["grietao".$i]; 
 					}
 				}
 
@@ -44,78 +43,65 @@
 				}
 
 				$consulta="INSERT INTO cs_afectado (Cedula,Nombre,Apellido,Sexo,Nacionalidad,Fecha_Nacimiento,Estado_Civil,Situacion_Conyugal,Telefono,Residencia_Estado,Residencia_Comunidad,Nivel_instruccion,Situacion_Laboral,LPH,uso_LPH,Id_OtraPropiedad
-) VALUES ('".$_REQUEST["cedula"]."','".$_REQUEST["nombre"]."','".$_REQUEST["apellido"]."','".$sexo."','".$nacionalidad."','".$_REQUEST["fechaNac"]."','".$_REQUEST["estadoCivil"]."','".$_REQUEST["conyugue"]."','".$_REQUEST["telefonos"]."','".$_REQUEST["tiempoEstado"]."','".$_REQUEST["tiempoComunidad"]."','".$_REQUEST["instruccion"]."','".$_REQUEST["trabajo"]."','".$lph."','".$_REQUEST["procedencia"]."','".$propiedadGuardar."')";
+) VALUES ('".$nacionalidad."-".$_REQUEST["cedula"]."','".$_REQUEST["nombre"]."','".$_REQUEST["apellido"]."','".$sexo."','".$nacionalidad."','".$_REQUEST["fechaNac"]."','".$_REQUEST["estadoCivil"]."','".$_REQUEST["conyugue"]."','".$_REQUEST["telefonos"]."','".$_REQUEST["tiempoEstado"]."','".$_REQUEST["tiempoComunidad"]."','".$_REQUEST["instruccion"]."','".$_REQUEST["trabajo"]."','".$lph."','".$_REQUEST["procedencia"]."','".$propiedadGuardar."')";
 				$sql=mysql_query ($consulta,$conexion);
 
 
 
-				$sql=mysql_query("SELECT Id_Afectado FROM cs_afectado where Cedula='".$_REQUEST["cedula"]."' and Apellido='".$_REQUEST["apellido"]."' and Residencia_Comunidad='".$_REQUEST["tiempoComunidad"]."' ",$conexion);  
+				$sql=mysql_query("SELECT Id_Afectado FROM cs_afectado where Cedula='".$nacionalidad."-".$_REQUEST["cedula"]."' and Apellido='".$_REQUEST["apellido"]."' and Residencia_Comunidad='".$_REQUEST["tiempoComunidad"]."' ",$conexion);  
 				if($row=mysql_fetch_array($sql)){
 					$id_afectado=$row["Id_Afectado"];					
 				}
 
-				$consulta="INSERT INTO cs_censo (Id_Censo,Fecha_Censo,Observacion,Id_Aldea,Id_Motivo,Id_Entrevistado,Id_Afectado,Id_CondicionFamiliar,Id_Funcionario,Id_Vivienda,Id_Evento) VALUES ('".$_REQUEST["cedula"]."','".$_REQUEST["nombre"]."','".$_REQUEST["apellido"]."','".$sexo."','".$nacionalidad."','".$_REQUEST["fechaNac"]."','".$_REQUEST["estadoCivil"]."','".$_REQUEST["conyugue"]."','".$_REQUEST["telefonos"]."','".$_REQUEST["tiempoEstado"]."','".$_REQUEST["tiempoComunidad"]."','".$_REQUEST["instruccion"]."','".$_REQUEST["trabajo"]."','".$lph."','".$_REQUEST["procedencia"]."','".$propiedadGuardar."')";
+				
+				$consulta="INSERT INTO cs_vivienda (Numero_Familias,Numero_Habitaciones,Id_Condicion,Id_MaterialElaboracion,Id_Tenencia,Id_Tipo,Id_Parte,Id_Danho,Id_Parte_Grieta,Id_MaterialParedes,Id_MaterialPisos)
+				VALUES ('".$_REQUEST["nroFamilias"]."','".$_REQUEST["nroHabitaciones"]."',(select Id_Condicion from cs_condicion where Nombre='".$_REQUEST["cs_condicion"]."'),(select Id_MaterialElaboracion from cs_material_elaboracion where Nombre='".$_REQUEST["materialTecho"]."'),(select Id_Tenencia from cs_tenencia where Nombre='".$_REQUEST["tenencia"]."'),(select Id_Tipo from cs_tipo where Nombre='".$_REQUEST["tipoVivienda"]."'),'".$colapso_parte."',(select Id_Danho from cs_danho where Nombre='".$_REQUEST["danho"]."'),'".$grieta."',(select Id_MaterialElaboracion from cs_material_elaboracion where Nombre='".$_REQUEST["materialParedes"]."'),(select Id_MaterialElaboracion from cs_material_elaboracion where Nombre='".$_REQUEST["materialPisos"]."'))";
+				$sql=mysql_query ($consulta,$conexion);
+				
+				$sql=mysql_query("SELECT Id_Vivienda FROM cs_vivienda where Numero_Familias='".$_REQUEST["nroFamilias"]."' and Numero_Habitaciones='".$_REQUEST["nroHabitaciones"]."' and Id_Parte='".$colapso_parte."' order by Id_Vivienda desc ",$conexion);  
+				if($row=mysql_fetch_array($sql)){
+					$id_vivienda=$row["Id_Vivienda"];					
+				}
+				for($i=1;$i<=(int)$_REQUEST["canEnser"];$i++ ){
+					if($_REQUEST["enser".$i]=="true"){
+						$cons="INSERT INTO cd_vivienda_enser (Id_Enser, Id_Vivienda)
+						VALUES('".$_REQUEST["ensero".$i]."','".$id_vivienda."')";
+						$sql=mysql_query($cons,$conexion);
+					}
+				}
+
+				$consulta="INSERT INTO cs_censo (Fecha_Censo,Observacion,Id_Aldea,Id_Motivo,Id_Afectado,Id_CondicionFamiliar,Id_Funcionario,Id_Vivienda,Id_Evento) 
+				VALUES ('".$_REQUEST["fechaC"]."','".$_REQUEST["observacion"]."',(select Id_Aldea from aldea where Nombre='".$_REQUEST["aldea"]."'),(select Id_Motivo from cs_motivo where Nombre='".$_REQUEST["motivoCenso"]."'),'".$id_afectado."','".$condFamiliar."',(select Id_Funcionario from funcionario where Nombre='".$_REQUEST["funcionario"]."'),'".$id_vivienda."',(select Id_Evento from cs_evento where Nombre='".$_REQUEST["evento"]."'))";
 				$sql=mysql_query ($consulta,$conexion);
 
 
-				cs_censo
-				$consulta="INSERT INTO ra_actividad 
-				(Id_Unidad,Direccion,Hora_LLamada,Hora_Activacion,Hora_Sitio,Hora_Fin,Fecha,
-				Numero_Folio,Situacion,Observacion,Recomendacion,Id_Tipo,Id_Condicion,Id_Aldea)
-				VALUES ('".$_REQUEST["unidad"]."','".$_REQUEST["direccion"]."','".$_REQUEST["hora_llamada"]."'
-				,'".$_REQUEST["hora_activacion"]."','".$_REQUEST["hora_sitio"]."','".$_REQUEST["hora_culminacion"]."'
-				,'".$_REQUEST["fecha"]."','".$_REQUEST["folio"]."','".$_REQUEST["situacion"]."'				
-				,'".$_REQUEST["observacion"]."','".$_REQUEST["recomendacion"]."','".$actividadGuardar."'								
-				,'".$condicionGuardar."',(select Id_Aldea from aldea where Nombre='".$_REQUEST["aldea"]."')
-					)";
-				$sql=mysql_query ($consulta,$conexion);		
-				
-				$sql=mysql_query("SELECT Id_Actividad FROM ra_actividad where Direccion='".$_REQUEST["direccion"]."' and Numero_Folio='".$_REQUEST["folio"]."' and Hora_Sitio='".$_REQUEST["hora_sitio"]."' ",$conexion);  
-				if($row=mysql_fetch_array($sql)){
-					$id_actividad=$row["Id_Actividad"];
-					//echo "\n \n El ultimo Id_Actividad que se guardo es: ".$id_actividad;
+				for($i=1;$i<=(int)$_REQUEST["cannecesidad"];$i++ ){
+					if($_REQUEST["necesidad".$i]=="true"){
+						$cons="INSERT INTO cs_necesidad_afectado (Id_Necesidad, Id_Afectado)
+						VALUES('".$_REQUEST["necesidado".$i]."','".$id_afectado."')";
+						$sql=mysql_query($cons,$conexion);
+					}
 				}
+
+				$consulta="INSERT INTO cs_refugio_afectado (Id_Afectado,Id_Refugio,Fecha_Ingreso) 
+				VALUES ('".$id_afectado."',(select Id_Refugio from cs_refugio where Nombre='".$_REQUEST["refugio"]."'),'".$_REQUEST["fechaIngreso"]."')";
+				$sql=mysql_query($cons,$conexion);
+
+				for($i=1;$i<(int)$_REQUEST["cantidad_familiar"];$i++ ){
+					
+						$cons="INSERT INTO cs_familiar (Cedula,Nombre,Apellido,Fecha_Nacimiento,Parentesco,Nivel_Instruccion,Ocupacion,Ingreso_Mensual,Id_Afectado)
+						VALUES('".$_REQUEST["nacionalidad".$i]."'-'".$_REQUEST["cedula".$i]."','".$_REQUEST["nombre".$i]."','".$_REQUEST["apellido".$i]."','".$_REQUEST["fecha".$i]."','".$_REQUEST["parentesco".$i]."','".$_REQUEST["nivel".$i]."','".$_REQUEST["ocupacion".$i]."','".$_REQUEST["ingreso".$i]."','".$id_afectado."')";
+						$sql=mysql_query($cons,$conexion);
+					
+				}
+
 				include("guardaBitacora.php");
-				bitacora("Guardo actividad ".$id_actividad,"Guardar",$conexion);
+				bitacora("Guardo censo ".$id_afectado,"Guardar",$conexion);
 
-				for($i=1;$i<(int)$_REQUEST["cantidad_comision"];$i++ ){
-					//hace los insert dentro de este for
-					//guardo en funcionario_actividad..pero eso va con funcionario y eso complica la cosa =/
-					$consu="INSERT INTO funcionario_actividad (Id_Funcionario, Id_Actividad, Fecha, Id_Puesto) VALUES ('".$_REQUEST["hfuncionario".$i]."','".$id_actividad."',NOW(),(select Id_Puesto from ra_puesto where Nombre='".$_REQUEST["puesto".$i]."'))";
-					//echo $consu;
-					$sql=mysql_query ($consu,$conexion);
-					//echo "\n \n Hacer inserts de comisiones para: ".$_REQUEST["puesto".$i]."-".$_REQUEST["hfuncionario".$i];
-				}
-				for($i=1;$i<(int)$_REQUEST["cantidad_organismos"];$i++ ){
-					//hace los insert dentro de este for
-					//guardo en tabla ra_organismo_actividad
-					$consu="INSERT INTO ra_organismo_actividad (Id_OtrosOrganismo, Id_Actividad, Unidad, Jefe_Comision) VALUES ((select Id_OtrosOrganismo from ra_otros_organismo where Nombre='".$_REQUEST["organismo".$i]."'),'".$id_actividad."','".$_REQUEST["unidad".$i]."','".$_REQUEST["jefe".$i]."')";
-					//echo $consu;
-					$sql=mysql_query ($consu,$conexion);
-					//echo "\n \n Hacer inserts de organismos en sitio para: ".$_REQUEST["organismo".$i]."-".$_REQUEST["unidad".$i]."-".$_REQUEST["jefe".$i];
-				}
-
-				for($i=1;$i<=(int)$_REQUEST["canAccion"];$i++ ){
-					if($_REQUEST["accion".$i]=="true"){
-						$id_accion=$_REQUEST["acciono".$i];
-					}
-					
-				}
-				$consu="INSERT INTO ra_accion_actividad (Id_Actividad, Id_AccionTomada) VALUES ('".$id_actividad."','".$id_accion."')";
-				$sql=mysql_query ($consu,$conexion);
-
-
-				for($i=1;$i<=(int)$_REQUEST["canDanhos"];$i++ ){
-					if($_REQUEST["danos".$i]=="true"){
-						$IdDano=$_REQUEST["danoso".$i];
-					}
-					
-				}
-				$consu="INSERT INTO ra_actividad_danho (Id_Actividad, Id_Danho) VALUES ('".$id_actividad."','".$IdDano."')";
-				$sql=mysql_query ($consu,$conexion);
-
+				
+				
 				if($sql){
-						echo $id_actividad;
+						echo "Se guardo correctamente";
 				}else{
 						echo "Ha ocurrido un error inesperado, intente de nuevo.";
 				}

@@ -173,9 +173,10 @@
 						</a>
 					</li>
 					
-					<li id="modificar_censo">
-						<a href="javascript:menu('modificar_censo');">
-							Modificar Censo
+					<li id="registrar-ra">
+						<a href="javascript:menu('imagenes_censo');">
+							<i class="icon-double-angle-right"></i>
+							Imagenes Censo
 						</a>
 					</li>
 					

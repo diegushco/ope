@@ -1,9 +1,9 @@
 <?php
 $valid_formats = array("jpg", "png", "gif", "zip", "bmp");
 $max_file_size = 1024*10000; //10 mb
-$path = "assets/img/imagenes_opg/RA_".time()."_"; // Upload directory
+$path = "assets/img/imagenes_opg/CENSO_".time()."_"; // Upload directory
 $count = 0;
-include("conexion.php");	
+include("conexion.php");
 if(isset($_FILES['file_image']['tmp_name'])){
 	
 	if(isset($_POST) and $_SERVER['REQUEST_METHOD'] == "POST"){
@@ -34,9 +34,9 @@ if(isset($_FILES['file_image']['tmp_name'])){
 		            $count++; // Number of successfully uploaded file
 		        	echo "<script>alert('Se guardo correctamente');</script>";
 
-		        	
+		        		
 	
-						$consulta="INSERT INTO foto (Nombre,Url,Id_Actividad) VALUES ('".$path.$name."','".$path.$name."','".$_REQUEST["oculto"]."')";
+						$consulta="INSERT INTO foto (Nombre,Url,Id_Censo) VALUES ('".$path.$name."','".$path.$name."','".$_REQUEST["oculto"]."')";
 						$sql=mysql_query ($consulta,$conexion);						
 						
 						//echo $consulta;
@@ -49,10 +49,10 @@ if(isset($_FILES['file_image']['tmp_name'])){
 		}
 	}
 }
-	include("guardaBitacora.php");
-				bitacora("Guardo foto de actividad","Guardar",$conexion);
-					mysql_close();	
+include("guardaBitacora.php");
+					bitacora("Guardo foto de censo","Guardar",$conexion);
+					mysql_close();		
 	
-header("Location: page.php?image=true");
+header("Location: page.php?imagec=true");
 include_once("page.php");
 ?>

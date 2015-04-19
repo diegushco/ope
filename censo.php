@@ -53,6 +53,7 @@ miTabla = document.createElement("table");
 }
 
 </script>
+<form action="#" name="formulario" id="formu" method="post">  
 <div  class="row-fluid">
 	<div align="right" class="span12">
 		<table  class="table-condensed ">
@@ -61,7 +62,7 @@ miTabla = document.createElement("table");
 				<td>
 						<div class="control-group" style="z-index:1000">
 							<div class="row-fluid input-append">
-								<input class="span10 date-picker" id="fecha" name="fecha" type="text" data-date-format="dd-mm-yyyy" />
+								<input class="span10 date-picker" id="fechaC" name="fechaC" type="text" data-date-format="yyyy/mm/dd" />
 								<span class="add-on">
 									<i class="icon-calendar"></i>
 								</span>
@@ -73,7 +74,7 @@ miTabla = document.createElement("table");
 		</table>					
 	</div>
 </div>
-<form action="#" name="formulario" id="formu" method="post">  
+
 <div class="row-fluid">
 	<div class="span12 widget-container-span">
 		<div class="widget-box transparent">
@@ -524,6 +525,37 @@ miTabla = document.createElement("table");
 												</select>
 											</td>	
 									 </tr>
+
+									<tr>
+										 	<td><strong>Evento</strong></td>
+										 	<td>
+										 		<select data-placeholder="Seleccione" id="evento" name="evento" class="chzn-select" >
+																		<option value="AL" ></option>
+																		
+
+																		<?php
+																		include("conexion.php");	
+																		$sql=mysql_query("SELECT * FROM cs_evento order by Nombre asc",$conexion);  
+																		if($row=mysql_fetch_array($sql)){
+																			$sql=mysql_query("SELECT * FROM cs_evento order by Nombre asc",$conexion);  
+																			while($row=mysql_fetch_array($sql)){
+																				echo '<option value="'.$row['Id_Evento'].'" >'.$row['Nombre'].'</option>';
+																			}
+																		}
+																		mysql_close();
+																		?>
+
+
+
+																	</select>
+											</td>
+											
+										 	
+											
+										 		
+									 </tr>
+
+
 	 				</table>
 				</div>
 
@@ -679,22 +711,58 @@ miTabla = document.createElement("table");
 						
 							<td><strong>Dirección del Albergue</strong></td>
 							<td colspan="12">
-								<textarea style="height:100px;" disabled="" onfocus="blanco(this)" title="Ingrese una direccion" id="direccion_refugio" name="direccion_refugio" class="span12"   ></textarea>
+								<textarea style="height:50px;" disabled="" onfocus="blanco(this)" title="Ingrese una direccion" id="direccion_refugio" name="direccion_refugio" class="span12"   ></textarea>
 							</td>	
 						
 						</tr>
+						
 						<tr>
-							<td><strong>Fecha de Ingreso</strong></td>
-							<td>
-								<div class="control-group" style="z-index:1000">
-									<div class="row-fluid input-append">
-										<input class="span8 date-picker" id="fechaIngreso" name="fechaIngreso" type="text" data-date-format="dd-mm-yyyy" />
-										<span class="add-on">
-											<i class="icon-calendar"></i>
-										</span>
-									</div>
-								</div>
-							</td>		
+						<td ><strong>Fecha de Ingreso</strong></td>
+										<td >
+											<div class="controls">
+												<input title="Seleccione una fecha" class="date-picker input-small" id="fechaIngreso" name="fechaIngreso" type="text" data-date-format="yyyy/mm/dd" />
+												<span class="add-on">
+													<i class="icon-calendar"></i>
+												</span>
+											</div>
+										</td>
+						</tr>
+						
+<tr>
+				
+
+					<td  ><strong>Funcionario Receptor</strong></td>
+						<td  >
+							<select data-placeholder="Seleccione" id="funcionario" name="funcionario"  class="chzn-select" >
+								<option value="AL" ></option>
+							<?php
+								include("conexion.php");	
+								$sql=mysql_query("SELECT * FROM funcionario order by Nombre asc",$conexion);  
+								if($row=mysql_fetch_array($sql)){
+									$sql=mysql_query("SELECT * FROM funcionario order by Nombre asc",$conexion);  
+									while($row=mysql_fetch_array($sql)){
+										echo '<option value="AL" >'.$row['Nombre'].'</option>';
+									}
+								}
+								mysql_close();
+								?>
+
+							</select>
+						</td>
+			</tr>
+
+
+
+
+
+
+						<tr>
+						
+							<td><strong>Observacion</strong></td>
+							<td colspan="12">
+								<textarea style="height:50px;" onfocus="blanco(this)" title="Ingrese observacion sobre el censo" id="observacion" name="observacion" class="span12"   ></textarea>
+							</td>	
+						
 						</tr>	
 				 </table>
 				</div>

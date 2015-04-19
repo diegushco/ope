@@ -1,6 +1,25 @@
 function prueba(){
 	alert("hola");
 }
+
+
+function buscaCedula(){
+
+	cedula=document.getElementById("cedula").value;
+	var hora= new Date().getTime();
+			objeto_ajax=objetoAjax(); 
+			objeto_ajax.open("GET", "buscaCedula.php?hora="+hora+"&cedula="+cedula,true);
+			objeto_ajax.onreadystatechange=function() {	
+				if (objeto_ajax.readyState==4) {
+					document.getElementById("info").innerHTML=objeto_ajax.responseText;
+					
+
+						//alert(objeto_ajax.responseText);					
+				}
+			}
+			objeto_ajax.send(null);
+}
+
 function salir(){
 	
 	document.location.href="index.php";
