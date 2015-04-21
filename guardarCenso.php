@@ -85,7 +85,7 @@
 
 				$consulta="INSERT INTO cs_refugio_afectado (Id_Afectado,Id_Refugio,Fecha_Ingreso) 
 				VALUES ('".$id_afectado."',(select Id_Refugio from cs_refugio where Nombre='".$_REQUEST["refugio"]."'),'".$_REQUEST["fechaIngreso"]."')";
-				$sql=mysql_query($cons,$conexion);
+				$sql=mysql_query($consulta,$conexion);
 
 				for($i=1;$i<(int)$_REQUEST["cantidad_familiar"];$i++ ){
 					

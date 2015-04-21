@@ -1,0 +1,21 @@
+select csa.Cedula as cedula ,csa.Nombre as nombre ,csa.Apellido as apellido, csa.Sexo as sexo, csa.Nacionalidad as nacionalidad, csa.Fecha_Nacimiento as fechanac, csa.Estado_Civil as estadoCivil, csa.Situacion_Conyugal as conyugue, csa.Telefono as telefono, csa.Residencia_Estado as tiempoEstado, csa.Residencia_Comunidad as tiempoComunidad, csa.Nivel_instruccion as nivelInstruccion, csa.Situacion_Laboral as trabajo, csa.LPH as lph, csa.uso_LPH as usoLPH, cr.Nombre as nombre_refugio, cra.Fecha_Ingreso as fecha_ingreso_refugio, cop.Nombre as otra_propiedad
+from cs_afectado csa, cs_otra_propiedad cop, cs_refugio_afectado cra, cs_refugio cr
+where
+cra.Id_Refugio=cr.Id_Refugio and
+cra.Id_Afectado=csa.Id_Afectado and
+csa.Id_OtraPropiedad=cop.Id_OtraPropiedad
+
+buscar a parte en cs_necesidad_afectado, cs_familiar
+
+select cc.Fecha_Censo as FechaCenso, cc.Observacion as observacionCenso, cm.Nombre as motivo, ce.Nombre as evento, fu.Nombre as nombreFuncionario, fu.Apellido as apellidoFuncionario, al.Nombre as aldea, cf.Nombre as condicionFamiliar
+from cs_censo cc, cs_evento ce, funcionario fu, aldea al, cs_motivo cm, cs_condicion_familiar cf
+where cc.Id_Evento=ce.Id_Evento and
+fu.Id_Funcionario=cc.Id_Funcionario and
+al.Id_Aldea=cc.Id_Aldea and
+cm.Id_Motivo=cc.Id_Motivo and
+cf.Id_CondicionFamiliar=cc.Id_CondicionFamiliar
+
+
+
+fotos a parte
+
