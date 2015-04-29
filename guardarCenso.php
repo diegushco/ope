@@ -64,7 +64,7 @@
 				}
 				for($i=1;$i<=(int)$_REQUEST["canEnser"];$i++ ){
 					if($_REQUEST["enser".$i]=="true"){
-						$cons="INSERT INTO cd_vivienda_enser (Id_Enser, Id_Vivienda)
+						$cons="INSERT INTO cs_vivienda_enser (Id_Enser, Id_Vivienda)
 						VALUES('".$_REQUEST["ensero".$i]."','".$id_vivienda."')";
 						$sql=mysql_query($cons,$conexion);
 					}
@@ -90,7 +90,7 @@
 				for($i=1;$i<(int)$_REQUEST["cantidad_familiar"];$i++ ){
 					
 						$cons="INSERT INTO cs_familiar (Cedula,Nombre,Apellido,Fecha_Nacimiento,Parentesco,Nivel_Instruccion,Ocupacion,Ingreso_Mensual,Id_Afectado)
-						VALUES('".$_REQUEST["nacionalidad".$i]."'-'".$_REQUEST["cedula".$i]."','".$_REQUEST["nombre".$i]."','".$_REQUEST["apellido".$i]."','".$_REQUEST["fecha".$i]."','".$_REQUEST["parentesco".$i]."','".$_REQUEST["nivel".$i]."','".$_REQUEST["ocupacion".$i]."','".$_REQUEST["ingreso".$i]."','".$id_afectado."')";
+						VALUES('".$_REQUEST["nacionalidad".$i]."-".$_REQUEST["cedula".$i]."','".$_REQUEST["nombre".$i]."','".$_REQUEST["apellido".$i]."','".$_REQUEST["fecha".$i]."','".$_REQUEST["parentesco".$i]."','".$_REQUEST["nivel".$i]."','".$_REQUEST["ocupacion".$i]."','".$_REQUEST["ingreso".$i]."','".$id_afectado."')";
 						$sql=mysql_query($cons,$conexion);
 					
 				}

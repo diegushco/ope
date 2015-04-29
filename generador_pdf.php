@@ -21,6 +21,9 @@
         case 3:
             $pagina = "comp_ra";
             break;
+        case 4:
+            $pagina = "comp_censo";
+            break;
     }
 
     // get the HTML

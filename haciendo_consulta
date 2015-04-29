@@ -1,3 +1,11 @@
+FechaCenso observacionCenso motivo evento nombreFuncionario apellidoFuncionario aldea condicionFamiliar canFamilias canHabitaciones dano tenencia tipoVivienda parteCenso materialTecho materialParedes materialPiso
+
+cedula nombre apellido sexo nacionalidad fechanac estadoCivil conyugue telefono tiempoEstado tiempoComunidad nivelInstruccion trabajo lph usoLPH nombre_refugio fecha_ingreso_refugio otra_propiedad FechaCenso observacionCenso motivo evento nombreFuncionario apellidoFuncionario aldea condicionFamiliar canFamilias canHabitaciones dano tenencia tipoVivienda parteCenso materialTecho materialParedes materialPiso
+
+
+
+
+
 select cc.Id_Censo as id, csa.Cedula as cedula ,csa.Nombre as nombre ,csa.Apellido as apellido, csa.Sexo as sexo, csa.Nacionalidad as nacionalidad, csa.Fecha_Nacimiento as fechanac, csa.Estado_Civil as estadoCivil, csa.Situacion_Conyugal as conyugue, csa.Telefono as telefono, csa.Residencia_Estado as tiempoEstado, csa.Residencia_Comunidad as tiempoComunidad, csa.Nivel_instruccion as nivelInstruccion, csa.Situacion_Laboral as trabajo, csa.LPH as lph, csa.uso_LPH as usoLPH, cr.Nombre as nombre_refugio, cra.Fecha_Ingreso as fecha_ingreso_refugio, cop.Nombre as otra_propiedad, cc.Fecha_Censo as FechaCenso, cc.Observacion as observacionCenso, cm.Nombre as motivo, ce.Nombre as evento, fu.Nombre as nombreFuncionario, fu.Apellido as apellidoFuncionario, al.Nombre as aldea, cf.Nombre as condicionFamiliar, cvi.Numero_Familias as canFamilias, cvi.Numero_Habitaciones as canHabitaciones, cda.Nombre as dano, cten.Nombre as tenencia, ctip.Nombre as tipoVivienda, cpar.Nombre as parteCenso, cmel1.Nombre as materialTecho, cmel2.Nombre as materialParedes, cmel3.Nombre as materialPiso
 from cs_afectado csa, cs_otra_propiedad cop, cs_refugio_afectado cra, cs_refugio cr, cs_censo cc, cs_evento ce, funcionario fu, aldea al, cs_motivo cm, cs_condicion_familiar cf, cs_vivienda cvi, cs_danho cda, cs_tenencia cten, cs_tipo ctip, cs_parte cpar, cs_material_elaboracion cmel1, cs_material_elaboracion cmel2, cs_material_elaboracion cmel3
 where
@@ -40,9 +48,22 @@ cmel2.Id_MaterialElaboracion=cvi.Id_MaterialParedes and
 cmel3.Id_MaterialElaboracion=cvi.Id_MaterialPisos
 
 
-buscar a parte en cs_necesidad_afectado, cs_familiar
+buscar a parte en cs_necesidad_afectado
+select cne.Nombre as necesidad
+from cs_afectado csaf, cs_necesidad_afectado cna, cs_necesidad cne
+where csaf.Id_Afectado=cna.Id_Afectado and
+cna.Id_Necesidad=cne.Id_Necesidad and
+csaf.Id_Afectado='".$_REQUEST[""]."'
 
-cs_vivienda_enser
+
+select cf.Cedula as ced,cf.Nombre as nombre,cf.apellido as apellido,cf.Fecha_Nacimiento as fecha, cf.Parentesco as parentesco, cf.Nivel_Instruccion as nivel, cf.Ocupacion as ocupacion, cf.Ingreso_Mensual as ingreso
+from cs_familiar cf, cs_afectado ca
+where ca.Id_Afectado=cf.Id_Afectado
+
+select cse.Nombre as enser
+from cs_vivienda_enser cve, cs_vivienda cvi, cs_enser cse
+where cvi.Id_Vivienda=cve.Id_Vivienda and
+cse.Id_Enser=cse.Id_Enser
 
 fotos a parte
 

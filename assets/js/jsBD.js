@@ -2268,6 +2268,10 @@ function imprimirInspeccion(cita){
 function imprimirRA(id){
 	window.open("generador_pdf?p=3&ra_id="+id, this.target,'width=500,height=500'); return false;	
 }
+function imprimirCenso(id){
+	window.open("generador_pdf?p=4&ce_id="+id, this.target,'width=500,height=500'); return false;	
+}
+
 
 
 function eliminaCita(cita){

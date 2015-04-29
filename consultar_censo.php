@@ -19,7 +19,7 @@
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" data-dismiss="modal" class="btn">Close</button>
+						<button type="button" data-dismiss="modal" class="btn">Cerrar</button>
 						
 					</div>
 				</div>
@@ -52,7 +52,7 @@
 			<a href="javascript: traeListado()" class="btn btn-small btn-info">
 				<i class="icon-search"></i>
 			</a>
-			<a href="javascript: menu('listado_RA')" class="btn btn-small btn-info">
+			<a href="javascript: menu('consultar_censo')" class="btn btn-small btn-info">
 				<i class="icon-refresh"></i>
 			</a>
 			</div>
@@ -65,7 +65,7 @@
 		
 								
 								<div class="table-header">
-									Registros de RA en el sistema
+									Registros de Censo en el sistema
 								</div>
 
 								<table id="sample-table-2" class="table table-striped table-bordered table-hover">
@@ -146,7 +146,7 @@
 														<i class="icon-zoom-in bigger-130"></i>
 													</a>
 
-													<a class="red" onclick="javascript: imprimirRA('<?php echo $row["idCenso"]; ?>')">
+													<a class="red" onclick="javascript: imprimirCenso('<?php echo $row["idCenso"]; ?>')">
 														<i class="icon-book bigger-130"></i>
 													</a>
 												</div>
@@ -166,13 +166,7 @@
 																</a>
 															</li>
 
-															<li>
-																<a href="javascript: onclick('<?php echo $row["idCenso"]; ?>')" class="tooltip-error" data-rel="tooltip" title="Delete">
-																	<span class="red">
-																		<i class="icon-book bigger-120"></i>
-																	</span>
-																</a>
-															</li>
+															
 														</ul>
 													</div>
 												</div>
@@ -243,12 +237,15 @@ function traeListado(){
 			rango=rango.split("-");
 			fecha1=rango[0];
 			fecha2=rango[1];
-			
-
+			cedula=document.getElementById("cedula").value;
+			if(rango==""){
+				fecha1="";
+				fecha2="";
+			}
 
 			var hora= new Date().getTime();
 			objeto_ajax=objetoAjax(); 
-			objeto_ajax.open("GET", "trae_RA.php?hora="+hora+"&fecha1="+fecha1+"&fecha2="+fecha2+"&aldea="+aldea1,true);
+			objeto_ajax.open("GET", "trae_Censo.php?hora="+hora+"&fecha1="+fecha1+"&fecha2="+fecha2+"&cedula="+cedula,true);
 			objeto_ajax.onreadystatechange=function() {	
 				if (objeto_ajax.readyState==4) {
 						document.getElementById("contenido").innerHTML=objeto_ajax.responseText;
