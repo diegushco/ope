@@ -53,7 +53,7 @@
 						if(buscaMenu($rowV,"registrar_cita",$rowP)=="1"){ ?>
 							<a href="javascript:menu('registrar_cita');">
 								<i class="icon-double-angle-right"></i>
-								Registro de CitaConsultar Cita
+								Registro de Cita
 							</a>
 						<?php
 

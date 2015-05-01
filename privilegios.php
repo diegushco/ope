@@ -24,7 +24,9 @@
 
 															<?php
 															include("conexion.php");	
-															$sql=mysql_query("SELECT * FROM usuario order by usuario asc",$conexion);  
+															$consu="SELECT * FROM usuario order by usuario asc";
+															//echo $consu;
+															$sql=mysql_query($consu,$conexion);  
 															if($row=mysql_fetch_array($sql)){
 																$sql=mysql_query("SELECT * FROM usuario order by Nombre asc",$conexion);  
 																while($row=mysql_fetch_array($sql)){
