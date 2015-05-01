@@ -18,7 +18,7 @@
 				//echo $consulta;
 				$sql=mysql_query ($consulta,$conexion);	
 			}
-			include("guardaBitacora.php");
+			include_once("guardaBitacora.php");
 				bitacora("Guardo privilegios de usuario","Guardar",$conexion);
 			if($sql){
 				echo "Se modifico correctamente";

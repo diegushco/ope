@@ -74,7 +74,7 @@ $error = ob_get_clean();
 			$consulta="select bita.FechaHora as fecha, bita.Url as url, bita.Ip as ip, usua.usuario as usuario, bita.tipo as tipo
 from bitacora bita, usuario usua
 where usua.Id_Usuario=bita.Id_Usuario
-and bita.Id_Usuario='".$_SESSION["UsuIdem"]."'";
+";
 				$sql=mysql_query ($consulta,$conexion);	
 				while($row=mysql_fetch_array($sql)){
 					//$id_actividad=$row["Id_Actividad"];

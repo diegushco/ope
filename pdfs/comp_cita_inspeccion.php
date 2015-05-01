@@ -28,7 +28,7 @@ hr{margin:20px 0;border:0;border-top:1px solid #eee;border-bottom:1px solid #fff
 		$res = mysql_query($sql,$conexion);
 		if($row = mysql_fetch_array($res)){
 	?>
-	<table class="table table-condensed">
+	<table style="font-size: 90%"  class="table table-condensed">
 		<tbody>
 			<tr class="header-color-green">
 				<th colspan="6">INFORMACION DE INSPECCION</th>
@@ -79,28 +79,31 @@ hr{margin:20px 0;border:0;border-top:1px solid #eee;border-bottom:1px solid #fff
 						}
 					}
 				?>
-			<tr class="header-color-green">
-				<th colspan="6">INFORMACION DE INSPECCION</th>
+			
+		</tbody>
+	</table>
+	<table style="">
+		<tr class="header-color-green">
+				<th colspan="2" width="750">INFORMACION DE INSPECCION</th>
 			</tr>
 			<tr>
-				<th>Fecha: </th>
-				<td colspan="3"  style="font-weight:bold; font-style:italic; font-size:11px;"><?php echo strtoupper($row['fechae']); ?></td>
+				<th > Fecha: </th>
+				<td style="overflow: auto; width:471px; text-align:justify; vertical-align: top;"><?php echo strtoupper($row['fechae']); ?></td>
 			</tr>
 			<tr>
 				<th>Informe: </th>
-				<td colspan="3"  style="font-weight:bold; font-style:italic; font-size:11px;"><?php echo strtoupper($row['informe']); ?></td>
+				<td style="overflow: auto; width:471px; text-align:justify; vertical-align: top;"><?php echo strtoupper($row['informe']); ?></td>
 			</tr>
 			<tr>
 				<th>Recomendacion: </th>
-				<td colspan="3"  style="font-weight:bold; font-style:italic; font-size:11px;"><?php echo strtoupper($row['recomendacion']); ?></td>
+				<td style="overflow: auto; width:471px; text-align:justify; vertical-align: top;"><?php echo strtoupper($row['recomendacion']); ?></td>
 			</tr>
 			<tr>
 				<th>Observacion: </th>
-				<td colspan="3"  style="font-weight:bold; font-style:italic; font-size:11px;"><?php echo strtoupper($row['observacion']); ?></td>
+				<td style="overflow: auto; width:471px; text-align:justify; vertical-align: top;"><?php echo strtoupper($row['observacion']); ?></td>
 			</tr>
-		</tbody>
 	</table>
-	<br><br><br><br><br><br>
+	<br><br>
 	<table align="center">
 			<tr align="center">
 				<td width="250" style="border-bottom:2px solid #000;"></td>

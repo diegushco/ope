@@ -596,10 +596,10 @@ miTabla = document.createElement("table");
 															$y=0;
 														}
 														$i++;$y++;
-														echo '<td><label class="inline"><input type="hidden" name="ensero'.$i.'" id="ensero'.$i.'" value="'.$row["Id_Enser"].'" /><input onchange="validaGrieta(this)" name="enser'.$i.'" id="enser'.$i.'" type="checkbox" /><span style="padding: 10px 10px;" class="lbl"> '.$row['Nombre'].'</span></label></td>';
+														echo '<td><label class="inline"><input type="hidden" name="ensero'.$i.'" id="ensero'.$i.'" value="'.$row["Id_Enser"].'" /><input name="enser'.$i.'" id="enser'.$i.'" type="checkbox" /><span style="padding: 10px 10px;" class="lbl"> '.$row['Nombre'].'</span></label></td>';
 														
 													}
-													echo "<input type='hidden' name='canGrieta' id='canEnser' value='".$i."'></table>";
+													echo "<input type='hidden' name='canEnser' id='canEnser' value='".$i."'></table>";
 												}
 												mysql_close();
 

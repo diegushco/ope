@@ -167,39 +167,38 @@ rac.Id_Actividad='".$_REQUEST["ra_id"]."'
 											<?php
 											}
 											?>
-
-											<tr>										
+											</table>
+											<table>
+												<tr>										
 											<td style="padding: 8px 5px;">Situacion:</td>
-											<td style="padding: 8px 0px;">
+											<td style="overflow: auto; width:471px; text-align:justify; vertical-align: top;">
 												<?php echo $row["situacion"]; ?>
 											</td>
 											
 											</tr>
 											<tr>										
 												<td style="padding: 8px 5px;">Recomendacion:</td>
-												<td style="padding: 8px 0px;">
+												<td style="overflow: auto; width:471px; text-align:justify; vertical-align: top;">
 													<?php echo $row["recomendacion"]; ?>
 												</td>
-												
+										
+		
 											</tr>
+
 											<tr>										
 												<td style="padding: 8px 5px;">Observacion:</td>
-												<td style="padding: 8px 0px;">
+												<td style="overflow: auto; width:471px; text-align:justify; vertical-align: top;">
 													<?php echo $row["observacion"]; ?>
 												</td>
 												
 											</tr>
+											</table>
+											
 									
 										
-										
-										<tr><td colspan="2"><div id="error"></div></td></tr>
-									</table>
-									
-								
-
 
 				</form>
-	<br><br><br><br><br><br>
+	<br><br><br>
 	<table align="center">
 			<tr align="center">
 				

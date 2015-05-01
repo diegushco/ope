@@ -10,7 +10,7 @@
 					<div class="page-content">
 					<div class="page-header position-relative">
 						<h1>
-							Citas de Inspecciones							
+							Inspecciones, RA y Censos							
 						</h1>
 					</div><!--/.page-header-->
 
@@ -219,6 +219,18 @@
 			start: new Date(y, m, d-5),
 			end: new Date(y, m, d-2),
 			className: 'label-success'
+		},
+		{
+			title: 'Diego wiii :D',
+			start: new Date(y, m, d+5),
+			end: new Date(y, m, d+7),
+			className: 'label-success'
+		},
+		{
+			title: 'Diego 2 :D',
+			start: new Date(y, m, d+7),
+			end: new Date(y, m, d+7),
+			className: 'label-important'
 		},
 		{
 			title: 'Some Event',
