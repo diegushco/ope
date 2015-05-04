@@ -30,31 +30,31 @@
 			    	</a>
 			    </li>
 			    <li>
-			    	<a class="prueba">
+			    	<a class="prueba" href="javascript: menu('listado_RA_tipo')">
 			    		<i class="icon-double-angle-right"></i>
 			    		Reporte por Tipo de Actividad
 			    	</a>
 			    </li>
 			    <li>
-			    	<a class="prueba">
+			    	<a class="prueba" href="javascript: menu('listado_RA_condicion')">
 			    		<i class="icon-double-angle-right"></i>
 			    		Reporte por Condicion
 			    	</a>
 			    </li>
 			    <li>
-			    	<a class="prueba">
+			    	<a class="prueba" href="javascript: menu('listado_RA_accion')">
 			    		<i class="icon-double-angle-right"></i>
 			    		Reporte por Accion Tomada
 			    	</a>
 			    </li>
 			    <li>
-			    	<a class="prueba">
+			    	<a class="prueba" href="javascript: menu('listado_RA_danho')">
 			    		<i class="icon-double-angle-right"></i>
 			    		Reporte por Daños
 			    	</a>
 			    </li>
 			    <li>
-			    	<a class="prueba">
+			    	<a class="prueba" href="javascript: menu('listado_RA_ciudad')">
 			    		<i class="icon-double-angle-right"></i>
 			    		Reporte por Ciudades
 			    	</a>
