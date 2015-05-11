@@ -18,7 +18,7 @@
 		<div class="" >
 			<ul class="nav-list ">
 			    <li class="">
-			    	<a class="prueba" href="javascript: menu('')">
+			    	<a class="prueba" href="javascript: menu('listado_censo_ciudad')">
 			    		<i class="icon-double-angle-right"></i>
 			    		Censo por Ciudad
 			    	</a>

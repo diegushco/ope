@@ -11,10 +11,6 @@
 					</div>
 					<div class="modal-body" >
 						<div id="cuerpomodal" >
-						
-
-
-
 
 						</div>
 					</div>
