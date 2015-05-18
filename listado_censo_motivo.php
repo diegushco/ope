@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="assets/css/estilo.css">
 	<div class="page-header position-relative titulo">
 		<h2>
-			Reporte de Censo por Ciudad
+			Reporte de Censo por Motivo
 		</h2>
 	</div><!--/.page-header-->
 	<div id="myModal" class="modal hide fade">
@@ -46,7 +46,7 @@
 			
 			<label>
 				
-				<span class="lbl">Organismo</span>
+				<span class="lbl">Motivo</span>
 			</label>
 			<select data-placeholder="Seleccione" id="aldea" name="aldea" onchange="aldeasel1(this)"  class="chzn-select" >
 											<option value="AL" ></option>
@@ -54,11 +54,11 @@
 
 											<?php
 											include("conexion.php");	
-											$sql=mysql_query("SELECT * FROM ra_otros_organismo order by Nombre asc",$conexion);  
+											$sql=mysql_query("SELECT * FROM cs_motivo order by Nombre asc",$conexion);  
 											if($row=mysql_fetch_array($sql)){
-												$sql=mysql_query("SELECT * FROM ra_otros_organismo order by Nombre asc",$conexion);  
+												$sql=mysql_query("SELECT * FROM cs_motivo order by Nombre asc",$conexion);  
 												while($row=mysql_fetch_array($sql)){
-													echo '<option value="'.$row['Id_OtrosOrganismo'].'" >'.$row['Nombre'].'</option>';
+													echo '<option value="'.$row['Id_Motivo'].'" >'.$row['Nombre'].'</option>';
 												}
 											}
 											mysql_close();		
@@ -76,7 +76,7 @@
 			<a href="javascript: traeListado()" class="btn btn-small btn-info">
 				<i class="icon-search"></i>
 			</a>
-			<a href="javascript: menu('listado_RA_organismos')" class="btn btn-small btn-info">
+			<a href="javascript: menu('listado_censo_motivo')" class="btn btn-small btn-info">
 				<i class="icon-refresh"></i>
 			</a>
 			</div>
@@ -113,7 +113,7 @@
 											</th>
 											<th class="hidden-480">
 												<i class="icon-share bigger-110 hidden-phone"></i>
-												Ciudad</th>
+												Motivo</th>
 											<th class="hidden-480">
 												<i class="icon-home bigger-110 hidden-phone"></i>
 												Tipo</th>
@@ -130,7 +130,7 @@
 			include("conexion.php");
 
 
-$consulta="select ciu.Nombre as ciudad, cc.Id_Censo as idCenso, cvi.Id_Vivienda as idvi,
+$consulta="select cm.Nombre as motivo, cc.Id_Censo as idCenso, cvi.Id_Vivienda as idvi,
  csa.Id_Afectado as idafe, cc.Id_Censo as id, csa.Cedula as cedula ,
  csa.Nombre as nombre ,csa.Apellido as apellido, csa.Sexo as sexo,
 csa.Nacionalidad as nacionalidad, csa.Fecha_Nacimiento as fechanac,
@@ -204,7 +204,7 @@ cvi.Id_Vivienda=cc.Id_Vivienda
 											</td>
 											<td><?php echo $row["nombre"]; ?></td>
 											<td class="hidden-480"><?php echo $row["apellido"]; ?></td>
-											<td class="hidden-phone"><?php echo $row["ciudad"]; ?></td>
+											<td class="hidden-phone"><?php echo $row["motivo"]; ?></td>
 
 											<td class="hidden-480">
 												<span class="label label-warning"><?php echo $row["tipoVivienda"]; ?></span>
@@ -258,7 +258,7 @@ cvi.Id_Vivienda=cc.Id_Vivienda
 
  } //cierro while 
 include("guardaBitacora.php");
-					bitacora("Busca censo por ciudad","Buscar",$conexion);
+					bitacora("Busca censo reporte por motivo","Buscar",$conexion);
 
 
 		$aco1=0;
@@ -266,7 +266,7 @@ include("guardaBitacora.php");
 		$cons="
 
 
-					select DISTINCT ciu.Nombre as Nombre, ciu.Id_Ciudad as Id_Ciudad
+					select DISTINCT cm.Nombre as Nombre, cm.Id_Motivo as Id_Motivo
 					from cs_afectado csa, cs_otra_propiedad cop, cs_refugio_afectado cra, cs_refugio cr, cs_censo cc, cs_evento ce, funcionario fu, aldea al, cs_motivo cm, cs_condicion_familiar cf, cs_vivienda cvi, cs_danho cda, cs_tenencia cten, cs_tipo ctip, cs_parte cpar, cs_material_elaboracion cmel1, cs_material_elaboracion cmel2, cs_material_elaboracion cmel3
 					, ciudad ciu, parroquia parr, municipio mun
 					where
@@ -302,7 +302,7 @@ include("guardaBitacora.php");
 				$nombres[$aco1]=$resultado;
 
 				$consulta1="
-				select count(ciu.Id_Ciudad) as cantidad, ciu.Nombre
+				select count(cm.Id_Motivo) as cantidad, cm.Nombre
 					from cs_afectado csa, cs_otra_propiedad cop, cs_refugio_afectado cra, cs_refugio cr, cs_censo cc, cs_evento ce, funcionario fu, aldea al, cs_motivo cm, cs_condicion_familiar cf, cs_vivienda cvi, cs_danho cda, cs_tenencia cten, cs_tipo ctip, cs_parte cpar, cs_material_elaboracion cmel1, cs_material_elaboracion cmel2, cs_material_elaboracion cmel3
 					, ciudad ciu, parroquia parr, municipio mun
 					where
@@ -326,7 +326,7 @@ include("guardaBitacora.php");
 					cmel3.Id_MaterialElaboracion=cvi.Id_MaterialPisos and
 					csa.Id_Afectado=cc.Id_Afectado and
 					cvi.Id_Vivienda=cc.Id_Vivienda and			
-					ciu.Id_Ciudad like '%".$row['Id_Ciudad']."%' ";
+					cm.Id_Motivo like '%".$row['Id_Motivo']."%' ";
 					//echo $consulta1;
 				$sql2=mysql_query($consulta1,$conexion);  
 				if($row2=mysql_fetch_array($sql2)){
@@ -349,7 +349,7 @@ $_SESSION["nombres"]=$nombres;
 
 									</tbody>
 								</table>
-							<img id="grafico" src="graficoBarCC.php?var=<?php echo time(); ?>" />
+							<img id="grafico" src="graficoBarMotivo.php?var=<?php echo time(); ?>" />
 							</div>
 	</div>	
 							
@@ -403,7 +403,7 @@ function traeListado(){
 
 			var hora= new Date().getTime();
 			objeto_ajax=objetoAjax(); 
-			objeto_ajax.open("GET", "trae_RAOrga.php?hora="+hora+"&fecha1="+fecha1+"&fecha2="+fecha2+"&orga="+aldea1,true);
+			objeto_ajax.open("GET", "trae_CensoMotivo.php?hora="+hora+"&fecha1="+fecha1+"&fecha2="+fecha2+"&idbus="+aldea1,true);
 			objeto_ajax.onreadystatechange=function() {	
 				if (objeto_ajax.readyState==4) {
 						document.getElementById("contenido").innerHTML=objeto_ajax.responseText;
