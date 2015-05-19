@@ -46,7 +46,7 @@
 			
 			<label>
 				
-				<span class="lbl">Organismo</span>
+				<span class="lbl">Ciudad</span>
 			</label>
 			<select data-placeholder="Seleccione" id="aldea" name="aldea" onchange="aldeasel1(this)"  class="chzn-select" >
 											<option value="AL" ></option>
@@ -54,11 +54,11 @@
 
 											<?php
 											include("conexion.php");	
-											$sql=mysql_query("SELECT * FROM ra_otros_organismo order by Nombre asc",$conexion);  
+											$sql=mysql_query("SELECT * FROM ciudad order by Nombre asc",$conexion);  
 											if($row=mysql_fetch_array($sql)){
-												$sql=mysql_query("SELECT * FROM ra_otros_organismo order by Nombre asc",$conexion);  
+												$sql=mysql_query("SELECT * FROM ciudad order by Nombre asc",$conexion);  
 												while($row=mysql_fetch_array($sql)){
-													echo '<option value="'.$row['Id_OtrosOrganismo'].'" >'.$row['Nombre'].'</option>';
+													echo '<option value="'.$row['Id_Ciudad'].'" >'.$row['Nombre'].'</option>';
 												}
 											}
 											mysql_close();		
@@ -403,7 +403,7 @@ function traeListado(){
 
 			var hora= new Date().getTime();
 			objeto_ajax=objetoAjax(); 
-			objeto_ajax.open("GET", "trae_RAOrga.php?hora="+hora+"&fecha1="+fecha1+"&fecha2="+fecha2+"&orga="+aldea1,true);
+			objeto_ajax.open("GET", "trae_CenCiu.php?hora="+hora+"&fecha1="+fecha1+"&fecha2="+fecha2+"&idbus="+aldea1,true);
 			objeto_ajax.onreadystatechange=function() {	
 				if (objeto_ajax.readyState==4) {
 						document.getElementById("contenido").innerHTML=objeto_ajax.responseText;

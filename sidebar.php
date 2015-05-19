@@ -780,7 +780,7 @@
 						if(buscaMenu($rowV,"graficador",$rowP)=="1"){ ?>
 							<a href="javascript:menu('graficador');">
 								
-								Generador Grafico
+								Generador Reportes
 							</a>
 						<?php
 

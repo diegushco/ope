@@ -349,7 +349,7 @@ $_SESSION["nombres"]=$nombres;
 
 									</tbody>
 								</table>
-							<img id="grafico" src="graficoBarCC.php?var=<?php echo time(); ?>" />
+							<img id="grafico" src="graficoBarMuni.php?var=<?php echo time(); ?>" />
 							</div>
 	</div>	
 							
